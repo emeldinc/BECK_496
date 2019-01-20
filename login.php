@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <!-- BEGIN HEAD -->
 <head>
@@ -44,9 +45,24 @@
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
+<?php
+if(session_id()==''){
+		session_start();
+}
+
+if(isset($_SESSION['username'])){ ?>
+	<p> Hosgeldin <?php echo $_SESSION['username']?></p>
+<?php
+//	print_r($_SESSION);
+	?>
+	<a href = "cikis.php"><button class="btn btn-danger">Çıkış Yap</button></a>
+	<?php
+}else{ ?>
+
+
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="index.html" method="post">
+	<form class="login-form" name="login" action="islem.php" method="post">
 		<h3 class="form-title">Hesabınıza giriş yapınız</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -61,13 +77,17 @@
 				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Kullanıcı Adı" name="username"/>
 			</div>
 		</div>
+		<div class="form-group form-check">
+			<input type="checkbox" name="beni_hatirla" class="form-check-input">
+			<label class="form-check-label">Beni Hatırla</label>
+		</div>
 		<div class="form-actions">
-			<button type="submit" class="btn blue pull-right">
+			<button type="submit" name= "giris" class="btn blue pull-right">
 			Giriş Yap <i class="m-icon-swapright m-icon-white"></i>
 			</button>
 		</div>
-		
-		
+
+
 		<div class="create-account">
 			<p>
 				Henüz bir hesabınız yok mu?&nbsp; <a href="javascript:;" id="register-btn">
@@ -75,8 +95,9 @@
 			</p>
 		</div>
 	</form>
+
 	<!-- END LOGIN FORM -->
-	
+
 	<!-- BEGIN REGISTRATION FORM -->
 	<form class="register-form" action="kayit.php" method="post">
 		<h3>Kayıt Ol</h3>
@@ -123,12 +144,13 @@
 	</form>
 	<!-- END REGISTRATION FORM -->
 </div>
+<?php } ?>
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -149,7 +171,7 @@
 <script src="assets/admin/pages/scripts/login-soft.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {     
+jQuery(document).ready(function() {
   Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
   Login.init();
