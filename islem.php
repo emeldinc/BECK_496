@@ -1,10 +1,19 @@
 <?php
-session_start();
+include('dbconnection.php');
+if(session_id() =='')
+  session_start();
 
 if(isset($_POST['username'])){
- $username= $_POST['username'];
- $_SESSION['username'] =$username;
- echo $_SESSION['username'];
+    $username= $_POST['username'];
+    //echo $username;
+    $sorgu = "SELECT * FROM beckdoor.user WHERE beckdoor.user.username = '".$username."'";
+    $res = mysqli_query($db,$sorgu);
+  //  echo mysqli_error($db);
+   if(mysqli_affected_rows($db) >= 1){
+      $_SESSION['username'] =$username;
+      //echo $_SESSION['username'];
+    }
+
  //echo $username;
 
   if(isset($_POST['beni_hatirla'])){

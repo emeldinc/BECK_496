@@ -57,7 +57,8 @@ if(isset($_SESSION['username'])){ ?>
 	?>
 	<a href = "cikis.php"><button class="btn btn-danger">Çıkış Yap</button></a>
 	<?php
-}else{ ?>
+}else{
+	?>
 
 
 <div class="content">
