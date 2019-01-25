@@ -483,7 +483,7 @@
 			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active ">
+                <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
                         <span class="title">Menü</span>
@@ -496,8 +496,8 @@
 
                     </a>
                 </li>
-                <li>
-                    <a href="javascript:;">
+                  <li class="start active ">
+                    <a href="duyurular.php">
                         <i class="icon-pin"></i>
                         <span class="title">Duyurular</span>
 
