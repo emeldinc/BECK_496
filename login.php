@@ -46,12 +46,15 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
 <?php
+
 if(session_id()==''){
 		session_start();
 }
 
 if(isset($_SESSION['username'])){ ?>
-	<p> Hosgeldin <?php echo $_SESSION['username']?></p>
+	<p> Hosgeldin <?php echo $_SESSION['username'];
+//	echo $_SESSION['id'];
+	?></p>
 <?php
 //	print_r($_SESSION);
 	?>

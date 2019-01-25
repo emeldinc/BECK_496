@@ -5,12 +5,14 @@ if(session_id() =='')
 
 if(isset($_POST['username'])){
     $username= $_POST['username'];
+
     //echo $username;
     $sorgu = "SELECT * FROM beckdoor.user WHERE beckdoor.user.username = '".$username."'";
     $res = mysqli_query($db,$sorgu);
   //  echo mysqli_error($db);
    if(mysqli_affected_rows($db) >= 1){
       $_SESSION['username'] =$username;
+      
       //echo $_SESSION['username'];
     }
 
