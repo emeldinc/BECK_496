@@ -36,9 +36,11 @@
         if (isset($_POST['beni_hatirla'])) {
             //cookie atayalim
             setcookie($_POST['username'], strtotime("+1 day"));
+            setcookie($_POST['password'], strtotime("+1 day"));
         } else {
             //cookie sil
             setcookie($_POST['username'], strtotime("-1 day"));
+            setcookie($_POST['password'], strtotime("-1 day"));
         }
     }
 ?>
