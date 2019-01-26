@@ -516,7 +516,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 </li>
                 <li>
-                    <a href="index.html">
+                    <a href="hakkimizda.php">
                         <i class="icon-info"></i>
                         <span class="title">Hakkımızda</span>
                     </a>
