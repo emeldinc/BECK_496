@@ -500,10 +500,10 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active ">
+                <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
-                        <span class="title">Menü</span>
+                        <span class="title">Anasayfa</span>
                     </a>
                 </li>
                 <li>
@@ -520,7 +520,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     </a>
                 </li>
-                <li>
+                <li class="start active">
                     <a href="oylamalar.php">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>
@@ -698,7 +698,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="portlet box green">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-cogs"></i>Progress Bars
+                                <i class="fa fa-cogs"></i>Devam Eden Oylamalar
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -706,8 +706,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="#portlet-config" data-toggle="modal" class="config">
                                 </a>
                                 <a href="javascript:;" class="reload">
-                                </a>
-                                <a href="javascript:;" class="remove">
                                 </a>
                             </div>
                         </div>
@@ -810,10 +808,6 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
                 <!-- END PAGINATION PORTLET-->
             </div>
