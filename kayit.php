@@ -19,7 +19,7 @@ include('dbconnection.php');
         $_SESSION['username'] = $username;
         $_SESSION['firstname'] = $firstname;
         $_SESSION['user_id'] = $row['id'];
-        header('location: index.php');
+        header('location: eksik_site_bilgileri.php');
     } else {
         echo $db->error;
         echo "<script> alert('Kaydiniz olusturulamamistir...') </script>";

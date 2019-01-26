@@ -15,7 +15,17 @@
             $_SESSION['username'] = $username;
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['user_id'] = $row['id'];
-            header('location:index.php');
+
+            $user_id = $_SESSION['user_id'];
+            $select_sql = "SELECT * FROM user_daire WHERE ref_user_id = '".$user_id."'";
+            $res2 = mysqli_query($db, $select_sql);
+            $row2 = mysqli_fetch_assoc($res2);
+            if (mysqli_affected_rows($db) >= 1) {
+                header('location:index.php');
+            }
+            else {
+                header('location:eksik_site_bilgileri.php');
+            }
         } else {
             echo "<script> confirm('Kullanici bulunamadi...') </script>";
             header('location:login.php');
