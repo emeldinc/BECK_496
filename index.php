@@ -417,33 +417,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
                                 <a href="extra_profile.html">
-                                    <i class="icon-user"></i> My Profile </a>
+                                    <i class="icon-user"></i> Profil </a>
                             </li>
                             <li>
-                                <a href="page_calendar.html">
-                                    <i class="icon-calendar"></i> My Calendar </a>
-                            </li>
-                            <li>
-                                <a href="inbox.html">
-                                    <i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-								3 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page_todo.html">
-                                    <i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
-								7 </span>
-                                </a>
-                            </li>
-                            <li class="divider">
-                            </li>
-                            <li>
-                                <a href="extra_lock.html">
-                                    <i class="icon-lock"></i> Lock Screen </a>
-                            </li>
+                                <a href="index.php">
+                                    <i class="icon-calendar"></i> Takvim </a>
+                            </li>  
                             <li>
                                 <a href="cikis.php">
-                                    <i class="icon-key"></i> Log Out </a>
+                                    <i class="icon-key"></i> Çıkış Yap </a>
                             </li>
                         </ul>
                     </li>

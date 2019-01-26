@@ -443,33 +443,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
                                 <a href="extra_profile.html">
-                                    <i class="icon-user"></i> My Profile </a>
+                                    <i class="icon-user"></i> Profil </a>
                             </li>
                             <li>
-                                <a href="page_calendar.html">
-                                    <i class="icon-calendar"></i> My Calendar </a>
+                                <a href="index.php">
+                                    <i class="icon-calendar"></i> Takvim </a>
                             </li>
                             <li>
-                                <a href="inbox.html">
-                                    <i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-								3 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page_todo.html">
-                                    <i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
-								7 </span>
-                                </a>
-                            </li>
-                            <li class="divider">
-                            </li>
-                            <li>
-                                <a href="extra_lock.html">
-                                    <i class="icon-lock"></i> Lock Screen </a>
-                            </li>
-                            <li>
-                                <a href="login.html">
-                                    <i class="icon-key"></i> Log Out </a>
+                                <a href="cikis.php">
+                                    <i class="icon-key"></i> Çıkış Yap </a>
                             </li>
                         </ul>
                     </li>
@@ -500,7 +482,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active ">
+                <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
                         <span class="title">Menü</span>
@@ -520,7 +502,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     </a>
                 </li>
-                <li>
+                <li class="start active ">
                     <a href="oylamalar.php">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>

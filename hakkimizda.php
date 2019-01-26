@@ -75,42 +75,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
-		<!-- BEGIN PAGE ACTIONS -->
-		<!-- DOC: Remove "hide" class to enable the page header actions -->
-		<div class="page-actions">
-			<div class="btn-group">
-				<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-				<span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="javascript:;">
-						<i class="icon-docs"></i> New Post </a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-tag"></i> New Comment </a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-share"></i> Share </a>
-					</li>
-					<li class="divider">
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- END PAGE ACTIONS -->
+
 		<!-- BEGIN PAGE TOP -->
 		<div class="page-top">
 			<!-- BEGIN HEADER SEARCH BOX -->
@@ -442,33 +407,15 @@ License: You must have a valid license purchased only from themeforest(the above
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
 								<a href="extra_profile.html">
-								<i class="icon-user"></i> My Profile </a>
+								<i class="icon-user"></i> Profil </a>
 							</li>
 							<li>
-								<a href="page_calendar.html">
-								<i class="icon-calendar"></i> My Calendar </a>
-							</li>
-							<li>
-								<a href="inbox.html">
-								<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
-								3 </span>
-								</a>
-							</li>
-							<li>
-								<a href="page_todo.html">
-								<i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
-								7 </span>
-								</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="extra_lock.html">
-								<i class="icon-lock"></i> Lock Screen </a>
+								<a href="index.php">
+								<i class="icon-calendar"></i> Takvim </a>
 							</li>
 							<li>
 								<a href="cikis.php">
-								<i class="icon-key"></i> Log Out </a>
+								<i class="icon-key"></i> Çıkış Yap </a>
 							</li>
 						</ul>
 					</li>
@@ -719,7 +666,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<p>
 									 Lorem ipsum dolor sit amet, consectetuer sed diam nonummy nibh euismod tincidunt.
 								</p>
-							
+
 							</blockquote>
 						</div>
 						<div class="col-md-6">
