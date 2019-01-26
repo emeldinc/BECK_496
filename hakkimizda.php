@@ -502,7 +502,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
-                        <span class="title">Menü</span>
+                        <span class="title">Anasayfa</span>
                     </a>
                 </li>
                 <li>
@@ -679,7 +679,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="index.php">Menü</a>
+					<a href="index.php">Anasayfa</a>
 					<i class="fa fa-circle"></i>
 				</li>
 

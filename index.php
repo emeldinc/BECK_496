@@ -501,7 +501,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="aidat_takip_sayfasi.php">
                         <i class="icon-wallet"></i>
                         <span class="title">Aidat Takibi</span>
                     </a>
