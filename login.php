@@ -1,3 +1,13 @@
+<?php
+    if(session_id()=='')
+    {
+        session_start();
+    }
+    if(isset($_SESSION['username'])) {
+        header('location:index.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -45,28 +55,12 @@
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
-<?php
 
-if(session_id()==''){
-		session_start();
-}
-
-if(isset($_SESSION['username'])){ ?>
-	<p> Hosgeldin <?php echo $_SESSION['username'];
-//	echo $_SESSION['id'];
-	?></p>
-<?php
-//	print_r($_SESSION);
-	?>
-	<a href = "cikis.php"><button class="btn btn-danger">Çıkış Yap</button></a>
-	<?php
-}else{
-	?>
 
 
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" name="login" action="islem.php" method="post">
+	<form class="login-form" name="login" action="islem.php" method="POST">
 		<h3 class="form-title">Hesabınıza giriş yapınız</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -81,6 +75,14 @@ if(isset($_SESSION['username'])){ ?>
 				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Kullanıcı Adı" name="username"/>
 			</div>
 		</div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Sifre</label>
+            <div class="input-icon">
+                <i class="fa fa-key"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Sifre" name="password"/>
+            </div>
+        </div>
 		<div class="form-group form-check">
 			<input type="checkbox" name="beni_hatirla" class="form-check-input">
 			<label class="form-check-label">Beni Hatırla</label>
@@ -103,23 +105,16 @@ if(isset($_SESSION['username'])){ ?>
 	<!-- END LOGIN FORM -->
 
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="kayit.php" method="post">
+	<form class="register-form" action="kayit.php" method="POST">
 		<h3>Kayıt Ol</h3>
 		<p>
 			 Kayıt bilgilerinizi giriniz:
 		</p>
 		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Kullanıcı Adınız</label>
+			<label class="control-label visible-ie8 visible-ie9">Adınız</label>
 			<div class="input-icon">
 				<i class="fa fa-font"></i>
-				<input class="form-control placeholder-no-fix" type="text" placeholder="Kullanıcı adı" name="username"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">İsminiz</label>
-			<div class="input-icon">
-				<i class="fa fa-font"></i>
-				<input class="form-control placeholder-no-fix" type="text" placeholder="İsim" name="firstname"/>
+				<input class="form-control placeholder-no-fix" type="text" placeholder="Ad" name="firstname"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -129,6 +124,21 @@ if(isset($_SESSION['username'])){ ?>
 				<input class="form-control placeholder-no-fix" type="text" placeholder="Soyad" name="lastname"/>
 			</div>
 		</div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Kullanıcı Adınız</label>
+            <div class="input-icon">
+                <i class="fa fa-font"></i>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Kullanıcı adı" name="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Kullanıcı adı</label>
+            <div class="input-icon">
+                <i class="fa fa-key"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Sifre" name="password"/>
+            </div>
+        </div>
 		<div class="form-group">
 			<label class="control-label">Rol</label>
 			<select name="role" id="select2" class="select2 form-control">
@@ -148,7 +158,7 @@ if(isset($_SESSION['username'])){ ?>
 	</form>
 	<!-- END REGISTRATION FORM -->
 </div>
-<?php } ?>
+
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->

@@ -1,3 +1,8 @@
+<?php
+    if(session_id() == '')
+        session_start();
+?>
+
 <!DOCTYPE html>
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
@@ -405,7 +410,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						Nick </span>
+						<?php echo $_SESSION['firstname']; ?> </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                             <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
                         </a>
@@ -437,7 +442,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <i class="icon-lock"></i> Lock Screen </a>
                             </li>
                             <li>
-                                <a href="login.html">
+                                <a href="cikis.php">
                                     <i class="icon-key"></i> Log Out </a>
                             </li>
                         </ul>
