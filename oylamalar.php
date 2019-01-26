@@ -502,11 +502,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     </a>
                 </li>
-<<<<<<< HEAD
-                <li class="start active">
-=======
                 <li class="start active ">
->>>>>>> 23ac3c0a88925a78ea0a71d62fefdfd0d3f54c3c
                     <a href="oylamalar.php">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>
