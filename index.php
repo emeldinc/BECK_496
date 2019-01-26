@@ -559,6 +559,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <i class="icon-settings"></i>
                         <span class="title">Kayıt İşlemleri</span>
                     </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="eksik_site_bilgileri.php">
+                            <i class="icon-pencil"></i>
+                            Adres Ekle</a>
+                        </li>
+                    </ul>
 
                 </li>
                 <li>
