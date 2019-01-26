@@ -498,9 +498,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>
-
                     </a>
-
                 </li>
                 <li>
                     <a href="javascript:;">
@@ -522,6 +520,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
             </ul>
+
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
