@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
-                <img src="assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/>
+                <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -81,33 +81,19 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="page-actions">
             <div class="btn-group">
                 <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
+                    <span class="hidden-sm hidden-xs">Seçenekler&nbsp;</span><i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
                         <a href="javascript:;">
-                            <i class="icon-docs"></i> New Post </a>
+                            <i class="icon-docs"></i> Oylama Oluştur </a>
                     </li>
                     <li>
                         <a href="javascript:;">
-                            <i class="icon-tag"></i> New Comment </a>
+                            <i class="icon-tag"></i> Önceki Oylamalar </a>
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="icon-share"></i> Share </a>
-                    </li>
-                    <li class="divider">
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
-                        </a>
-                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -660,15 +646,11 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE BREADCRUMB -->
             <ul class="page-breadcrumb breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.php">Anasayfa</a>
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <a href="#">UI Features</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <a href="#">General Components</a>
+                    <a href="#">Oylamalar</a>
                 </li>
             </ul>
             <!-- END PAGE BREADCRUMB -->
@@ -692,13 +674,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <div class="note note-warning">
-                                <h4 class="block">Cross-browser compatibility</h4>
-                                <p>
-                                    Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.
-                                </p>
-                            </div>
                             <h3>Basic</h3>
+                            <p>Something something</p>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
 									<span class="sr-only">
