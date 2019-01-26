@@ -495,7 +495,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="oylamalar.php">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>
                     </a>
