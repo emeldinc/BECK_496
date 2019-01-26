@@ -17,13 +17,13 @@
       <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
       <!-- END GLOBAL MANDATORY STYLES -->
       <!-- BEGIN PAGE LEVEL STYLES -->
-      <link rel="stylesheet" type="text/css" href="../../assets/global/plugins/select2/select2.css"/>
+      <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
       <!-- END PAGE LEVEL SCRIPTS -->
       <!-- BEGIN THEME STYLES -->
       <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
       <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
       <link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-      <link id="style_color" href="../../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
+      <link id="style_color" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
       <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
       <!-- END THEME STYLES -->
       <link rel="shortcut icon" href="favicon.ico"/>

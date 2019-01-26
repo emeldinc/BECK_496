@@ -17,13 +17,13 @@
       <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
       <!-- END GLOBAL MANDATORY STYLES -->
       <!-- BEGIN PAGE LEVEL STYLES -->
-      <link rel="stylesheet" type="text/css" href="../../assets/global/plugins/select2/select2.css"/>
+      <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
       <!-- END PAGE LEVEL SCRIPTS -->
       <!-- BEGIN THEME STYLES -->
       <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
       <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
       <link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-      <link id="style_color" href="../../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
+      <link id="style_color" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
       <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
       <!-- END THEME STYLES -->
       <link rel="shortcut icon" href="favicon.ico"/>
@@ -66,8 +66,9 @@
                            <label class="col-md-2 control-label" for="form_control_1">Site</label>
                               <div class="col-md-10">
                                  <div class="form-group">
-                                    <?php include('dbconnection.php'); 
-                                    $sql = "SELECT * FROM beckdoor.site";
+                                    <?php include('dbconnection.php');
+                                    $insert_id = $_GET['insert_id']; 
+                                    $sql = "SELECT * FROM beckdoor.site WHERE id = '".$insert_id."'";
                                     $siteler = $db->query($sql); ?>
                                     <select class="select2_category form-control" name = "site_id" tabindex="1">
                                        <?php while($row = $siteler->fetch_assoc()) { ?>

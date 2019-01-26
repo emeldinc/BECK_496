@@ -19,6 +19,9 @@ include('dbconnection.php');
         $_SESSION['username'] = $username;
         $_SESSION['firstname'] = $firstname;
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['daire_id'] = '';
+        $_SESSION['site_id'] = '';
+        $_SESSION['apartman_id'] = '';
         header('location: eksik_site_bilgileri.php');
     } else {
         echo $db->error;

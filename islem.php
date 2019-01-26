@@ -15,7 +15,10 @@
             $_SESSION['username'] = $username;
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['user_id'] = $row['id'];
-
+            $_SESSION['daire_id'] = '';
+            $_SESSION['site_id'] = '';
+            $_SESSION['apartman_id'] = '';
+            
             $user_id = $_SESSION['user_id'];
             $select_sql = "SELECT * FROM user_daire WHERE ref_user_id = '".$user_id."'";
             $res2 = mysqli_query($db, $select_sql);
