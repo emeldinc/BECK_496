@@ -29,21 +29,21 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
-<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-<link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="../../assets/admin/pages/css/about-us.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/pages/css/about-us.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="../../assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="../../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
-<link href="../../assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -259,7 +259,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -273,7 +273,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -287,7 +287,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -301,7 +301,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -315,7 +315,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -437,7 +437,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="username username-hide-on-mobile">
 						<?php echo $_SESSION['firstname']; ?> </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="../../assets/admin/layout4/img/avatar9.jpg"/>
+						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
@@ -520,10 +520,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="oylamalar.php">
                         <i class="icon-bar-chart"></i>
                         <span class="title">Oylamalar</span>
-
                     </a>
 
                 </li>
@@ -891,24 +890,24 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script>
+<script src="assets/global/plugins/respond.min.js"></script>
+<script src="assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
-<script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="../../assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="../../assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
    Metronic.init(); // init metronic core components
