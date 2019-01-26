@@ -126,7 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END PAGE ACTIONS -->
         <form action="daire_degistir.php" method="POST">
 	        <div class="col-md-4">
-					<div class="form-group" style= "margin-top: 5%;">
+					<div class="form-group" style= "margin-top: 3%; width: 350px; display: inline-block;">
 						<select class="select2_category form-control" name = "ids" tabindex="1">
 							<?php
 							$daire_id = $_SESSION['daire_id']; 
@@ -144,7 +144,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							}?>
 							</select>
 					</div>
-					<div class="form-actions">
+					<div class="form-actions" style="display: inline-block; margin-left: 5%; margin-bottom: -1.5%">
 							<button type="submit" class="btn blue pull-right">
 								Git <i class="m-icon-swapright m-icon-white"></i>
 							</button>
