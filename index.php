@@ -1,6 +1,44 @@
 <?php
-    if(session_id() == '')
+include('dbconnection.php');
+    if(session_id() == '') {
         session_start();
+        
+        $user_id = $_SESSION['user_id'];
+		$sql_user_daire = "SELECT * FROM user_daire WHERE ref_user_id = '".$user_id."'";
+		$user_daire = $db->query($sql_user_daire);
+		$daire_idleri = array();
+		$konum_array = array();
+		
+
+		while($row = $user_daire->fetch_assoc()) {
+			array_push($daire_idleri, $row['ref_daire_id']);
+		}
+
+		foreach ($daire_idleri as $daire_id) {
+
+			$sql_daire_bilgileri = "SELECT * FROM daire WHERE id = '$daire_id'";
+			$daire = mysqli_query($db,$sql_daire_bilgileri);
+			$row_daire = mysqli_fetch_assoc($daire);
+			$apartman_id = $row_daire['ref_apartman_id'];
+			$sql_apartman_bilgileri = "SELECT * FROM apartman WHERE id = '$apartman_id'";
+			$apartman = mysqli_query($db,$sql_apartman_bilgileri);
+			$row_apartman = mysqli_fetch_assoc($apartman);
+			$site_id = $row_apartman['ref_site_id'];
+			$sql_konum_bilgileri = "SELECT * FROM site,apartman,daire WHERE site.id = '$site_id' 
+			AND apartman.id = '$apartman_id' AND daire.id = '$daire_id'";
+			$konum = mysqli_query($db,$sql_konum_bilgileri);
+			$row_konum = mysqli_fetch_assoc($konum);
+			array_push($konum_array,$row_konum);
+			
+		}
+
+		if($_SESSION['daire_id'] == '' && $_SESSION['apartman_id'] == '' && $_SESSION['site_id'] == '') {
+		   $_SESSION['daire_id'] = $konum_array[0]['id'];
+		   $_SESSION['apartman_id'] = $konum_array[0]['ref_apartman_id'];
+		   $_SESSION['site_id'] = $konum_array[0]['ref_site_id'];
+		}
+
+	}
 ?>
 
 <!DOCTYPE html>
@@ -81,13 +119,41 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
         </a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE ACTIONS -->
         <!-- DOC: Remove "hide" class to enable the page header actions -->
 
         <!-- END PAGE ACTIONS -->
+        <form action="daire_degistir.php" method="POST">
+	        <div class="col-md-4">
+					<div class="form-group" style= "margin-top: 5%;">
+						<select class="select2_category form-control" name = "ids" tabindex="1">
+							<?php
+							$daire_id = $_SESSION['daire_id']; 
+							foreach ($konum_array as $value) { 
+								if($value['id'] == $daire_id) { ?>
+									<option value="<?php echo $value['id'];?>,<?php echo $value['ref_apartman_id'];?>,<?php echo $value['ref_site_id'];?>"selected>
+									<?php echo $value['city']." ".$value['state']." ".$value['name']." ".
+									$value['number']." numaralı daire"?></option>
+								<?php } 
+								else { ?>
+									<option value="<?php echo $value['id'];?>,<?php echo $value['ref_apartman_id'];?>,<?php echo $value['ref_site_id'];?>">
+									<?php echo $value['city']." ".$value['state']." ".$value['name']." ".
+									$value['number']." numaralı daire"?></option>
+							<?php } 
+							}?>
+							</select>
+					</div>
+					<div class="form-actions">
+							<button type="submit" class="btn blue pull-right">
+								Git <i class="m-icon-swapright m-icon-white"></i>
+							</button>
+					</div>
+			</div>
+		</form>
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
+
             <!-- BEGIN HEADER SEARCH BOX -->
             <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
             <form class="search-form" action="extra_search.html" method="GET">
