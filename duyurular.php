@@ -664,7 +664,7 @@
             $ref_site_id = $b['ref_site_id'];
             $title = $b['title'];
             $description= $b['description'];
-            if($ref_site_id != 0){
+            if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])){
 
           ?>
 					<div class="row">
