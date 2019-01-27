@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Aidat Takip Sistemi</title>
+<title>Rol Değiştir</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -533,7 +533,7 @@
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
-					<h1>Aidat Takip Sistemi</h1>
+					<h1>Rol Değiştir</h1>
 				</div>
 				<!-- END PAGE TITLE -->
 			
@@ -546,27 +546,68 @@
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="#">Aidat Takip Sistemi</a>
+					<a href="#">Rol Değiştir</a>
 				</li>
 			</ul>
-			<div class="page-actions">
-			<div class="btn-group">
-				<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-				<span class="hidden-sm hidden-xs">Seçenekler&nbsp;</span><i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="yeni_aidat.php">
-						<i class="icon-docs"></i> Yeni Aidat Ekle </a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-share"></i> Paylaş </a>
-					</li>
-				</ul>
+			<div class = "row">
+				<div class = "col-md-12">
+					<?php $rol = $_SESSION['user_role']; ?>
+					<div class="alert alert-info">
+						Rolünüz <strong><?php echo $rol ?></strong>
+					</div>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN VALIDATION STATES-->
+					<div class="portlet box blue-hoki">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-beer"></i>Rol Değiştir
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse" data-original-title="" title="">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+								</a>
+								<a href="javascript:;" class="reload" data-original-title="" title="">
+								</a>
+								<a href="javascript:;" class="remove" data-original-title="" title="">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form action="rol.php" class="form-horizontal" method = "post">
+								<div class="form-body">
+									<div class="form-group">
+										<label class="control-label col-md-3">Roller <span class="required" aria-required="true">
+										</span>
+										</label>
+										<div class="col-md-4">
+										<select class="form-control" name="rol">
+										<option value="yasayan" <?php echo $rol=="yasayan" ? 'selected' : ''; ?>>Yaşayan</option>
+										<option value="gorevli" <?php echo $rol=="gorevli" ? 'selected' : ''; ?>>Görevli</option>
+										<option value="yonetici" <?php echo $rol=="yonetici" ? 'selected' : ''; ?>>Yönetici</option>
+										</select>
+										</div>
+									</div>
+									<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button type="submit" class="btn blue-hoki">Onayla</button>
+											
+										</div>
+									</div>
+								</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+					<!-- END VALIDATION STATES-->
+				</div>
 			</div>
-			<br />
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->

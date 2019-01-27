@@ -2,7 +2,6 @@
 include('dbconnection.php');
     if(session_id() == '') {
         session_start();
-        
         $user_id = $_SESSION['user_id'];
 		$sql_user_daire = "SELECT * FROM user_daire WHERE ref_user_id = '".$user_id."'";
 		$user_daire = $db->query($sql_user_daire);
@@ -128,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <!-- END PAGE ACTIONS -->
         <form action="daire_degistir.php" method="POST">
-	        <div class="col-md-4">
+	        <div class="col-md-5">
 					<div class="form-group" style= "margin-top: 3%; width: 350px; display: inline-block;">
 						<select class="select2_category form-control" name = "ids" tabindex="1">
 							<?php
@@ -567,6 +566,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a href="eksik_site_bilgileri.php">
                             <i class="icon-pencil"></i>
                             Adres Ekle</a>
+                        </li>
+                        <li>
+                            <a href="role_degistir.php">
+                            <i class="icon-pencil"></i>
+                            Rol Değiştir</a>
                         </li>
                     </ul>
 

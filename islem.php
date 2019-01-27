@@ -15,6 +15,7 @@
             $_SESSION['username'] = $username;
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_role'] = $row['role'];
             $_SESSION['daire_id'] = '';
             $_SESSION['site_id'] = '';
             $_SESSION['apartman_id'] = '';
