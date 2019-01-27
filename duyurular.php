@@ -483,8 +483,12 @@
                             <i class="icon-pencil"></i>
                             Adres Ekle</a>
                         </li>
+                        <li>
+                            <a href="role_degistir.php">
+                            <i class="icon-pencil"></i>
+                            Rol Değiştir</a>
+                        </li>
                     </ul>
-
                 </li>
                 <li>
                     <a href="hakkimizda.php">
@@ -629,7 +633,7 @@
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="#">Duyurular</a>
+					<a href="duyurular.php">Duyurular</a>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
@@ -654,7 +658,6 @@
 				</div>
 			</div>
 			<br />
-
 			<div class="portlet light">
 				<div class="portlet-body">
           <?php $sql = "SELECT * FROM duyuru ";
@@ -662,9 +665,20 @@
           while ($b=mysqli_fetch_array($res)){
             $date = $b['now_date'];
             $ref_site_id = $b['ref_site_id'];
+            $ref_user_id = $b['ref_user_id'];
+            $ref_apartman_id = $b['ref_apartman_id'];
             $title = $b['title'];
             $description= $b['description'];
-            if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])){
+            $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+            $result = mysqli_query($db,$sql2);
+            $row = mysqli_fetch_assoc($result);
+            if (mysqli_affected_rows($db) >= 1) {
+              $ref_username = $row['username'];
+            }
+            else{
+              $db->error;
+            }
+            if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
 
           ?>
 					<div class="row">
@@ -673,9 +687,11 @@
 								<li class="timeline-red">
 									<div class="timeline-time">
 										<span class="date"><?php
-
-                      echo $date;?>
+                    echo $date;?>
 										</span>
+                    <span class="user">
+										<b><?php echo $ref_username;
+                    ?></b> </span>
 									</div>
 									<div class="timeline-icon">
 										<i class="icon-pin"></i>
@@ -685,7 +701,6 @@
 										<div class="timeline-content">
                       <?php echo $description;
                      ?>
-
 										</div>
 										<div class="timeline-footer">
 											<a href="javascript:;" class="nav-link pull-right">
@@ -694,7 +709,6 @@
 										</div>
 									</div>
 								</li>
-
 							</ul>
 						</div>
 					</div>

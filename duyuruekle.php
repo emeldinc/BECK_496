@@ -501,7 +501,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="aidat_takip_sayfasi.php">
                         <i class="icon-wallet"></i>
                         <span class="title">Aidat Takibi</span>
                     </a>
@@ -511,7 +511,18 @@ License: You must have a valid license purchased only from themeforest(the above
                         <i class="icon-settings"></i>
                         <span class="title">Kayıt İşlemleri</span>
                     </a>
-
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="eksik_site_bilgileri.php">
+                            <i class="icon-pencil"></i>
+                            Adres Ekle</a>
+                        </li>
+                        <li>
+                            <a href="role_degistir.php">
+                            <i class="icon-pencil"></i>
+                            Rol Değiştir</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="hakkimizda.php">
@@ -672,7 +683,8 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="portlet box blue-hoki">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Duyuru Formu
+								<i class="fa fa-gift"></i>
+                Duyuru Formu
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">
@@ -697,7 +709,11 @@ License: You must have a valid license purchased only from themeforest(the above
                       <textarea class="input-block-level" id="summernote_1" name="description"> </textarea>
 										</div>
 									</div>
-                  <label><input type="checkbox" name="check"/> Sitedeki herkes bu duyuruyu görebilsin mi?</label><br/>
+                  <label>
+                    <input type="checkbox" name="check"/>
+                    Sitedeki herkes bu duyuruyu görebilsin mi?
+                  </label>
+                  <br/>
 								</div>
                 <div class="form-actions">
 									<div class="row">
