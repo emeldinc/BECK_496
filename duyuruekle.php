@@ -696,6 +696,14 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 									</div>
 								</div>
+                <div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-2 col-md-10">
+											<button type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
+											<button type="button" class="btn default">Vazgeç</button>
+										</div>
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
