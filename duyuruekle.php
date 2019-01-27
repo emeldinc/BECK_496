@@ -2,12 +2,26 @@
       session_start();
 ?>
 <!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
+Version: 3.7.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Duyurular</title>
+<title>Yeni Duyuru Ekle</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -15,21 +29,23 @@
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="assets/admin/pages/css/timeline-old.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="../../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+<link rel="stylesheet" type="text/css" href="../../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+<link rel="stylesheet" type="text/css" href="../../assets/global/plugins/bootstrap-summernote/summernote.css">
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
-<link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -50,14 +66,14 @@
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
-        <div class="page-logo">
-            <a href="index.html">
-                <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
-            </a>
-            <div class="menu-toggler sidebar-toggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-            </div>
-        </div>
+		<div class="page-logo">
+      <a href="index.html">
+          <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
+      </a>
+			<div class="menu-toggler sidebar-toggler">
+				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+			</div>
+		</div>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -75,9 +91,12 @@
 						<a href="duyuruekle.php">
 						<i class="icon-docs"></i> Yeni Duyuru Ekle </a>
 					</li>
+
 					<li>
 						<a href="javascript:;">
 						<i class="icon-share"></i> Paylaş </a>
+					</li>
+					<li class="divider">
 					</li>
 				</ul>
 			</div>
@@ -231,7 +250,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -245,7 +264,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -259,7 +278,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -273,7 +292,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -287,7 +306,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -407,9 +426,9 @@
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						<?php echo $_SESSION['firstname']; ?> </span>
+					<?php echo $_SESSION['firstname']; ?>  </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+						<img alt="" class="img-circle" src="../../assets/admin/layout4/img/avatar9.jpg"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
@@ -418,9 +437,7 @@
 							</li>
 							<li>
 								<a href="index.php">
-								<i class="icon-calendar"></i>Takvim </a>
-							</li>
-							<li class="divider">
+								<i class="icon-calendar"></i> Takvim </a>
 							</li>
 							<li>
 								<a href="cikis.php">
@@ -454,7 +471,7 @@
 			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
 			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+      <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
@@ -503,8 +520,7 @@
                     </a>
                 </li>
             </ul>
-		</li>
-
+    </li>
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -513,7 +529,7 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="portlet-config" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -539,7 +555,7 @@
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
-					<h1>Duyurular</h1>
+					<h1>Yeni Duyuru Ekle </h1>
 				</div>
 				<!-- END PAGE TITLE -->
 				<!-- BEGIN PAGE TOOLBAR -->
@@ -640,103 +656,92 @@
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="#">Duyurular</a>
+					<a href="duyurular.php">Duyurular</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="duyuruekle.php">Yeni Duyuru Ekle</a>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			<div class="portlet light">
-				<div class="portlet-body">
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="timeline">
-								<li class="timeline-yellow">
-									<div class="timeline-time">
-										<span class="date">
-										22/01/19 </span>
-										<span class="time">
-										18:30 </span>
-									</div>
-									<div class="timeline-icon">
-										<i class="icon-pin"></i>
-									</div>
-									<div class="timeline-body">
-										<h2>Etkinlik Duyurusu</h2>
-										<div class="timeline-content">
-											<img class="timeline-img pull-left" src="../../assets/admin/pages/media/blog/2.jpg" alt="">
-											23 Şubat 19.00'da Site sakinlerine akşam yemeği düzenlenecektir.
-										</div>
-										<div class="timeline-footer">
-											<a href="javascript:;" class="nav-link pull-right">
-											Read more <i class="m-icon-swapright m-icon-white"></i>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li class="timeline-red">
-									<div class="timeline-time">
-										<span class="date">
-										24/01/19 </span>
-										<span class="time">
-										12:04 </span>
-									</div>
-									<div class="timeline-icon">
-										<i class="icon-home"></i>
-									</div>
-									<div class="timeline-body">
-										<h2>Toplantı Duyurusu</h2>
-										<div class="timeline-content">
-											<img class="timeline-img pull-right" src="../../assets/admin/pages/media/blog/1.jpg" alt="">
-											 12 Şubat 19.00'da site yönetim toplantısı yapılacaktır.
-										</div>
-										<div class="timeline-footer">
-											<a href="javascript:;" class="nav-link">
-											Read more <i class="m-icon-swapright m-icon-white"></i>
-											</a>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXTRAS PORTLET-->
+					<div class="portlet box blue-hoki">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i>Duyuru Formu
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="duyuruekle.php" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<form class="form-horizontal form-bordered">
+								<div class="form-body">
+									<div class="form-group">
+										<label class="control-label col-md-1">Default Editor</label>
+										<div class="col-md-11">
+											<div name="summernote" id="summernote_1">
+											</div>
 										</div>
 									</div>
-
-								</li>
-							</ul>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- END PAGE CONTENT-->
-		</div>
-	</div>
-	<!-- END CONTENT -->
+    </div>
+  </div>
 </div>
-<!-- END CONTAINER -->
-
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="../../assets/global/plugins/respond.min.js"></script>
 <script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
-<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../../assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="../../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+<script src="../../assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="../../assets/admin/pages/scripts/components-editors.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
    // initiate layout and plugins
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
+   ComponentsEditors.init();
 });
 </script>
 <!-- END JAVASCRIPTS -->
