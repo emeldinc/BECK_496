@@ -686,20 +686,23 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form class="form-horizontal form-bordered">
+							<form class="form-horizontal form-bordered" action="duyurukayit.php" method="POST" onsubmit="return postForm()" enctype="multipart/form-data">
+                <div class="form-title">
+          				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Duyuru Başlığı" name="title"/>
+          			</div>
 								<div class="form-body">
 									<div class="form-group">
 										<label class="control-label col-md-1">Default Editor</label>
 										<div class="col-md-11">
-											<div name="summernote" id="summernote_1">
-											</div>
+                      <textarea class="input-block-level" id="summernote_1" name="description"> </textarea>
 										</div>
 									</div>
+                  <label><input type="checkbox" name="check"/> Sitedeki herkes bu duyuruyu görebilsin mi?</label><br/>
 								</div>
                 <div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-2 col-md-10">
-											<button type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
+											<button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
 											<button type="button" class="btn default">Vazgeç</button>
 										</div>
 									</div>

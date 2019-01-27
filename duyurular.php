@@ -1,5 +1,7 @@
 <?php
       session_start();
+      include('dbconnection.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -438,7 +440,7 @@
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active ">
+                <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
                         <span class="title">Anasayfa</span>
@@ -451,7 +453,7 @@
 
                     </a>
                 </li>
-                <li>
+                <li class="start active ">
                     <a href="duyurular.php">
                         <i class="icon-pin"></i>
                         <span class="title">Duyurular</span>
@@ -652,26 +654,38 @@
 				</div>
 			</div>
 			<br />
+
 			<div class="portlet light">
 				<div class="portlet-body">
+          <?php $sql = "SELECT * FROM duyuru ";
+          $res = mysqli_query($db,$sql);
+          while ($b=mysqli_fetch_array($res)){
+            $date = $b['now_date'];
+            $ref_site_id = $b['ref_site_id'];
+            $title = $b['title'];
+            $description= $b['description'];
+            if($ref_site_id != 0){
+
+          ?>
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="timeline">
-								<li class="timeline-yellow">
+								<li class="timeline-red">
 									<div class="timeline-time">
-										<span class="date">
-										22/01/19 </span>
-										<span class="time">
-										18:30 </span>
+										<span class="date"><?php
+
+                      echo $date;?>
+										</span>
 									</div>
 									<div class="timeline-icon">
 										<i class="icon-pin"></i>
 									</div>
 									<div class="timeline-body">
-										<h2>Etkinlik Duyurusu</h2>
+										<h2>  <?php echo $title;?></h2>
 										<div class="timeline-content">
-											<img class="timeline-img pull-left" src="../../assets/admin/pages/media/blog/2.jpg" alt="">
-											23 Şubat 19.00'da Site sakinlerine akşam yemeği düzenlenecektir.
+                      <?php echo $description;
+                     ?>
+
 										</div>
 										<div class="timeline-footer">
 											<a href="javascript:;" class="nav-link pull-right">
@@ -680,33 +694,12 @@
 										</div>
 									</div>
 								</li>
-								<li class="timeline-red">
-									<div class="timeline-time">
-										<span class="date">
-										24/01/19 </span>
-										<span class="time">
-										12:04 </span>
-									</div>
-									<div class="timeline-icon">
-										<i class="icon-home"></i>
-									</div>
-									<div class="timeline-body">
-										<h2>Toplantı Duyurusu</h2>
-										<div class="timeline-content">
-											<img class="timeline-img pull-right" src="../../assets/admin/pages/media/blog/1.jpg" alt="">
-											 12 Şubat 19.00'da site yönetim toplantısı yapılacaktır.
-										</div>
-										<div class="timeline-footer">
-											<a href="javascript:;" class="nav-link">
-											Read more <i class="m-icon-swapright m-icon-white"></i>
-											</a>
-										</div>
-									</div>
 
-								</li>
 							</ul>
 						</div>
 					</div>
+        <?php }
+      }?>
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
