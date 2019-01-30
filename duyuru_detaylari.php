@@ -1,15 +1,30 @@
+<?php $duyuru_id = $_GET['id'] ?>
 <?php
       session_start();
       include('dbconnection.php');
 
 ?>
 <!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
+Version: 3.7.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Duyurular</title>
+<title>Duyuru</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -17,21 +32,21 @@
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-<link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="assets/admin/pages/css/timeline-old.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/pages/css/timeline.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
-<link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -52,14 +67,14 @@
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
-        <div class="page-logo">
-            <a href="index.html">
-                <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
-            </a>
-            <div class="menu-toggler sidebar-toggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-            </div>
-        </div>
+		<div class="page-logo">
+      <a href="index.html">
+          <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
+			</a>
+			<div class="menu-toggler sidebar-toggler">
+				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+			</div>
+		</div>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -67,6 +82,7 @@
 		<!-- END RESPONSIVE MENU TOGGLER -->
 		<!-- BEGIN PAGE ACTIONS -->
 		<!-- DOC: Remove "hide" class to enable the page header actions -->
+
 		<!-- END PAGE ACTIONS -->
 		<!-- BEGIN PAGE TOP -->
 		<div class="page-top">
@@ -216,7 +232,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -230,7 +246,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -244,7 +260,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -258,7 +274,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -272,7 +288,7 @@
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -389,7 +405,7 @@
 					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-user dropdown-dark">
+          <li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
 						<?php echo $_SESSION['firstname']; ?> </span>
@@ -429,78 +445,78 @@
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->
 	<div class="page-sidebar-wrapper">
-        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <div class="page-sidebar navbar-collapse collapse">
-            <!-- BEGIN SIDEBAR MENU -->
-            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-            <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li>
-                    <a href="index.php">
-                        <i class="icon-home"></i>
-                        <span class="title">Anasayfa</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-envelope"></i>
-                        <span class="title">Mesajlar</span>
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+      <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+          <li>
+              <a href="index.php">
+                  <i class="icon-home"></i>
+                  <span class="title">Anasayfa</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;">
+                  <i class="icon-envelope"></i>
+                  <span class="title">Mesajlar</span>
 
-                    </a>
-                </li>
-                <li class="start active ">
-                    <a href="duyurular.php">
-                        <i class="icon-pin"></i>
-                        <span class="title">Duyurular</span>
+              </a>
+          </li>
+          <li class="start active ">
+              <a href="duyurular.php">
+                  <i class="icon-pin"></i>
+                  <span class="title">Duyurular</span>
 
-                    </a>
-                </li>
-                <li>
-                    <a href="oylamalar.php">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">Oylamalar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="aidat_takip_sayfasi.php">
-                        <i class="icon-wallet"></i>
-                        <span class="title">Aidat Takibi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-settings"></i>
-                        <span class="title">Kayıt İşlemleri</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="eksik_site_bilgileri.php">
-                            <i class="icon-pencil"></i>
-                            Adres Ekle</a>
-                        </li>
-                        <li>
-                            <a href="role_degistir.php">
-                            <i class="icon-pencil"></i>
-                            Rol Değiştir</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="hakkimizda.php">
-                        <i class="icon-info"></i>
-                        <span class="title">Hakkımızda</span>
-                    </a>
-                </li>
-            </ul>
+              </a>
+          </li>
+          <li>
+              <a href="oylamalar.php">
+                  <i class="icon-bar-chart"></i>
+                  <span class="title">Oylamalar</span>
+              </a>
+          </li>
+          <li>
+              <a href="aidat_takip_sayfasi.php">
+                  <i class="icon-wallet"></i>
+                  <span class="title">Aidat Takibi</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;">
+                  <i class="icon-settings"></i>
+                  <span class="title">Kayıt İşlemleri</span>
+              </a>
+              <ul class="sub-menu">
+                  <li>
+                      <a href="eksik_site_bilgileri.php">
+                      <i class="icon-pencil"></i>
+                      Adres Ekle</a>
+                  </li>
+                  <li>
+                      <a href="role_degistir.php">
+                      <i class="icon-pencil"></i>
+                      Rol Değiştir</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a href="hakkimizda.php">
+                  <i class="icon-info"></i>
+                  <span class="title">Hakkımızda</span>
+              </a>
+          </li>
+      </ul>
 
-            <!-- END SIDEBAR MENU -->
-        </div>
-    </div>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
 	<!-- END SIDEBAR -->
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
@@ -532,7 +548,7 @@
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
-					<h1>Duyurular</h1>
+					<h1>Duyuru <small>Duyuru size aitse duyuru seçeneklerinden düzenleyebilirsiniz</small></h1>
 				</div>
 				<!-- END PAGE TITLE -->
 				<!-- BEGIN PAGE TOOLBAR -->
@@ -634,42 +650,38 @@
 				</li>
 				<li>
 					<a href="duyurular.php">Duyurular</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="duyuru_detaylari.php">Duyuru</a>
 				</li>
 			</ul>
+      <div class="page-actions">
+        <div class="btn-group">
+          <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          <span class="hidden-sm hidden-xs">Seçenekler&nbsp;</span><i class="fa fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="duyuruekle.php">
+              <i class="icon-docs"></i> Yeni Duyuru Ekle </a>
+            </li>
+          </ul>
+        </div>
+      </div>
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 
-			<div class="page-actions">
-				<div class="btn-group">
-					<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<span class="hidden-sm hidden-xs">Seçenekler&nbsp;</span><i class="fa fa-angle-down"></i>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li>
-							<a href="duyuruekle.php">
-							<i class="icon-docs"></i> Yeni Duyuru Ekle </a>
-						</li>
-						<li>
-							<a href="javascript:;">
-							<i class="icon-share"></i> Paylaş </a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<br />
-			<div class="timeline">
-				<div class="timeline-body">
-          <?php $sql = "SELECT * FROM duyuru ";
-          $res = mysqli_query($db,$sql);
-          while ($b=mysqli_fetch_array($res)){
-            $duyuru_id = $b['id'];
+			<div>
+        <?php $sql = "SELECT * FROM duyuru ";
+        $res = mysqli_query($db,$sql);
+        while ($b=mysqli_fetch_array($res)){
+          if($duyuru_id == $b['id']){
+            $description = $b['description'];
             $date = $b['now_date'];
-            $ref_site_id = $b['ref_site_id'];
             $ref_user_id = $b['ref_user_id'];
-            $ref_apartman_id = $b['ref_apartman_id'];
             $title = $b['title'];
-            $description= $b['description'];
             $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
             $result = mysqli_query($db,$sql2);
             $row = mysqli_fetch_assoc($result);
@@ -679,44 +691,48 @@
             else{
               $db->error;
             }
-            if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
 
           ?>
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="timeline">
-								<li class="timeline-red">
-									<div class="timeline-time">
-										<span class="date"><?php
-                    echo $date;?>
-										</span>
-                    <span class="user">
-										<b><?php echo $ref_username;
-                    ?></b> </span>
-									</div>
-									<div class="timeline-icon">
-										<i class="icon-pin"></i>
-									</div>
-									<div class="timeline-body">
-										<h2>  <?php echo $title;
-                    ?></h2>
-										<div class="timeline-content">
-                      <?php echo $description;
-                     ?>
-										</div>
-										<div class="timeline-footer">
-											<a href="duyuru_detaylari.php?id=<?php echo $duyuru_id; ?>" class="nav-link pull-right">
-											Daha fazlasını gör <i class="m-icon-swapright m-icon-white"></i>
-											</a>
-										</div>
-									</div>
-								</li>
-							</ul>
+				<!-- TIMELINE ITEM -->
+				<div class="timeline-item">
+					<div class="timeline-body">
+						<div class="timeline-body-arrow">
+						</div>
+						<div class="timeline-body-head">
+							<div class="timeline-body-head-caption">
+								<a href="javascript:;" class="timeline-body-title font-blue-madison"><?php echo $ref_username; ?></a>
+								<span class="timeline-body-time font-grey-cascade"><?php echo $date; ?></span>
+							</div>
+							<div class="timeline-body-head-actions">
+								<div class="btn-group">
+									<button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+									Duyuru Seçenekleri <i class="fa fa-angle-down"></i>
+									</button>
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li>
+											<a href="paylas.php">Paylaş </a>
+										</li>
+                    <?php if($ref_user_id == $_SESSION['user_id']){ ?>
+										<li>
+											<a href="javascript:;">Değiştir </a>
+										</li>
+										<li>
+											<a href="javascript:;">Sil </a>
+										</li>
+                  <?php } ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="timeline-body-content">
+							<span class="font-grey-cascade">
+							<?php echo $description; ?> </span>
 						</div>
 					</div>
-        <?php }
-      }?>
 				</div>
+				<!-- END TIMELINE ITEM -->
+      <?php }
+    } ?>
 			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
@@ -731,27 +747,31 @@
 <script src="../../assets/global/plugins/respond.min.js"></script>
 <script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
-<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="../../assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="../../assets/admin/pages/scripts/timeline.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
    // initiate layout and plugins
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
+Timeline.init(); // init timeline page
 });
 </script>
 <!-- END JAVASCRIPTS -->
