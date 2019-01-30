@@ -717,7 +717,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<li>
 											<a href="paylas.php">Paylaş </a>
 										</li>
-                    <?php if($ref_user_id == $_SESSION['user_id']){ ?>
+                    <?php if(($ref_user_id == $_SESSION['user_id'])||($_SESSION['user_role'] != "yasayan")){ ?> <!-- gorevli ve yoneticide duyuruları duzenleyebilir -->
 										<li>
 											<a href="duyuruduzenle.php?id=<?php echo $duyuru_id; ?>">Düzenle </a>
 										</li>
