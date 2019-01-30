@@ -2,7 +2,6 @@
 if(session_id() == '')
     session_start();
 include('dbconnection.php');
-
 if(isset($_POST['submit']))
 {
   $description=$_POST['description'];
@@ -17,8 +16,6 @@ if(isset($_POST['submit']))
   else{
     $ref_site_id = 0;
   }
-
-
 
   $sql = "INSERT INTO beckdoor.duyuru (ref_user_id,ref_apartman_id,ref_site_id,now_date,title,description)
   VALUES ('$ref_user_id','$ref_apartman_id','$ref_site_id',NOW(),'".$title."','$description')";

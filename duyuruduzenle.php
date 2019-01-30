@@ -1,5 +1,7 @@
 <?php
+      $duyuru_id = $_GET['id'];
       session_start();
+      include('dbconnection.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -21,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Yeni Duyuru Ekle</title>
+<title>Duyuruyu Düzenle</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -428,7 +430,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="username username-hide-on-mobile">
 					<?php echo $_SESSION['firstname']; ?>  </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="../../assets/admin/layout4/img/avatar9.jpg"/>
+						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
@@ -566,7 +568,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
-					<h1>Yeni Duyuru Ekle </h1>
+					<h1>Duyuruyu Düzenle </h1>
 				</div>
 				<!-- END PAGE TITLE -->
 				<!-- BEGIN PAGE TOOLBAR -->
@@ -671,13 +673,31 @@ License: You must have a valid license purchased only from themeforest(the above
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="duyuruekle.php">Yeni Duyuru Ekle</a>
+					<a href="duyuruduzenle.php">Duyuruyu Düzenle</a>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
+        <?php $sql = "SELECT * FROM duyuru ";
+        $res = mysqli_query($db,$sql);
+        while ($b=mysqli_fetch_array($res)){
+          if($duyuru_id == $b['id']){
+            $description = $b['description'];
+            $date = $b['now_date'];
+            $ref_user_id = $b['ref_user_id'];
+            $title = $b['title'];
+            $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+            $result = mysqli_query($db,$sql2);
+            $row = mysqli_fetch_assoc($result);
+            if (mysqli_affected_rows($db) >= 1) {
+              $ref_username = $row['username'];
+            }
+            else{
+              $db->error;
+            }
+          ?>
 				<div class="col-md-12">
 					<!-- BEGIN EXTRAS PORTLET-->
 					<div class="portlet box blue-hoki">
@@ -691,22 +711,22 @@ License: You must have a valid license purchased only from themeforest(the above
 								</a>
 								<a href="#portlet-config" data-toggle="modal" class="config">
 								</a>
-								<a href="duyuruekle.php" class="reload">
+								<a href="duyuruduzenle.php" class="reload">
 								</a>
 								<a href="javascript:;" class="remove">
 								</a>
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form class="form-horizontal form-bordered" action="duyurukayit.php" method="POST" onsubmit="return postForm()" enctype="multipart/form-data">
+							<form class="form-horizontal form-bordered" action="duyuruduzenle_kayit.php?id= <?php echo $duyuru_id; ?>" method="POST" onsubmit="return postForm()" enctype="multipart/form-data">
                 <div class="form-title">
-          				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Duyuru Başlığı" name="title"/>
+          				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder=<?php echo $title; ?> name="title"/>
           			</div>
 								<div class="form-body">
 									<div class="form-group">
 										<label class="control-label col-md-1">Default Editor</label>
 										<div class="col-md-11">
-                      <textarea class="input-block-level" id="summernote_1" name="description"> </textarea>
+                      <textarea class="input-block-level" id="summernote_1" name="description"><?php echo $description; ?> </textarea>
 										</div>
 									</div>
                   <label>
@@ -727,6 +747,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 					</div>
 				</div>
+      <?php }
+    } ?>
 			</div>
     </div>
   </div>

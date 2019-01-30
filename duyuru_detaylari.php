@@ -1,4 +1,4 @@
-<?php $duyuru_id = $_GET['id'] ?>
+<?php $duyuru_id = $_GET['id']; ?>
 <?php
       session_start();
       include('dbconnection.php');
@@ -714,7 +714,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</li>
                     <?php if($ref_user_id == $_SESSION['user_id']){ ?>
 										<li>
-											<a href="javascript:;">Değiştir </a>
+											<a href="duyuruduzenle.php?id=<?php echo $duyuru_id; ?>">Düzenle </a>
 										</li>
 										<li>
 											<a href="javascript:;">Sil </a>
