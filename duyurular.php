@@ -690,9 +690,7 @@
 										<span class="date"><?php
                     echo $date;?>
 										</span>
-                    <span class="user">
-										<b><?php echo $ref_username;
-                    ?></b> </span>
+                    <span class= "timeline-body-title font-blue-madison"><b><?php echo $ref_username; ?></b></span>
 									</div>
 									<div class="timeline-icon">
 										<i class="icon-pin"></i>

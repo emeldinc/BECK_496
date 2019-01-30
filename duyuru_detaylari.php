@@ -695,12 +695,17 @@ License: You must have a valid license purchased only from themeforest(the above
           ?>
 				<!-- TIMELINE ITEM -->
 				<div class="timeline-item">
+          <div class="timeline-badge">
+          </br> </br>
+            <span class= "timeline-body-title font-blue-madison"><?php echo $ref_username; ?></span>
+          </div>
 					<div class="timeline-body">
 						<div class="timeline-body-arrow">
+
 						</div>
 						<div class="timeline-body-head">
 							<div class="timeline-body-head-caption">
-								<a href="javascript:;" class="timeline-body-title font-blue-madison"><?php echo $ref_username; ?></a>
+                <span class= "timeline-body-title font-blue-madison"><?php echo $title; ?></span>
 								<span class="timeline-body-time font-grey-cascade"><?php echo $date; ?></span>
 							</div>
 							<div class="timeline-body-head-actions">
@@ -717,7 +722,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<a href="duyuruduzenle.php?id=<?php echo $duyuru_id; ?>">Düzenle </a>
 										</li>
 										<li>
-											<a href="javascript:;">Sil </a>
+											<a href="duyurusil.php?id=<?php echo $duyuru_id; ?>" name="confirm" onClick="confirm('Duyuruyu silmek istediğinize emin misiniz?')">Sil </a>
 										</li>
                   <?php } ?>
 									</ul>
