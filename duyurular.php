@@ -660,9 +660,16 @@
 			<br />
 			<div class="timeline">
 				<div class="timeline-body">
-          <?php $sql = "SELECT * FROM duyuru ";
+          <?php
+          $renkler = array("red", "yellow", "green", "blue");
+          $count= -1;
+          $sql = "SELECT * FROM duyuru ";
           $res = mysqli_query($db,$sql);
           while ($b=mysqli_fetch_array($res)){
+            if($count == 3)
+              $count = 0;
+            else
+              $count = $count + 1;
             $duyuru_id = $b['id'];
             $date = $b['now_date'];
             $ref_site_id = $b['ref_site_id'];
@@ -681,11 +688,12 @@
             }
             if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
 
+
           ?>
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="timeline">
-								<li class="timeline-red">
+								<li class="timeline-<?php echo $renkler[$count];?>">
 									<div class="timeline-time">
 										<span class="date"><?php
                     echo $date;?>
