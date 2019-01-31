@@ -1,5 +1,71 @@
 <?php
-      session_start();
+
+	include('dbconnection.php');
+	session_start();
+	$apartman_id = $_SESSION['apartman_id'];
+
+	$apartmandaki_daireler = array();
+	$sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
+	$daireler = $db->query($sql_daire);
+	while($row = $daireler->fetch_assoc()) {
+		array_push($apartmandaki_daireler, $row);
+	}
+
+
+
+	$gelir_giderler = array();
+	$sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
+	$gelir_gider = $db->query($sql_gelir_gider);
+	while($row = $gelir_gider->fetch_assoc()) {
+		array_push($gelir_giderler, $row);
+	}
+
+	$toplam_gelir = 0;
+	$toplam_gider = 0;
+	$toplam_para = 0;
+	foreach ($gelir_giderler as $value) {
+
+		if($value['gelirMi'] == 1) {
+			$toplam_gelir += $value['amount'];
+		}
+		else if($value['gelirMi'] == 0) {
+			$toplam_gider += $value['amount'];
+		}
+
+		$toplam_para += $value['amount'];
+	}
+
+	$aidatlar = array();
+	$toplam_aidat = 0;
+	$odenmis_aidat = 0;
+	$odenmemis_aidat = 0;
+	foreach ($apartmandaki_daireler as $value) {
+		$sql_aidat = "SELECT * FROM aidat WHERE ref_daire_id = '".$value['id']."'";
+		$aidat = $db->query($sql_aidat);
+		while($row = $aidat->fetch_assoc()) {
+		array_push($aidatlar, $row);
+		}
+	}
+
+	
+
+	foreach ($aidatlar as $value) {
+		if($value['odendiMi'] == 1) {
+			$odenmis_aidat += $value['amount'];
+		}
+		else if($value['odendiMi'] == 0) {
+			$odenmemis_aidat += $value['amount'];
+		}
+
+		$toplam_aidat += $value['amount'];
+	}
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -567,6 +633,129 @@
 			</div>
 			</div>
 			<br />
+			   <div class="row margin-top-10">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-green-sharp"><?php echo $toplam_gelir; ?><small class="font-green-sharp">₺</small></h3>
+                                <small>TOPLAM GELİR</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-plus"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+								<span style="width: <?php 
+								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
+								echo round((100*$toplam_gelir)/$toplam_para)."%";?>" class="progress-bar progress-bar-success green-sharp">
+								<span class="sr-only">76% progress</span>
+								</span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title">
+                                    Yüzde
+                                </div>
+                                <div class="status-number">
+                                    <?php 
+                                    $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
+                                    echo round((100*$toplam_gelir)/$toplam_para)."%";?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-red-haze"><?php echo $toplam_gider; ?><small class="font-red-haze">₺</small></h3>
+                                <small>TOPLAM GİDER</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-close"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+								<span style="width: <?php 
+								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
+								echo round((100*$toplam_gider)/$toplam_para)."%";?>" class="progress-bar progress-bar-success red-haze">
+								</span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title">
+                                    Yüzde
+                                </div>
+                                <div class="status-number">
+                                    <?php 
+                                    $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
+                                    echo round((100*$toplam_gider)/$toplam_para)."%";?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-blue-sharp"><?php echo $odenmemis_aidat; ?><small class="font-blue-sharp">₺</small></h3>
+                                <small>ÖDENMEMİŞ AİDAT</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-basket"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+								<span style="width: <?php
+								$toplam_aidat = ($toplam_aidat == 0) ? 1 : $toplam_aidat;
+								echo round((100*$odenmemis_aidat)/$toplam_aidat)."%";?>" class="progress-bar progress-bar-success blue-sharp">
+							    </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title">
+                                    Yuzde
+                                </div>
+                                <div class="status-number">
+                                    <?php 
+                                    $toplam_aidat = ($toplam_aidat == 0) ? 1 : $toplam_aidat;
+                                    echo round((100*$odenmemis_aidat)/$toplam_aidat)."%";?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                	<div class="dashboard-stat2">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-purple-soft"><?php echo count($apartmandaki_daireler); ?></h3>
+                                <small>APARTMANDAKİ DAİRE SAYISI</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-home"></i>
+                            </div>
+                        </div>
+                         <div class="progress-info">
+                            <div class="progress">
+								<span style="width: 100%" class="progress-bar progress-bar-success blue-sharp">
+							    </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title">
+                                    Yuzde
+                                </div>
+                                <div class="status-number">
+                                    100%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
