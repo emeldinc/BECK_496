@@ -1,70 +1,13 @@
-<?php
-
-	include('dbconnection.php');
-	session_start();
-	$apartman_id = $_SESSION['apartman_id'];
-
-	$apartmandaki_daireler = array();
-	$sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
-	$daireler = $db->query($sql_daire);
-	while($row = $daireler->fetch_assoc()) {
-		array_push($apartmandaki_daireler, $row);
-	}
-
-
-
-	$gelir_giderler = array();
-	$sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
-	$gelir_gider = $db->query($sql_gelir_gider);
-	while($row = $gelir_gider->fetch_assoc()) {
-		array_push($gelir_giderler, $row);
-	}
-
-	$toplam_gelir = 0;
-	$toplam_gider = 0;
-	$toplam_para = 0;
-	foreach ($gelir_giderler as $value) {
-
-		if($value['gelirMi'] == 1) {
-			$toplam_gelir += $value['amount'];
-		}
-		else if($value['gelirMi'] == 0) {
-			$toplam_gider += $value['amount'];
-		}
-
-		$toplam_para += $value['amount'];
-	}
-
-	$aidatlar = array();
-	$toplam_aidat = 0;
-	$odenmis_aidat = 0;
-	$odenmemis_aidat = 0;
-	foreach ($apartmandaki_daireler as $value) {
-		$sql_aidat = "SELECT * FROM aidat WHERE ref_daire_id = '".$value['id']."'";
-		$aidat = $db->query($sql_aidat);
-		while($row = $aidat->fetch_assoc()) {
-		array_push($aidatlar, $row);
-		}
-	}
-
-	
-
-	foreach ($aidatlar as $value) {
-		if($value['odendiMi'] == 1) {
-			$odenmis_aidat += $value['amount'];
-		}
-		else if($value['odendiMi'] == 0) {
-			$odenmemis_aidat += $value['amount'];
-		}
-
-		$toplam_aidat += $value['amount'];
-	}
-
-
-
-
-
-
+<?php 
+include('dbconnection.php');
+session_start();
+$apartman_id = $_SESSION['apartman_id'];
+$apartmandaki_daireler = array();
+$sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
+$daireler = $db->query($sql_daire);
+while($row = $daireler->fetch_assoc()) {
+array_push($apartmandaki_daireler, $row);
+}
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +16,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Aidat Takip Sistemi</title>
+<title>Aidat Ekle</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -88,7 +31,12 @@
 <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="assets/admin/pages/css/timeline-old.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/clockface/css/clockface.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -612,157 +560,71 @@
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="#">Aidat Takip Sistemi</a>
+					<a href="aidat_takip_sayfasi.php">Aidat Takip Sistemi</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href=''>Yeni Aidat Ekle</a>
 				</li>
 			</ul>
-			<div class="page-actions">
-			<div class="btn-group">
-				<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-				<span class="hidden-sm hidden-xs">Seçenekler&nbsp;</span><i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="yeni_aidat.php">
-						<i class="icon-plus"></i> Yeni Aidat Ekle </a>
-					</li>
-					<li>
-						<a href="yeni_gelir_gider.php">
-						<i class="icon-plus"></i> Yeni Gelir-Gider Ekle </a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-share"></i> Paylaş </a>
-					</li>
-				</ul>
-			</div>
-			</div>
-			<br />
-			   <div class="row margin-top-10">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat2">
-                        <div class="display">
-                            <div class="number">
-                                <h3 class="font-green-sharp"><?php echo $toplam_gelir; ?><small class="font-green-sharp">₺</small></h3>
-                                <small>TOPLAM GELİR</small>
-                            </div>
-                            <div class="icon">
-                                <i class="icon-plus"></i>
-                            </div>
-                        </div>
-                        <div class="progress-info">
-                            <div class="progress">
-								<span style="width: <?php 
-								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
-								echo round((100*$toplam_gelir)/$toplam_para)."%";?>" class="progress-bar progress-bar-success green-sharp">
-								<span class="sr-only">76% progress</span>
-								</span>
-                            </div>
-                            <div class="status">
-                                <div class="status-title">
-                                    Yüzde
-                                </div>
-                                <div class="status-number">
-                                    <?php 
-                                    $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
-                                    echo round((100*$toplam_gelir)/$toplam_para)."%";?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat2">
-                        <div class="display">
-                            <div class="number">
-                                <h3 class="font-red-haze"><?php echo $toplam_gider; ?><small class="font-red-haze">₺</small></h3>
-                                <small>TOPLAM GİDER</small>
-                            </div>
-                            <div class="icon">
-                                <i class="icon-close"></i>
-                            </div>
-                        </div>
-                        <div class="progress-info">
-                            <div class="progress">
-								<span style="width: <?php 
-								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
-								echo round((100*$toplam_gider)/$toplam_para)."%";?>" class="progress-bar progress-bar-success red-haze">
-								</span>
-                            </div>
-                            <div class="status">
-                                <div class="status-title">
-                                    Yüzde
-                                </div>
-                                <div class="status-number">
-                                    <?php 
-                                    $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
-                                    echo round((100*$toplam_gider)/$toplam_para)."%";?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat2">
-                        <div class="display">
-                            <div class="number">
-                                <h3 class="font-blue-sharp"><?php echo $odenmemis_aidat; ?><small class="font-blue-sharp">₺</small></h3>
-                                <small>ÖDENMEMİŞ AİDAT</small>
-                            </div>
-                            <div class="icon">
-                                <i class="icon-basket"></i>
-                            </div>
-                        </div>
-                        <div class="progress-info">
-                            <div class="progress">
-								<span style="width: <?php
-								$toplam_aidat = ($toplam_aidat == 0) ? 1 : $toplam_aidat;
-								echo round((100*$odenmemis_aidat)/$toplam_aidat)."%";?>" class="progress-bar progress-bar-success blue-sharp">
-							    </span>
-                            </div>
-                            <div class="status">
-                                <div class="status-title">
-                                    Yuzde
-                                </div>
-                                <div class="status-number">
-                                    <?php 
-                                    $toplam_aidat = ($toplam_aidat == 0) ? 1 : $toplam_aidat;
-                                    echo round((100*$odenmemis_aidat)/$toplam_aidat)."%";?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                	<div class="dashboard-stat2">
-                        <div class="display">
-                            <div class="number">
-                                <h3 class="font-purple-soft"><?php echo count($apartmandaki_daireler); ?></h3>
-                                <small>APARTMANDAKİ DAİRE SAYISI</small>
-                            </div>
-                            <div class="icon">
-                                <i class="icon-home"></i>
-                            </div>
-                        </div>
-                         <div class="progress-info">
-                            <div class="progress">
-								<span style="width: 100%" class="progress-bar progress-bar-success blue-sharp">
-							    </span>
-                            </div>
-                            <div class="status">
-                                <div class="status-title">
-                                    Yuzde
-                                </div>
-                                <div class="status-number">
-                                    100%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
-			<!-- BEGIN PAGE CONTENT-->
+
+			<div class="portlet box blue-hoki">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-gift"></i>Aidat Ekleme Formu
+										</div>
+									</div>
+									<div class="portlet-body form">
+										<!-- BEGIN FORM-->
+										<form action="aidat_ekle.php" method = "post" class="form-horizontal">
+											<div class="form-body">
+
+												<div class="form-group">
+													<label class="control-label col-md-3">Daire<span class="required" aria-required="true">
+													</span>
+													</label>
+													<div class="col-md-4">
+													<select class="form-control" name="daire">
+													<?php foreach($apartmandaki_daireler as $daire) { ?>
+													<option value="<?php echo $daire['id'] ?>"><?php echo "Daire ".$daire['number']; ?></option>
+													<?php }?>
+													</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">Aidat Miktarı(₺)</label>
+													<div class="col-md-9">
+														<div class="input-inline input-medium">
+															<input  type="number" step="0.001" value="0" name="miktar" class="form-control">
+														</div>
+													</div>
+												</div>
+													<div class="form-group">
+										<label class="control-label col-md-3">Tarih</label>
+										<div class="col-md-3">
+											<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-start-date="+0d">
+												<input name = "tarih" type="text" class="form-control" readonly>
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+											
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														<button type="submit" class="btn btn-circle blue">Kaydet</button>
+														
+													</div>
+												</div>
+											</div>
+										</form>
+										<!-- END FORM-->
+									</div>
+								</div>
+		
+			
 			
 			<!-- END PAGE CONTENT-->
 		</div>
@@ -789,18 +651,30 @@
 <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/clockface/js/clockface.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/components-pickers.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {
-   // initiate layout and plugins
-   Metronic.init(); // init metronic core components
+        jQuery(document).ready(function() {       
+           // initiate layout and plugins
+           Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
-});
-</script>
-<!-- END JAVASCRIPTS -->
+           ComponentsPickers.init();
+        });   
+    </script>
 </body>
 <!-- END BODY -->
 </html>
