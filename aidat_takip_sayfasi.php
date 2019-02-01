@@ -512,7 +512,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="mesajlar.php">
                         <i class="icon-envelope"></i>
                         <span class="title">Mesajlar</span>
 

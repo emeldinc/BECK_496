@@ -7,7 +7,7 @@ include('dbconnection.php');
 		$user_daire = $db->query($sql_user_daire);
 		$daire_idleri = array();
 		$konum_array = array();
-		
+
 
 		while($row = $user_daire->fetch_assoc()) {
 			array_push($daire_idleri, $row['ref_daire_id']);
@@ -23,12 +23,12 @@ include('dbconnection.php');
 			$apartman = mysqli_query($db,$sql_apartman_bilgileri);
 			$row_apartman = mysqli_fetch_assoc($apartman);
 			$site_id = $row_apartman['ref_site_id'];
-			$sql_konum_bilgileri = "SELECT * FROM site,apartman,daire WHERE site.id = '$site_id' 
+			$sql_konum_bilgileri = "SELECT * FROM site,apartman,daire WHERE site.id = '$site_id'
 			AND apartman.id = '$apartman_id' AND daire.id = '$daire_id'";
 			$konum = mysqli_query($db,$sql_konum_bilgileri);
 			$row_konum = mysqli_fetch_assoc($konum);
 			array_push($konum_array,$row_konum);
-			
+
 		}
 
 		if($_SESSION['daire_id'] == '' && $_SESSION['apartman_id'] == '' && $_SESSION['site_id'] == '') {
@@ -131,18 +131,18 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="form-group" style= "margin-top: 3%; width: 350px; display: inline-block;">
 						<select class="select2_category form-control" name = "ids" tabindex="1">
 							<?php
-							$daire_id = $_SESSION['daire_id']; 
-							foreach ($konum_array as $value) { 
+							$daire_id = $_SESSION['daire_id'];
+							foreach ($konum_array as $value) {
 								if($value['id'] == $daire_id) { ?>
 									<option value="<?php echo $value['id'];?>,<?php echo $value['ref_apartman_id'];?>,<?php echo $value['ref_site_id'];?>"selected>
 									<?php echo $value['city']." ".$value['state']." ".$value['name']." ".
 									$value['number']." numaralı daire"?></option>
-								<?php } 
+								<?php }
 								else { ?>
 									<option value="<?php echo $value['id'];?>,<?php echo $value['ref_apartman_id'];?>,<?php echo $value['ref_site_id'];?>">
 									<?php echo $value['city']." ".$value['state']." ".$value['name']." ".
 									$value['number']." numaralı daire"?></option>
-							<?php } 
+							<?php }
 							}?>
 							</select>
 					</div>
@@ -490,7 +490,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li>
                                 <a href="index.php">
                                     <i class="icon-calendar"></i> Takvim </a>
-                            </li>  
+                            </li>
                             <li>
                                 <a href="cikis.php">
                                     <i class="icon-key"></i> Çıkış Yap </a>
@@ -531,7 +531,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                    <a href="404_page.html">
+                    <a href="mesajlar.php">
                         <i class="icon-envelope"></i>
                         <span class="title">Mesajlar</span>
 
