@@ -6,7 +6,12 @@ include('dbconnection.php');
 if(isset($_POST['submit']))
 {
   $description=$_POST['description'];
-  $title=$_POST["title"];
+  if($_POST["title"] == ''){
+    $title = '';
+  }
+  else{
+    $title=$_POST["title"];
+  }
   if(isset($_POST['check'])){
     $ref_site_id =   $_SESSION['site_id'];
   }

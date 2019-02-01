@@ -661,32 +661,50 @@
 			<div class="timeline">
 				<div class="timeline-body">
           <?php
+          $arr_duyuru_id=array();
+          $index = 0;
+          $arr_sql = "SELECT * FROM duyuru WHERE id ";
+          $arr_res = mysqli_query($db,$arr_sql);
+          while ($a=mysqli_fetch_array($arr_res)){
+            $arr_duyuru_id[$index] = $a['id'];
+            $index = $index + 1;
+          }
+          sort($arr_duyuru_id); //Son eklenenleri ustte gostermek icin
+          $index = $index - 1;
           $renkler = array("red", "yellow", "green", "blue");
           $count= -1;
-          $sql = "SELECT * FROM duyuru ";
-          $res = mysqli_query($db,$sql);
-          while ($b=mysqli_fetch_array($res)){
-            if($count == 3)
-              $count = 0;
-            else
-              $count = $count + 1;
-            $duyuru_id = $b['id'];
-            $date = $b['now_date'];
-            $ref_site_id = $b['ref_site_id'];
-            $ref_user_id = $b['ref_user_id'];
-            $ref_apartman_id = $b['ref_apartman_id'];
-            $title = $b['title'];
-            $description= $b['description'];
-            $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
-            $result = mysqli_query($db,$sql2);
-            $row = mysqli_fetch_assoc($result);
-            if (mysqli_affected_rows($db) >= 1) {
-              $ref_username = $row['username'];
-            }
-            else{
-              $db->error;
-            }
-            if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
+
+          while($index >= 0){
+            $sql = "SELECT * FROM duyuru ";
+            $res = mysqli_query($db,$sql);
+
+            while ($b=mysqli_fetch_array($res)){
+              if($index == -1)
+                continue;
+
+              if(($arr_duyuru_id[$index] == $b['id'])){
+                $index = $index - 1;
+                if($count == 3)
+                  $count = 0;
+                else
+                  $count = $count + 1;
+                $duyuru_id = $b['id'];
+                $date = $b['now_date'];
+                $ref_site_id = $b['ref_site_id'];
+                $ref_user_id = $b['ref_user_id'];
+                $ref_apartman_id = $b['ref_apartman_id'];
+                $title = $b['title'];
+                $description= $b['description'];
+                $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                $result = mysqli_query($db,$sql2);
+                $row = mysqli_fetch_assoc($result);
+                if (mysqli_affected_rows($db) >= 1) {
+                  $ref_username = $row['username'];
+                }
+                else{
+                  $db->error;
+                }
+                if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
 
 
           ?>
@@ -698,7 +716,8 @@
 										<span class="date"><?php
                     echo $date;?>
 										</span>
-                    <span class= "timeline-body-title font-blue-madison"><b><?php echo $ref_username; ?></b></span>
+                    <span class= "timeline-body-title font-blue-madison"><b><?php echo $ref_username;
+                     ?></b></span>
 									</div>
 									<div class="timeline-icon">
 										<i class="icon-pin"></i>
@@ -721,6 +740,10 @@
 						</div>
 					</div>
         <?php }
+      }
+      }
+
+
       }?>
 				</div>
 			</div>
