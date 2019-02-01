@@ -600,7 +600,7 @@ array_push($apartmandaki_daireler, $row);
 													</div>
 												</div>
 													<div class="form-group">
-										<label class="control-label col-md-3">Tarih</label>
+										<label class="control-label col-md-3">Ödenecek Tarih</label>
 										<div class="col-md-3">
 											<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-start-date="+0d">
 												<input name = "tarih" type="text" class="form-control" readonly>
