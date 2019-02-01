@@ -722,7 +722,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<a href="duyuruduzenle.php?id=<?php echo $duyuru_id; ?>">Düzenle </a>
 										</li>
 										<li>
-											<a href="duyurusil.php?id=<?php echo $duyuru_id; ?>" name="confirm" onClick="confirm('Duyuruyu silmek istediğinize emin misiniz?')">Sil </a>
+											<a href="duyurusil.php?id=<?php echo $duyuru_id; ?>">Sil </a>
 										</li>
                   <?php } ?>
 									</ul>

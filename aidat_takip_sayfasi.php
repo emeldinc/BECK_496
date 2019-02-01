@@ -47,7 +47,7 @@
 		}
 	}
 
-	
+
 
 	foreach ($aidatlar as $value) {
 		if($value['odendiMi'] == 1) {
@@ -505,7 +505,7 @@
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active ">
+                <li>
                     <a href="index.php">
                         <i class="icon-home"></i>
                         <span class="title">Anasayfa</span>
@@ -531,7 +531,7 @@
                         <span class="title">Oylamalar</span>
                     </a>
                 </li>
-                <li>
+                <li class="start active ">
                     <a href="aidat_takip_sayfasi.php">
                         <i class="icon-wallet"></i>
                         <span class="title">Aidat Takibi</span>
@@ -602,7 +602,7 @@
 					<h1>Aidat Takip Sistemi</h1>
 				</div>
 				<!-- END PAGE TITLE -->
-			
+
 			</div>
 			<!-- END PAGE HEAD -->
 			<!-- BEGIN PAGE BREADCRUMB -->
@@ -651,7 +651,7 @@
                         </div>
                         <div class="progress-info">
                             <div class="progress">
-								<span style="width: <?php 
+								<span style="width: <?php
 								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
 								echo round((100*$toplam_gelir)/$toplam_para)."%";?>" class="progress-bar progress-bar-success green-sharp">
 								<span class="sr-only">76% progress</span>
@@ -662,7 +662,7 @@
                                     Yüzde
                                 </div>
                                 <div class="status-number">
-                                    <?php 
+                                    <?php
                                     $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
                                     echo round((100*$toplam_gelir)/$toplam_para)."%";?>
                                 </div>
@@ -683,7 +683,7 @@
                         </div>
                         <div class="progress-info">
                             <div class="progress">
-								<span style="width: <?php 
+								<span style="width: <?php
 								$toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
 								echo round((100*$toplam_gider)/$toplam_para)."%";?>" class="progress-bar progress-bar-success red-haze">
 								</span>
@@ -693,7 +693,7 @@
                                     Yüzde
                                 </div>
                                 <div class="status-number">
-                                    <?php 
+                                    <?php
                                     $toplam_para = ($toplam_para == 0) ? 1 : $toplam_para;
                                     echo round((100*$toplam_gider)/$toplam_para)."%";?>
                                 </div>
@@ -724,7 +724,7 @@
                                     Yuzde
                                 </div>
                                 <div class="status-number">
-                                    <?php 
+                                    <?php
                                     $toplam_aidat = ($toplam_aidat == 0) ? 1 : $toplam_aidat;
                                     echo round((100*$odenmemis_aidat)/$toplam_aidat)."%";?>
                                 </div>
@@ -763,7 +763,7 @@
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			
+
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>

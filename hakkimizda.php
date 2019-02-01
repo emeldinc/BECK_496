@@ -448,54 +448,64 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
       <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li>
-                    <a href="index.php">
-                        <i class="icon-home"></i>
-                        <span class="title">Anasayfa</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-envelope"></i>
-                        <span class="title">Mesajlar</span>
+          <li>
+              <a href="index.php">
+                  <i class="icon-home"></i>
+                  <span class="title">Anasayfa</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;">
+                  <i class="icon-envelope"></i>
+                  <span class="title">Mesajlar</span>
 
-                    </a>
-                </li>
-                <li>
-                    <a href="duyurular.php">
-                        <i class="icon-pin"></i>
-                        <span class="title">Duyurular</span>
+              </a>
+          </li>
+          <li>
+              <a href="duyurular.php">
+                  <i class="icon-pin"></i>
+                  <span class="title">Duyurular</span>
 
-                    </a>
-                </li>
-                <li>
-                    <a href="oylamalar.php">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">Oylamalar</span>
-                    </a>
+              </a>
+          </li>
+          <li>
+              <a href="oylamalar.php">
+                  <i class="icon-bar-chart"></i>
+                  <span class="title">Oylamalar</span>
+              </a>
+          </li>
+          <li>
+              <a href="aidat_takip_sayfasi.php">
+                  <i class="icon-wallet"></i>
+                  <span class="title">Aidat Takibi</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;">
+                  <i class="icon-settings"></i>
+                  <span class="title">Kayıt İşlemleri</span>
+              </a>
+              <ul class="sub-menu">
+                  <li>
+                      <a href="eksik_site_bilgileri.php">
+                      <i class="icon-pencil"></i>
+                      Adres Ekle</a>
+                  </li>
+                  <li>
+                      <a href="role_degistir.php">
+                      <i class="icon-pencil"></i>
+                      Rol Değiştir</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="start active ">
+              <a href="hakkimizda.php">
+                  <i class="icon-info"></i>
+                  <span class="title">Hakkımızda</span>
+              </a>
+          </li>
+      </ul>
 
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-wallet"></i>
-                        <span class="title">Aidat Takibi</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-settings"></i>
-                        <span class="title">Kayıt İşlemleri</span>
-                    </a>
-
-                </li>
-                  <li class="start active ">
-                    <a href="hakkimizda.php">
-                        <i class="icon-info"></i>
-                        <span class="title">Hakkımızda</span>
-                    </a>
-                </li>
-            </ul>
-				</li>
 
 			<!-- END SIDEBAR MENU -->
 		</div>
