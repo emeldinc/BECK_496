@@ -1,20 +1,17 @@
 <?php
     if(session_id() == '')
         session_start();
+    include 'dbconnection.php';
+
+    if(isset($_POST['oylama']))
+    {
+        echo "OFFF";
+        $sql = "INSERT INTO `oylama`(`ref_apartman_id`, `ref_site_id`, `title`, `description`, `start_date`, `end_date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])";
+        header("location: oylamalar.php");
+    }
 ?>
 
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -23,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Oylamalar</title>
+    <title>Yeni Oylama Oluştur</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -37,6 +34,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+    <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME STYLES -->
     <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
     <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
@@ -46,17 +49,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
-<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
-<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
-<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
-<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
-<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
-<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+
 <body class="page-header-fixed page-sidebar-closed-hide-logo ">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
@@ -549,7 +542,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Oylamalar <small> <?php //TODO ?></small></h1>
+                    <h1>Yeni Oylama Oluşturma</h1>
                 </div>
                 <!-- END PAGE TITLE -->
                 <!-- BEGIN PAGE TOOLBAR -->
@@ -650,19 +643,26 @@ License: You must have a valid license purchased only from themeforest(the above
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <a href="#">Oylamalar</a>
+                    <a href="oylamalar.php">Oylamalar</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="#">Yeni Oylama</a>
                 </li>
             </ul>
             <!-- END PAGE BREADCRUMB -->
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
+
+
+
             <div class="row">
-                <div class="col-md-12">
-                    <!-- BEGIN PROGRESS BARS PORTLET-->
+                <div class="col-md-10">
+                    <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet box green">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-cogs"></i>Devam Eden Oylamalar
+                                <i class="fa fa-cogs"></i>Yeni Oylama Ayarları
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -671,107 +671,111 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                                 <a href="javascript:;" class="reload">
                                 </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
                             </div>
                         </div>
-                        <div class="portlet-body">
-                            <h3>Basic</h3>
-                            <p>Something something</p>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            <form action="yeni_oylama.php" id="form_sample_3" class="form-horizontal" name="oylama" method="POST">
+                                <div class="form-body">
+                                    <div class="alert alert-danger display-hide">
+                                        <button class="close" data-close="alert"></button>
+                                        Lütfen eksik bilgileri doldurunuz
+                                    </div>
+                                    <div class="alert alert-success display-hide">
+                                        <button class="close" data-close="alert"></button>
+                                        Oylama oluşturma başarılı!
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Başlık <span class="required">
+										* </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="title" data-required="1" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"> Oylama Seçenekleri <span class="required">
+										* </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="hidden" class="form-control" id="select2_tags" value="" name="options">
+                                            <span class="help-block">
+											select tags </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Açıklama</label>
+                                        <div class="col-md-9">
+                                            <textarea name="description" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
+                                            <div id="editor_error">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Başlangıç Tarihi</label>
+                                        <div class="col-md-4">
+                                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                                <input type="text" class="form-control"  name="startdate">
+                                                <span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+                                            </div>
+                                            <!-- /input-group -->
+                                            <span class="help-block">
+											select a date </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Bitiş Tarihi</label>
+                                        <div class="col-md-4">
+                                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                                <input type="text" class="form-control"  name="enddate">
+                                                <span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+                                            </div>
+                                            <!-- /input-group -->
+                                            <span class="help-block">
+											select a date </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Oylamayı Kimler Görebilsin <span class="required">
+										* </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class="radio-list" data-error-container="#form_2_membership_error">
+                                                <label>
+                                                    <input type="radio" name="type" value="site"/>
+                                                    Site </label>
+                                                <label>
+                                                    <input type="radio" name="type" value="apartman"/>
+                                                    Apartman </label>
+                                            </div>
+                                            <div id="form_2_membership_error">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" class="btn green">Oluştur</button>
+                                            <button type="button" class="btn default" onclick="location.href='oylamalar.php';">İptal</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete </span>
-                                </div>
-                            </div>
-                            <h3>Striped</h3>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete (danger) </span>
-                                </div>
-                            </div>
-                            <h3>Animated</h3>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete (danger) </span>
-                                </div>
-                            </div>
-                            <h3>Stacked</h3>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 35%">
-									<span class="sr-only">
-									35% Complete (success) </span>
-                                </div>
-                                <div class="progress-bar progress-bar-warning" style="width: 20%">
-									<span class="sr-only">
-									20% Complete (warning) </span>
-                                </div>
-                                <div class="progress-bar progress-bar-danger" style="width: 10%">
-									<span class="sr-only">
-									10% Complete (danger) </span>
-                                </div>
-                            </div>
+                            </form>
+                            <!-- END FORM-->
                         </div>
+                        <!-- END VALIDATION STATES-->
                     </div>
                 </div>
-                <!-- END PAGINATION PORTLET-->
             </div>
+            <!-- END PAGE CONTENT-->
         </div>
-        <!-- END PAGE CONTENT-->
     </div>
     <!-- END CONTENT -->
 </div>
@@ -786,7 +790,6 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
 </div>
 <!-- END FOOTER -->
-</div>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -806,23 +809,29 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="assets/global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-bootpag/jquery.bootpag.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/holder.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="assets/global/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-markdown/lib/markdown.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL STYLES -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-<script src="assets/admin/pages/scripts/ui-general.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
+<script src="assets/admin/pages/scripts/form-validation.js"></script>
+<!-- END PAGE LEVEL STYLES -->
 <script>
     jQuery(document).ready(function() {
         // initiate layout and plugins
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
         Demo.init(); // init demo features
-        UIGeneral.init();
+        FormValidation.init();
     });
 </script>
 <!-- END JAVASCRIPTS -->
