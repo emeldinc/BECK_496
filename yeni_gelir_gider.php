@@ -591,7 +591,7 @@
                            <label class="control-label col-md-3">Miktar(₺)</label>
                            <div class="col-md-9">
                               <div class="input-inline input-medium">
-                                 <input  type="number" step="0.001" value="0" name="miktar" class="form-control">
+                                 <input  type="number" step="0.01" value="0" name="miktar" class="form-control">
                               </div>
                            </div>
                         </div>

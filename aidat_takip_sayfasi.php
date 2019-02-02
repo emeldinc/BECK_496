@@ -86,9 +86,17 @@
 <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
 <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link href="assets/admin/pages/css/timeline-old.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/clockface/css/clockface.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -629,10 +637,6 @@
 						<a href="yeni_gelir_gider.php">
 						<i class="icon-plus"></i> Yeni Gelir-Gider Ekle </a>
 					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-share"></i> Paylaş </a>
-					</li>
 				</ul>
 			</div>
 			</div>
@@ -763,7 +767,151 @@
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-
+			<div class = "row">
+				<div class="col-md-6 col-sm-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box yellow">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-user"></i>Aidat Tablosu
+							</div>
+							
+						</div>
+						<div class="portlet-body">
+							<table class="table table-striped table-bordered table-hover" id="sample_2">
+							<thead>
+							<tr>
+								
+								<th>
+									 Daire
+								</th>
+								<th>
+									 Miktar
+								</th>
+								<th>
+									 Tarih
+								</th>
+								<th>
+									 Durum
+								</th>
+								<th>
+									 
+								</th>
+								<th>
+									 
+								</th>
+								<th>
+									 
+								</th>
+								
+							</tr>
+							</thead>
+							<tbody>
+							<?php foreach($aidatlar as $aidat) { 
+							 	$sql = "SELECT * FROM daire WHERE id = '".$aidat['ref_daire_id']."'";
+						        $res = mysqli_query($db,$sql);
+						        $row = mysqli_fetch_assoc($res);
+						        ?>
+							<tr class="odd gradeX">
+								<td>
+									<?php echo "Daire ".$row['number'];?>
+								</td>
+								<td>
+									<?php echo $aidat['amount'];?>
+								</td>
+								<td>
+									<?php echo $aidat['date'];?>
+								</td>
+								<td>
+									<?php if($aidat['odendiMi'] == 1) { ?>
+									<span class="label label-sm label-success">
+									Ödendi </span>
+									<?php } else { ?>
+									<span class="label label-sm label-danger">
+									Ödenmedi </span>
+									<?php } ?>
+								</td>
+								<td>
+									<?php if($aidat['odendiMi'] == 0) { ?>
+									<a href="aidat_durum_degistir.php?durum=1&aidat_id=<?php echo $aidat['id']; ?>" class="btn btn-xs green">
+									<i class="glyphicon glyphicon-ok"></i>
+									</a>
+									<?php } else { ?>
+									<a href="aidat_durum_degistir.php?durum=0&aidat_id=<?php echo $aidat['id']; ?>" class="btn btn-xs red">
+									<i class="glyphicon glyphicon-remove"></i>
+									</a>
+									<?php } ?>
+								</td>
+								<td>
+									
+									<a class="btn btn-xs default" data-toggle="modal" href="#responsive<?php echo $aidat['id']; ?>">
+									Düzenle</a>
+									
+								</td>
+								<td>
+									
+								<a href="aidat_sil.php?aidat_id=<?php echo $aidat['id']; ?>" class="btn btn-xs yellow" onclick = " return confirm('Silmek istediğinize emin misiniz?');">
+															Sil<i class="glyphicon glyphicon-remove"></i>
+															</a>
+									
+								</td>
+							</tr>
+							<?php } ?>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+				<?php foreach ($aidatlar as $aidat ) { ?>
+				<div id="responsive<?php echo $aidat['id']; ?>" class="modal fade" tabindex="-1" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<h4 class="modal-title">Responsive & Scrollable</h4>
+										</div>
+										<div class="modal-body">
+											<form action="aidat_duzenle.php?aidat_id=<?php echo $aidat['id']; ?>" method = "post" class="form-horizontal">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="control-label col-md-3">Aidat Miktarı(₺)</label>
+													<div class="col-md-9">
+														<div class="input-inline input-medium">
+															<input  type="number" step="0.01" value="<?php echo $aidat['amount']; ?>" name="miktar" class="form-control">
+														</div>
+													</div>
+												</div>
+													<div class="form-group">
+										<label class="control-label col-md-3">Ödenecek Tarih</label>
+										<div class="col-md-3">
+											<div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-start-date="+0d">
+												<input name = "tarih" type="text" class="form-control" value = "<?php echo $aidat['date']; ?>" readonly>
+												<span class="input-group-btn">
+												<button class="btn default"  type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+											
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														<button type="submit" class="btn btn-circle blue">Düzenle</button>
+														
+													</div>
+												</div>
+											</div>
+										</form>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						<?php } ?>
+			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
@@ -788,16 +936,46 @@
 <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/clockface/js/clockface.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <!-- END CORE PLUGINS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/table-managed.js"></script>
+<script src="assets/admin/pages/scripts/components-pickers.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+        jQuery(document).ready(function() {       
+           // initiate layout and plugins
+           Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
+Demo.init(); // init demo features
+           ComponentsPickers.init();
+        });   
+    </script>
 <script>
 jQuery(document).ready(function() {
    // initiate layout and plugins
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
+});
+</script>
+<script>
+jQuery(document).ready(function() {       
+   Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
+Demo.init(); // init demo features
+   TableManaged.init();
 });
 </script>
 <!-- END JAVASCRIPTS -->
