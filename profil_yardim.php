@@ -412,7 +412,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
               <li>
-                <a href="extra_profile.html">
+                <a href="profil.php">
                 <i class="profil.php"></i> Profil </a>
               </li>
               <li>
@@ -658,7 +658,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet light profile-sidebar-portlet">
 							<!-- SIDEBAR USERPIC -->
               <div class="profile-userpic">
-								<img src="assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+								<img src="<?php echo $_SESSION['image_path']?>" class="img-responsive" alt="">
 							</div>
 							<!-- END SIDEBAR USERPIC -->
 							<!-- SIDEBAR USER TITLE -->

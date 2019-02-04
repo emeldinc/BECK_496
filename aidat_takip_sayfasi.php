@@ -3,47 +3,47 @@
    session_start();
    $rol = $_SESSION['user_role'];
    if($rol != "yonetici") {
-   	echo '<script type="text/javascript">'; 
-   	echo 'alert("Sayfayı görüntüleyebilmek için yönetici olmalısınız");'; 
+   	echo '<script type="text/javascript">';
+   	echo 'alert("Sayfayı görüntüleyebilmek için yönetici olmalısınız");';
    	echo 'window.location.href = "index.php";';
    	echo '</script>';
    }
    $apartman_id = $_SESSION['apartman_id'];
-   
+
    $apartmandaki_daireler = array();
    $sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
    $daireler = $db->query($sql_daire);
    while($row = $daireler->fetch_assoc()) {
    	array_push($apartmandaki_daireler, $row);
    }
-   
+
    $sql_apartman_adi = "SELECT * FROM apartman WHERE id = '".$apartman_id."'";
    $apartman_adi = $db->query($sql_apartman_adi);
    $apartman_bilgileri = $apartman_adi->fetch_assoc();
-   
-   
+
+
    $gelir_giderler = array();
    $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
    $gelir_gider = $db->query($sql_gelir_gider);
    while($row = $gelir_gider->fetch_assoc()) {
    	array_push($gelir_giderler, $row);
    }
-   
+
    $toplam_gelir = 0;
    $toplam_gider = 0;
    $toplam_para = 0;
    foreach ($gelir_giderler as $value) {
-   
+
    	if($value['gelirMi'] == 1) {
    		$toplam_gelir += $value['amount'];
    	}
    	else if($value['gelirMi'] == 0) {
    		$toplam_gider += $value['amount'];
    	}
-   
+
    	$toplam_para += $value['amount'];
    }
-   
+
    $aidatlar = array();
    $toplam_aidat = 0;
    $odenmis_aidat = 0;
@@ -55,9 +55,9 @@
    	array_push($aidatlar, $row);
    	}
    }
-   
-   
-   
+
+
+
    foreach ($aidatlar as $value) {
    	if($value['odendiMi'] == 1) {
    		$odenmis_aidat += $value['amount'];
@@ -65,16 +65,16 @@
    	else if($value['odendiMi'] == 0) {
    		$odenmemis_aidat += $value['amount'];
    	}
-   
+
    	$toplam_aidat += $value['amount'];
    }
-   
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
+
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -477,11 +477,11 @@
                            <span class="username username-hide-on-mobile">
                            <?php echo $_SESSION['firstname']; ?> </span>
                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                           <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+                           <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                            <li>
-                              <a href="extra_profile.html">
+                              <a href="profil.php">
                               <i class="icon-user"></i> Profil </a>
                            </li>
                            <li>
@@ -807,7 +807,7 @@
                                  </tr>
                               </thead>
                               <tbody>
-                                 <?php foreach($aidatlar as $aidat) { 
+                                 <?php foreach($aidatlar as $aidat) {
                                     $sql = "SELECT * FROM daire WHERE id = '".$aidat['ref_daire_id']."'";
                                          $res = mysqli_query($db,$sql);
                                          $row = mysqli_fetch_assoc($res);
@@ -1069,13 +1069,13 @@
       <script src="assets/admin/pages/scripts/components-editors.js"></script>
       <!-- END PAGE LEVEL SCRIPTS -->
       <script>
-         jQuery(document).ready(function() {       
+         jQuery(document).ready(function() {
             // initiate layout and plugins
             Metronic.init(); // init metronic core components
          Layout.init(); // init current layout
          Demo.init(); // init demo features
             ComponentsPickers.init();
-         });   
+         });
       </script>
       <script>
          jQuery(document).ready(function() {
@@ -1086,7 +1086,7 @@
          });
       </script>
       <script>
-         jQuery(document).ready(function() {       
+         jQuery(document).ready(function() {
             Metronic.init(); // init metronic core components
          Layout.init(); // init current layout
          Demo.init(); // init demo features
@@ -1094,13 +1094,13 @@
          });
       </script>
       <script>
-         jQuery(document).ready(function() {       
+         jQuery(document).ready(function() {
             // initiate layout and plugins
             Metronic.init(); // init metronic core components
          Layout.init(); // init current layout
          Demo.init(); // init demo features
             ComponentsEditors.init();
-         });   
+         });
       </script>
       <!-- END JAVASCRIPTS -->
    </body>
