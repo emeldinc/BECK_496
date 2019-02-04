@@ -68,14 +68,7 @@
 
    	$toplam_aidat += $value['amount'];
    }
-
-
-
-
-
-
-
-   ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
    <!--<![endif]-->
@@ -645,6 +638,7 @@
                         </li>
                      </ul>
                   </div>
+                 <a href = "grafikler.php" class="btn btn-sm btn-primary">Grafikler</a>
                </div>
                <br />
                <div class="row margin-top-10">
