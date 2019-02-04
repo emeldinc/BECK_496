@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Hakkımızda</title>
+<title>Profil</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -36,7 +36,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="assets/admin/pages/css/about-us.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -58,26 +60,29 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-sidebar-closed-hide-logo ">
+<body class="page-header-fixed page-sidebar-closed page-sidebar-closed-hide-logo">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
-        <div class="page-logo">
-            <a href="index.html">
-                <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
-            </a>
-            <div class="menu-toggler sidebar-toggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-            </div>
-        </div>
+		<div class="page-logo">
+      <a href="index.php">
+          <img src="assets/admin/layout4/img/becklogo.png" alt="logo" class="logo-default"/>
+      </a>
+			<div class="menu-toggler sidebar-toggler">
+				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+			</div>
+		</div>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN PAGE ACTIONS -->
+		<!-- DOC: Remove "hide" class to enable the page header actions -->
 
+		<!-- END PAGE ACTIONS -->
 		<!-- BEGIN PAGE TOP -->
 		<div class="page-top">
 			<!-- BEGIN HEADER SEARCH BOX -->
@@ -226,7 +231,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -240,7 +245,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -254,7 +259,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -268,7 +273,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -282,7 +287,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -399,27 +404,30 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-user dropdown-dark">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<span class="username username-hide-on-mobile">
-						<?php echo $_SESSION['firstname']; ?> </span>
+
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-default">
-							<li>
-								<a href="profil.php">
-								<i class="icon-user"></i> Profil </a>
-							</li>
-							<li>
-								<a href="index.php">
-								<i class="icon-calendar"></i> Takvim </a>
-							</li>
-							<li>
-								<a href="cikis.php">
-								<i class="icon-key"></i> Çıkış Yap </a>
-							</li>
-						</ul>
+
+            <li class="dropdown dropdown-user dropdown-dark">
+  						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+  						<span class="username username-hide-on-mobile">
+  						<?php echo $_SESSION['username']; ?> </span>
+  						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+  						 <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+  						</a>
+  						<ul class="dropdown-menu dropdown-menu-default">
+  							<li>
+  								<a href="extra_profile.html">
+  								<i class="profil.php"></i> Profil </a>
+  							</li>
+  							<li>
+  								<a href="index.php">
+  								<i class="icon-calendar"></i> Takvim </a>
+  							</li>
+  							<li>
+  								<a href="cikis.php">
+  								<i class="icon-key"></i> Çıkış Yap </a>
+  							</li>
+  						</ul>
 					</li>
 					<!-- END USER LOGIN DROPDOWN -->
 				</ul>
@@ -447,6 +455,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
 			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+
       <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
           <li>
               <a href="index.php">
@@ -498,15 +507,13 @@ License: You must have a valid license purchased only from themeforest(the above
                   </li>
               </ul>
           </li>
-          <li class="start active ">
+          <li>
               <a href="hakkimizda.php">
                   <i class="icon-info"></i>
                   <span class="title">Hakkımızda</span>
               </a>
           </li>
       </ul>
-
-
 			<!-- END SIDEBAR MENU -->
 		</div>
 	</div>
@@ -541,7 +548,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
-					<h1>Hakkımızda <small>BeckDoors</small></h1>
+					<h1>Profil</h1>
 				</div>
 				<!-- END PAGE TITLE -->
 				<!-- BEGIN PAGE TOOLBAR -->
@@ -635,199 +642,165 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- END PAGE TOOLBAR -->
 			</div>
 			<!-- END PAGE HEAD -->
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="index.php">Anasayfa</a>
-					<i class="fa fa-circle"></i>
-				</li>
 
-				<li>
-					<a href="hakkimizda.php">Hakkımızda</a>
-				</li>
-			</ul>
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			<div class="portlet light">
-				<div class="portlet-body">
-					<div class="row margin-bottom-30">
-						<div class="col-md-6">
-							<p>
-								 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-							</p>
-							<ul class="list-unstyled margin-top-10 margin-bottom-10">
-								<li>
-									<i class="fa fa-check icon-default"></i> Nam liber tempor cum soluta
-								</li>
-								<li>
-									<i class="fa fa-check icon-success"></i> Mirum est notare quam
-								</li>
-								<li>
-									<i class="fa fa-check icon-info"></i> Lorem ipsum dolor sit amet
-								</li>
-								<li>
-									<i class="fa fa-check icon-danger"></i> Mirum est notare quam
-								</li>
-								<li>
-									<i class="fa fa-check icon-warning"></i> Mirum est notare quam
-								</li>
-							</ul>
-							<!-- Blockquotes -->
-							<blockquote class="hero">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetuer sed diam nonummy nibh euismod tincidunt.
-								</p>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PROFILE SIDEBAR -->
+					<div class="profile-sidebar" style="width:250px;">
+						<!-- PORTLET MAIN -->
+						<div class="portlet light profile-sidebar-portlet">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic">
+								<img src="<?php echo $_SESSION['image_path']?>" class="img-responsive" alt="">
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									<?php echo $_SESSION['username']; ?>
+								</div>
+								<div class="profile-usertitle-job">
+								<?php echo $_SESSION['user_role']; ?>
+								</div>
+							</div>
+							<!-- END SIDEBAR USER TITLE -->
 
-							</blockquote>
+							<!-- SIDEBAR MENU -->
+							<div class="profile-usermenu">
+								<ul class="nav">
+									<li class="active">
+										<a href="profil.php">
+										<i class="icon-settings"></i>
+									Profil Ayarları </a>
+									</li>
+									<li>
+										<a href="profil_yardim.php">
+										<i class="icon-info"></i>
+										Yardım </a>
+									</li>
+								</ul>
+							</div>
+							<!-- END MENU -->
 						</div>
-						<div class="col-md-6">
+						<!-- END PORTLET MAIN -->
 
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/1JjwrtzE1oU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-						</div>
 					</div>
-					<!--/row-->
-					<!-- Meer Our Team -->
-					<div class="headline">
-						<h3>Meet BECK</h3>
-					</div>
-					<div class="row thumbnails">
-						<div class="col-md-3">
-							<div class="meet-our-team">
-								<h3>Berke Akyıldız </h3>
+					<!-- END BEGIN PROFILE SIDEBAR -->
+					<!-- BEGIN PROFILE CONTENT -->
+					<div class="profile-content">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light">
+									<div class="portlet-title tabbable-line">
+										<div class="caption caption-md">
+											<i class="icon-globe theme-font hide"></i>
+											<span class="caption-subject font-blue-madison bold ">Profil Ayarları</span>
+										</div>
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#tab_1_1" data-toggle="tab">Profil Bilgi</a>
+											</li>
+											<li>
+												<a href="#tab_1_2" data-toggle="tab">Resim Değiştir</a>
+											</li>
+											<li>
+												<a href="#tab_1_3" data-toggle="tab">Şifre Değiştir</a>
+											</li>
+										</ul>
+									</div>
+									<div class="portlet-body">
+										<div class="tab-content">
+											<!-- PERSONAL INFO TAB -->
+											<div class="tab-pane active" id="tab_1_1">
+												<form role="form" action="kayit_duzenle.php" method="POST">
+													<div class="form-group">
+														<label class="control-label">İsim</label>
+														<input type="text" placeholder="<?php echo $_SESSION['firstname'];?>" name="firstname" class="form-control"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Soyisim</label>
+														<input type="text" placeholder="<?php echo $_SESSION['lastname'];?>" name="lastname" class="form-control"/>
+													</div>
+                          <div class="form-group">
+                            <label class="control-label">Kullanıcı adı</label>
+                            <input type="text" placeholder="<?php echo $_SESSION['username'];?>" name="username" class="form-control"/>
+                          </div>
+													<div class="margiv-top-10">
+                            <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
+      											<button type="button" class="btn default">Vazgeç</button>
+													</div>
+												</form>
+											</div>
+											<!-- END PERSONAL INFO TAB -->
+											<!-- CHANGE AVATAR TAB -->
+											<div class="tab-pane" id="tab_1_2">
+												<p>
 
-								<div class="team-info">
-									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
-									</p>
-									<ul class="social-icons pull-right">
-										<li>
-											<a href="javascript:;" data-original-title="twitter" class="twitter">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="facebook" class="facebook">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="linkedin" class="linkedin">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="Goole Plus" class="googleplus">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="skype" class="skype">
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="meet-our-team">
-								<h3>Emel Dinç</h3>
-
-								<div class="team-info">
-									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
-									</p>
-									<ul class="social-icons pull-right">
-										<li>
-											<a href="javascript:;" data-original-title="twitter" class="twitter">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="facebook" class="facebook">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="linkedin" class="linkedin">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="Goole Plus" class="googleplus">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="skype" class="skype">
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="meet-our-team">
-								<h3>Cem Şengül </h3>
-
-								<div class="team-info">
-									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
-									</p>
-									<ul class="social-icons pull-right">
-										<li>
-											<a href="javascript:;" data-original-title="twitter" class="twitter">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="facebook" class="facebook">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="linkedin" class="linkedin">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="Goole Plus" class="googleplus">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="skype" class="skype">
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="meet-our-team">
-								<h3>Kemal Ülker</h3>
-
-								<div class="team-info">
-									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
-									</p>
-									<ul class="social-icons pull-right">
-										<li>
-											<a href="javascript:;" data-original-title="twitter" class="twitter">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="facebook" class="facebook">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="linkedin" class="linkedin">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="Goole Plus" class="googleplus">
-											</a>
-										</li>
-										<li>
-											<a href="javascript:;" data-original-title="skype" class="skype">
-											</a>
-										</li>
-									</ul>
+												</p>
+												<form role="form" action="resimekle.php" method="POST" enctype="multipart/form-data">
+													<div class="form-group">
+														<div class="fileinput fileinput-new" data-provides="fileinput">
+															<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+																<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>
+															</div>
+															<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+															</div>
+															<div>
+																<span class="btn default btn-file">
+																<span class="fileinput-new">
+																Resim Seç </span>
+																<span class="fileinput-exists">
+																Değiştir </span>
+																<input type="file" name="resim">
+																</span>
+																<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
+																Kaldır </a>
+															</div>
+														</div>
+														<div class="clearfix margin-top-10">
+															<span class="label label-danger">NOTE! </span>
+															<span>Boyutu 1Mb'ı geçemez. Dosya jpeg formatında olmalıdır. </span>
+														</div>
+													</div>
+                          <div class="margiv-top-10">
+                            <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i>Yükle</button>
+      											<button type="button" class="btn default">Vazgeç</button>
+													</div>
+												</form>
+											</div>
+											<!-- END CHANGE AVATAR TAB -->
+											<!-- CHANGE PASSWORD TAB -->
+											<div class="tab-pane" id="tab_1_3">
+												<form action="#">
+													<div class="form-group">
+														<label class="control-label">Varolan şifre</label>
+														<input type="password" class="form-control"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Yeni Şifre</label>
+														<input type="password" class="form-control"/>
+													</div>
+													<div class="form-group">
+														<label class="control-label">Yeni Şifre (Tekrar)</label>
+														<input type="password" class="form-control"/>
+													</div>
+													<div class="margin-top-10">
+														<a href="javascript:;" class="btn green-haze">
+														Şifre Değiştir </a>
+														<a href="javascript:;" class="btn default">
+														Vazgeç </a>
+													</div>
+												</form>
+											</div>
+											<!-- END CHANGE PASSWORD TAB -->
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!--/thumbnails-->
-					<!-- //End Meer Our Team -->
+					<!-- END PROFILE CONTENT -->
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
@@ -836,21 +809,11 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-	<div class="page-footer-inner">
-		 2014 &copy; Metronic by keenthemes.
-	</div>
-	<div class="scroll-to-top">
-		<i class="icon-arrow-up"></i>
-	</div>
-</div>
-<!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
-<script src="assets/global/plugins/respond.min.js"></script>
-<script src="assets/global/plugins/excanvas.min.js"></script>
+<script src="../../assets/global/plugins/respond.min.js"></script>
+<script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -864,14 +827,23 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
+   // initiate layout and plugins
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
-Demo.init(); // init demo features
+Demo.init(); // init demo features\
+Profile.init(); // init page demo
 });
 </script>
 <!-- END JAVASCRIPTS -->

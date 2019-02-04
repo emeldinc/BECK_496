@@ -430,7 +430,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="username username-hide-on-mobile">
 					<?php echo $_SESSION['firstname']; ?>  </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+					<img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>

@@ -394,11 +394,11 @@
 						<span class="username username-hide-on-mobile">
 						<?php echo $_SESSION['firstname']; ?> </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+						<img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
-								<a href="extra_profile.html">
+								<a href="profil.php">
 								<i class="icon-user"></i> Profil </a>
 							</li>
 							<li>
@@ -658,8 +658,8 @@
 				</div>
 			</div>
 			<br />
-			<div class="timeline">
-				<div class="timeline-body">
+      <div class="portlet light">
+				<div class="portlet-body">
           <?php
           $arr_duyuru_id=array();
           $index = 0;
@@ -695,11 +695,13 @@
                 $ref_apartman_id = $b['ref_apartman_id'];
                 $title = $b['title'];
                 $description= $b['description'];
+                $image_path = NULL;
                 $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
                 $result = mysqli_query($db,$sql2);
                 $row = mysqli_fetch_assoc($result);
                 if (mysqli_affected_rows($db) >= 1) {
                   $ref_username = $row['username'];
+                  $image_path = $row['image_path'];
                 }
                 else{
                   $db->error;
@@ -713,11 +715,12 @@
 							<ul class="timeline">
 								<li class="timeline-<?php echo $renkler[$count];?>">
 									<div class="timeline-time">
-										<span class="date"><?php
+										<span class="timeline-body-title font-blue-madison"><?php
                     echo $date;?>
 										</span>
-                    <span class= "timeline-body-title font-blue-madison"><b><?php echo $ref_username;
-                     ?></b></span>
+                    <span class= "time"><?php echo $ref_username;
+                     ?>
+                   <img alt="" class="img-circle" img border=1 width=70 height=70 src="<?php echo $image_path; ?>"/></span>
 									</div>
 									<div class="timeline-icon">
 										<i class="icon-pin"></i>
@@ -726,6 +729,7 @@
 										<h2>  <?php echo $title;
                     ?></h2>
 										<div class="timeline-content">
+
                       <?php echo $description;
                      ?>
 										</div>

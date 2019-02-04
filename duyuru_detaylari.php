@@ -410,7 +410,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="username username-hide-on-mobile">
 						<?php echo $_SESSION['firstname']; ?> </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+						<img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
@@ -685,8 +685,10 @@ License: You must have a valid license purchased only from themeforest(the above
             $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
             $result = mysqli_query($db,$sql2);
             $row = mysqli_fetch_assoc($result);
+            $image_path = NULL;
             if (mysqli_affected_rows($db) >= 1) {
               $ref_username = $row['username'];
+              $image_path = $row['image_path'];
             }
             else{
               $db->error;
@@ -696,8 +698,12 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- TIMELINE ITEM -->
 				<div class="timeline-item">
           <div class="timeline-badge">
-          </br> </br>
-            <span class= "timeline-body-title font-blue-madison"><?php echo $ref_username; ?></span>
+
+            <img alt="" img border=1 width=50 height=50 src="<?php echo $image_path; ?>"/>
+            <div>
+            <br/>
+            <span class= "timeline-body-title font-blue-madison">&nbsp&nbsp&nbsp<?php echo $ref_username; ?></span>
+          </div>
           </div>
 					<div class="timeline-body">
 						<div class="timeline-body-arrow">

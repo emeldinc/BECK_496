@@ -8,9 +8,10 @@ include('dbconnection.php');
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $role = $_POST['role'];
+    $image_path = "assets/images/no-image.jpeg";
 
-    $sql = "INSERT INTO beckdoor.user (username,password, firstname, lastname, role)
-    VALUES ('$username','$password','$firstname', '$lastname','$role')";
+    $sql = "INSERT INTO beckdoor.user (username,password, firstname, lastname, role, image_path)
+    VALUES ('$username','$password','$firstname', '$lastname','$role','$image_path')";
 
     if (mysqli_query($db,$sql)) {
         $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
@@ -18,8 +19,10 @@ include('dbconnection.php');
         $row = mysqli_fetch_assoc($res);
         $_SESSION['username'] = $username;
         $_SESSION['firstname'] = $firstname;
+        $_SESSION['lastname'] = $lastname;
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['user_role'] = $role;
+        $_SESSION['image_path'] = $image_path;
         $_SESSION['daire_id'] = '';
         $_SESSION['site_id'] = '';
         $_SESSION['apartman_id'] = '';
