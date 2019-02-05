@@ -737,7 +737,6 @@
 										<h2>  <?php echo $title;
                     ?></h2>
 										<div class="timeline-content">
-
                       <?php echo $description;
                      ?>
 										</div>

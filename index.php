@@ -39,12 +39,7 @@ include('dbconnection.php');
 
 	}
 ?>
-<?php
-$sql = "SELECT * FROM user ";
-$res = mysqli_query($db,$sql);
-while ($b=mysqli_fetch_array($res)){
-  if($user_id == $b['id']){
-      $image = $b['image_path']; ?>
+
 
 <!DOCTYPE html>
 <!--
@@ -485,10 +480,16 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						<?php echo $b['username']; ?> </span>
+						<?php echo $_SESSION['firstname']; ?> </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-
+                            <?php
+                            $sql = "SELECT * FROM user ";
+                            $res = mysqli_query($db,$sql);
+                            while ($b=mysqli_fetch_array($res)){
+                              if($user_id == $b['id']){
+                                  $image = $b['image_path']; ?>
                             <img alt="" class="img-circle" src="<?php echo $image?>"/>
+                          <?php }}?>
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
@@ -699,11 +700,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END PAGE HEAD -->
             <!-- BEGIN PAGE BREADCRUMB -->
             <ul class="page-breadcrumb breadcrumb hide">
-                <li>
-                    <a href="javascript:;">Home</a><i class="fa fa-circle"></i>
-                </li>
                 <li class="active">
-                    Dashboard
+                    Anasayfa
                 </li>
             </ul>
             <!-- END PAGE BREADCRUMB -->
@@ -1291,119 +1289,86 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- END PORTLET-->
                 </div>
+
                 <div class="col-md-6 col-sm-12">
                     <!-- BEGIN PORTLET-->
                     <div class="portlet light">
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i>
-                                <span class="caption-subject theme-font-color bold uppercase">Duyurular</span>
-                                <span class="caption-helper">45 pending</span>
-                            </div>
-                            <div class="inputs">
-                                <div class="portlet-input input-inline input-small ">
-                                    <div class="input-icon right">
-                                        <i class="icon-magnifier"></i>
-                                        <input type="text" class="form-control form-control-solid" placeholder="search...">
-                                    </div>
-                                </div>
+                                <a href = "duyurular.php" class="caption-subject theme-font-color bold uppercase"><i class="icon-pin"></i> Duyurular</a>
                             </div>
                         </div>
                         <div class="portlet-body">
                             <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                              <?php
+                              $arr_duyuru_id=array();
+                              $index = 0;
+                              $arr_sql = "SELECT * FROM duyuru WHERE id ";
+                              $arr_res = mysqli_query($db,$arr_sql);
+                              while ($a=mysqli_fetch_array($arr_res)){
+                                $arr_duyuru_id[$index] = $a['id'];
+                                $index = $index + 1;
+                              }
+                              sort($arr_duyuru_id); //Son eklenenleri ustte gostermek icin
+                              $index = $index - 1;
+
+                              while($index >= 0){
+                                $sql = "SELECT * FROM duyuru ";
+                                $res = mysqli_query($db,$sql);
+
+                                while ($b=mysqli_fetch_array($res)){
+                                  if($index == -1)
+                                    continue;
+
+                                  if(($arr_duyuru_id[$index] == $b['id'])){
+                                    $index = $index - 1;
+
+                                    $duyuru_id = $b['id'];
+                                    $date = $b['now_date'];
+                                    $ref_site_id = $b['ref_site_id'];
+                                    $ref_user_id = $b['ref_user_id'];
+                                    $ref_apartman_id = $b['ref_apartman_id'];
+                                    $title = $b['title'];
+                                    $description= $b['description'];
+                                    $image_path = NULL;
+                                    $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                                    $result = mysqli_query($db,$sql2);
+                                    $row = mysqli_fetch_assoc($result);
+                                    if (mysqli_affected_rows($db) >= 1) {
+                                      $ref_username = $row['username'];
+                                      $image_path = $row['image_path'];
+                                    }
+                                    else{
+                                      $db->error;
+                                    }
+                                    if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
+
+
+
+                              ?>
                                 <div class="general-item-list">
                                     <div class="item">
                                         <div class="item-head">
                                             <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar4.jpg">
-                                                <a href="" class="item-name primary-link">Nick Larson</a>
-                                                <span class="item-label">3 hrs ago</span>
+                                                <img class="item-pic" src="<?php echo $image_path; ?>">
+                                                <a href="" class="item-name primary-link"><?php echo $ref_username; ?></a>
+                                                <span class="item-label"><?php echo $date; ?></span>
                                             </div>
                                             <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
                                         </div>
                                         <div class="item-body">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                          <b>  <?php echo $title; ?></b>
+                                          <div class="timeline-footer">
+                      											<a href="duyuru_detaylari.php?id=<?php echo $duyuru_id; ?>" class="nav-link pull-right">
+                      											Duyuru detaylarını gör <i class="fa fa-arrow-right"></i>
+                      											</a>
+                      										</div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar3.jpg">
-                                                <a href="" class="item-name primary-link">Mark</a>
-                                                <span class="item-label">5 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar6.jpg">
-                                                <a href="" class="item-name primary-link">Nick Larson</a>
-                                                <span class="item-label">8 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-primary"></span> Closed</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar7.jpg">
-                                                <a href="" class="item-name primary-link">Nick Larson</a>
-                                                <span class="item-label">12 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-danger"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar9.jpg">
-                                                <a href="" class="item-name primary-link">Richard Stone</a>
-                                                <span class="item-label">2 days ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-danger"></span> Open</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore magna aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar8.jpg">
-                                                <a href="" class="item-name primary-link">Dan</a>
-                                                <span class="item-label">3 days ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="assets/admin/layout3/img/avatar2.jpg">
-                                                <a href="" class="item-name primary-link">Larry</a>
-                                                <span class="item-label">4 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
-                                        </div>
-                                        <div class="item-body">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                        </div>
+
                                     </div>
                                 </div>
+                              <?php }}}} ?>
                             </div>
                         </div>
                     </div>
@@ -2149,7 +2114,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<?php } }?>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
