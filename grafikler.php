@@ -9,41 +9,41 @@
       echo '</script>';
    }
    $apartman_id = $_SESSION['apartman_id'];
-   
+
    $apartmandaki_daireler = array();
    $sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
    $daireler = $db->query($sql_daire);
    while($row = $daireler->fetch_assoc()) {
       array_push($apartmandaki_daireler, $row);
    }
-   
+
    $sql_apartman_adi = "SELECT * FROM apartman WHERE id = '".$apartman_id."'";
    $apartman_adi = $db->query($sql_apartman_adi);
    $apartman_bilgileri = $apartman_adi->fetch_assoc();
-   
-   
+
+
    $gelir_giderler = array();
    $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
    $gelir_gider = $db->query($sql_gelir_gider);
    while($row = $gelir_gider->fetch_assoc()) {
       array_push($gelir_giderler, $row);
    }
-   
+
    $toplam_gelir = 0;
    $toplam_gider = 0;
    $toplam_para = 0;
    foreach ($gelir_giderler as $value) {
-   
+
       if($value['gelirMi'] == 1) {
          $toplam_gelir += $value['amount'];
       }
       else if($value['gelirMi'] == 0) {
          $toplam_gider += $value['amount'];
       }
-   
+
       $toplam_para += $value['amount'];
    }
-   
+
    $aidatlar = array();
    $toplam_aidat = 0;
    $odenmis_aidat = 0;
@@ -55,9 +55,9 @@
       array_push($aidatlar, $row);
       }
    }
-   
-   
-   
+
+
+
    foreach ($aidatlar as $value) {
       if($value['odendiMi'] == 1) {
          $odenmis_aidat += $value['amount'];
@@ -65,7 +65,7 @@
       else if($value['odendiMi'] == 0) {
          $odenmemis_aidat += $value['amount'];
       }
-   
+
       $toplam_aidat += $value['amount'];
    }
    ?>
@@ -458,7 +458,17 @@
                            <span class="username username-hide-on-mobile">
                            <?php echo $_SESSION['firstname']; ?> </span>
                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                           <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+                           <?php   $user_id = $_SESSION['user_id'];
+                             $sql = "SELECT * FROM user ";
+                             $res = mysqli_query($db,$sql);
+                             while ($b=mysqli_fetch_array($res)){
+                               if($user_id == $b['id']){
+                                   $image = $b['image_path'];
+                                   $username = $b['username'];
+                                   $firstname = $b['firstname'];
+                                   $lastname = $b['lastname']; ?>
+                           <img alt="" class="img-circle" src="<?php echo $image;?>"/>
+                         <?php }}?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                            <li>
@@ -621,9 +631,9 @@
             </div>
             <br />
             <div id="chart_div" style = "width:100%; height:250px;"></div>
-             
-             
-              
+
+
+
             </div>
          </div>
          <!-- END CONTENT -->
@@ -696,7 +706,7 @@
            chart.draw(data, options);
          }
        </script>
-      
+
        <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
@@ -735,14 +745,14 @@
       <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
       <!-- END CORE PLUGINS -->
       <!-- BEGIN PAGE LEVEL PLUGINS -->
-      
+
       <!-- END PAGE LEVEL PLUGINS -->
       <!-- BEGIN PAGE LEVEL SCRIPTS -->
       <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
       <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
       <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-      
-    
+
+
       <!-- END PAGE LEVEL SCRIPTS -->
    </body>
    <!-- END BODY -->

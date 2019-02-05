@@ -1,5 +1,15 @@
 <?php
       session_start();
+      include('dbconnection.php');
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT * FROM user ";
+      $res = mysqli_query($db,$sql);
+      while ($b=mysqli_fetch_array($res)){
+        if($user_id == $b['id']){
+            $image = $b['image_path'];
+            $username = $b['username'];
+            $firstname = $b['firstname'];
+            $lastname = $b['lastname'];
 ?>
 <!DOCTYPE html>
 <!--
@@ -231,7 +241,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -245,7 +255,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -259,7 +269,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -273,7 +283,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -287,7 +297,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<li>
 										<a href="inbox.html?a=view">
 										<span class="photo">
-										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										<img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
 										</span>
 										<span class="subject">
 										<span class="from">
@@ -410,13 +420,13 @@ License: You must have a valid license purchased only from themeforest(the above
             <li class="dropdown dropdown-user dropdown-dark">
   						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
   						<span class="username username-hide-on-mobile">
-  						<?php echo $_SESSION['username']; ?> </span>
+  						<?php echo $username; ?> </span>
   						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-  						 <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+  						 <img alt="" class="img-circle" src="<?php echo $image?>"/>
   						</a>
   						<ul class="dropdown-menu dropdown-menu-default">
   							<li>
-  								<a href="extra_profile.html">
+  								<a href="profil.php">
   								<i class="profil.php"></i> Profil </a>
   							</li>
   							<li>
@@ -652,13 +662,13 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet light profile-sidebar-portlet">
 							<!-- SIDEBAR USERPIC -->
 							<div class="profile-userpic">
-								<img src="<?php echo $_SESSION['image_path']?>" class="img-responsive" alt="">
+								<img src="<?php echo $image?>" class="img-responsive" alt="">
 							</div>
 							<!-- END SIDEBAR USERPIC -->
 							<!-- SIDEBAR USER TITLE -->
 							<div class="profile-usertitle">
 								<div class="profile-usertitle-name">
-									<?php echo $_SESSION['username']; ?>
+									<?php echo $username; ?>
 								</div>
 								<div class="profile-usertitle-job">
 								<?php echo $_SESSION['user_role']; ?>
@@ -716,15 +726,15 @@ License: You must have a valid license purchased only from themeforest(the above
 												<form role="form" action="kayit_duzenle.php" method="POST">
 													<div class="form-group">
 														<label class="control-label">İsim</label>
-														<input type="text" placeholder="<?php echo $_SESSION['firstname'];?>" name="firstname" class="form-control"/>
+														<input type="text" placeholder="<?php echo $firstname;?>" name="firstname" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">Soyisim</label>
-														<input type="text" placeholder="<?php echo $_SESSION['lastname'];?>" name="lastname" class="form-control"/>
+														<input type="text" placeholder="<?php echo $lastname;?>" name="lastname" class="form-control"/>
 													</div>
                           <div class="form-group">
                             <label class="control-label">Kullanıcı adı</label>
-                            <input type="text" placeholder="<?php echo $_SESSION['username'];?>" name="username" class="form-control"/>
+                            <input type="text" placeholder="<?php echo $username;?>" name="username" class="form-control"/>
                           </div>
 													<div class="margiv-top-10">
                             <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
@@ -765,31 +775,25 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div>
                           <div class="margiv-top-10">
                             <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i>Yükle</button>
-      											<button type="button" class="btn default">Vazgeç</button>
+      											<a href="profil.php" class="btn default">Vazgeç </a>
 													</div>
 												</form>
 											</div>
 											<!-- END CHANGE AVATAR TAB -->
 											<!-- CHANGE PASSWORD TAB -->
 											<div class="tab-pane" id="tab_1_3">
-												<form action="#">
+												<form name= "sifre_form" action="sifre_degistir.php" method="POST">
 													<div class="form-group">
 														<label class="control-label">Varolan şifre</label>
-														<input type="password" class="form-control"/>
+														<input name="password" type="password" class="form-control"/>
 													</div>
 													<div class="form-group">
 														<label class="control-label">Yeni Şifre</label>
-														<input type="password" class="form-control"/>
-													</div>
-													<div class="form-group">
-														<label class="control-label">Yeni Şifre (Tekrar)</label>
-														<input type="password" class="form-control"/>
+														<input name="new_password" type="password" class="form-control"/>
 													</div>
 													<div class="margin-top-10">
-														<a href="javascript:;" class="btn green-haze">
-														Şifre Değiştir </a>
-														<a href="javascript:;" class="btn default">
-														Vazgeç </a>
+														  <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i>Değiştir</button>
+														  <a href="profil.php" class="btn default">Vazgeç </a>
 													</div>
 												</form>
 											</div>
@@ -808,6 +812,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 	<!-- END CONTENT -->
 </div>
+<?php } }?>
 <!-- END CONTAINER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->

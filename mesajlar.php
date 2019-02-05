@@ -408,11 +408,21 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="username username-hide-on-mobile">
 						<?php echo $_SESSION['firstname']; ?> </span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-						<img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+            <?php $user_id = $_SESSION['user_id'];
+            $sql = "SELECT * FROM user ";
+            $res = mysqli_query($db,$sql);
+            while ($b=mysqli_fetch_array($res)){
+              if($user_id == $b['id']){
+                  $image = $b['image_path'];
+                  $username = $b['username'];
+                  $firstname = $b['firstname'];
+                  $lastname = $b['lastname']; ?>
+						<img alt="" class="img-circle" src="<?php echo $image;?>"/>
 						</a>
+          <?php }} ?>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
-								<a href="extra_profile.html">
+								<a href="profil.php">
 								<i class="icon-user"></i> Profil </a>
 							</li>
 							<li>

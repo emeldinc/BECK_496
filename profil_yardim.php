@@ -1,5 +1,15 @@
 <?php
       session_start();
+      include('dbconnection.php');
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT * FROM user ";
+      $res = mysqli_query($db,$sql);
+      while ($b=mysqli_fetch_array($res)){
+        if($user_id == $b['id']){
+            $image = $b['image_path'];
+            $username = $b['username'];
+            $firstname = $b['firstname'];
+            $lastname = $b['lastname'];
 ?>
 <!DOCTYPE html>
 <!--
@@ -406,9 +416,9 @@ License: You must have a valid license purchased only from themeforest(the above
           <li class="dropdown dropdown-user dropdown-dark">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <span class="username username-hide-on-mobile">
-            <?php echo $_SESSION['username']; ?> </span>
+            <?php echo $_SESSION['firstname']; ?> </span>
             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-            <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+            <img alt="" class="img-circle" src="<?php echo $image;?>"/>
             </a>
             <ul class="dropdown-menu dropdown-menu-default">
               <li>
@@ -658,7 +668,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet light profile-sidebar-portlet">
 							<!-- SIDEBAR USERPIC -->
               <div class="profile-userpic">
-								<img src="<?php echo $_SESSION['image_path']?>" class="img-responsive" alt="">
+								<img src="<?php echo $image;?>" class="img-responsive" alt="">
 							</div>
 							<!-- END SIDEBAR USERPIC -->
 							<!-- SIDEBAR USER TITLE -->
@@ -1085,6 +1095,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 	<!-- END CONTENT -->
 </div>
+<?php }} ?>
 <!-- END CONTAINER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
@@ -1092,27 +1103,27 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../../assets/global/plugins/respond.min.js"></script>
 <script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
-<script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-<script src="../../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="../../assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="../../assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-<script src="../../assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
+<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {

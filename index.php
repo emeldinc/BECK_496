@@ -39,6 +39,12 @@ include('dbconnection.php');
 
 	}
 ?>
+<?php
+$sql = "SELECT * FROM user ";
+$res = mysqli_query($db,$sql);
+while ($b=mysqli_fetch_array($res)){
+  if($user_id == $b['id']){
+      $image = $b['image_path']; ?>
 
 <!DOCTYPE html>
 <!--
@@ -475,12 +481,15 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END TODO DROPDOWN -->
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						<?php echo $_SESSION['username']; ?> </span>
+						<?php echo $b['username']; ?> </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                            <img alt="" class="img-circle" src="<?php echo $_SESSION['image_path']?>"/>
+
+                            <img alt="" class="img-circle" src="<?php echo $image?>"/>
+
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
@@ -2140,16 +2149,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-    <div class="page-footer-inner">
-        2014 &copy; Metronic by keenthemes.
-    </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
-</div>
-<!-- END FOOTER -->
+<?php } }?>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
