@@ -9,41 +9,41 @@
       echo '</script>';
    }
    $apartman_id = $_SESSION['apartman_id'];
-
+   
    $apartmandaki_daireler = array();
    $sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
    $daireler = $db->query($sql_daire);
    while($row = $daireler->fetch_assoc()) {
       array_push($apartmandaki_daireler, $row);
    }
-
+   
    $sql_apartman_adi = "SELECT * FROM apartman WHERE id = '".$apartman_id."'";
    $apartman_adi = $db->query($sql_apartman_adi);
    $apartman_bilgileri = $apartman_adi->fetch_assoc();
-
-
+   
+   
    $gelir_giderler = array();
    $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
    $gelir_gider = $db->query($sql_gelir_gider);
    while($row = $gelir_gider->fetch_assoc()) {
       array_push($gelir_giderler, $row);
    }
-
+   
    $toplam_gelir = 0;
    $toplam_gider = 0;
    $toplam_para = 0;
    foreach ($gelir_giderler as $value) {
-
+   
       if($value['gelirMi'] == 1) {
          $toplam_gelir += $value['amount'];
       }
       else if($value['gelirMi'] == 0) {
          $toplam_gider += $value['amount'];
       }
-
+   
       $toplam_para += $value['amount'];
    }
-
+   
    $aidatlar = array();
    $toplam_aidat = 0;
    $odenmis_aidat = 0;
@@ -55,11 +55,11 @@
       array_push($aidatlar, $row);
       }
    }
-
    
-
-
-
+   
+   
+   
+   
    foreach ($aidatlar as $value) {
       if($value['odendiMi'] == 1) {
          $odenmis_aidat += $value['amount'];
@@ -67,7 +67,7 @@
       else if($value['odendiMi'] == 0) {
          $odenmemis_aidat += $value['amount'];
       }
-
+   
       $toplam_aidat += $value['amount'];
    }
    $yıl = date("Y");
@@ -77,17 +77,17 @@
                                        AND     `date` <= '".$yıl."-12-31'
                                        AND     ref_apartman_id = '".$apartman_id."'";
    $ay_gelirler = $db->query($sql_ay_gelir);
-
+   
    while($row = $ay_gelirler->fetch_assoc()) {
       array_push($ay_gelir_gider, $row);
    }
-
+   
    $a = array();
    foreach ($ay_gelirler as $value) {
-
+   
       $unixtime = strtotime($value['date']);
       $ay = date('m', $unixtime);
-
+   
       if(!array_key_exists($ay, $a)) {
          $a[$ay] = 0;
       }
@@ -100,9 +100,9 @@
       }
       
    }
-
-
-?>
+   
+   
+   ?>
 <!DOCTYPE html>
 <html lang="en">
    <!--<![endif]-->
@@ -493,16 +493,16 @@
                            <?php echo $_SESSION['firstname']; ?> </span>
                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                            <?php   $user_id = $_SESSION['user_id'];
-                             $sql = "SELECT * FROM user ";
-                             $res = mysqli_query($db,$sql);
-                             while ($b=mysqli_fetch_array($res)){
-                               if($user_id == $b['id']){
-                                   $image = $b['image_path'];
-                                   $username = $b['username'];
-                                   $firstname = $b['firstname'];
-                                   $lastname = $b['lastname']; ?>
+                              $sql = "SELECT * FROM user ";
+                              $res = mysqli_query($db,$sql);
+                              while ($b=mysqli_fetch_array($res)){
+                                if($user_id == $b['id']){
+                                    $image = $b['image_path'];
+                                    $username = $b['username'];
+                                    $firstname = $b['firstname'];
+                                    $lastname = $b['lastname']; ?>
                            <img alt="" class="img-circle" src="<?php echo $image;?>"/>
-                         <?php }}?>
+                           <?php }}?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                            <li>
@@ -655,19 +655,55 @@
                      <a href="">Grafikler</a>
                   </li>
                </ul>
-            <div class = "row">
-               <div class = "col-md-6">
-                  <div id="columnchart_material" style = "width:100%; height:250px;"></div>
+               <div class = "row">
+                  <div class = "col-md-6">
+                     <div class="portlet box yellow">
+                        <div class="portlet-title">
+                           <div class="caption">
+                              </i>Ay - Toplam Kazanç
+                           </div>
+                        </div>
+                        <div class="portlet-body">
+                           <?php if(empty($a)) { ?>
+                           Henüz bir veri girilmemiş...
+                           <?php } else { ?>
+                           <div id="columnchart_material" style = "width:100%; height:250px;"></div>
+                           <?php } ?>
+                        </div>
+                     </div>
+                  </div>
+                  <div class = "col-md-6">
+                     <div class="portlet box blue-hoki">
+                        <div class="portlet-title">
+                           <div class="caption">
+                              </i>Daire - Ödenmemiş Aidat
+                           </div>
+                        </div>
+                        <div class="portlet-body">
+                           <?php if(empty($aidatlar)) { ?>
+                           Henüz bir veri girilmemiş...
+                           <?php } else { ?>
+                           <div id="barchart_material" style="width: 100%; height: 250px;"></div>
+                           <?php } ?>
+                        </div>
+                     </div>
+                  </div>
                </div>
-               <div class = "col-md-6">
-                  <div id="barchart_material" style="width: 100%; height: 250px;"></div>
+               <br />
+               <div class="portlet box purple">
+                  <div class="portlet-title">
+                     <div class="caption">
+                        </i>Toplam Gelir-Gider
+                     </div>
+                  </div>
+                  <div class="portlet-body">
+                     <?php if($toplam_gelir == 0 && $toplam_gider == 0) { ?>
+                     Henüz bir veri girilmemiş...
+                     <?php } else { ?>
+                     <div id="chart_div" style = "width:100%; height:250px;"></div>
+                     <?php } ?>
+                  </div>
                </div>
-            </div>
-            <br />
-            <div id="chart_div" style = "width:100%; height:250px;"></div>
-
-
-
             </div>
          </div>
          <!-- END CONTENT -->
@@ -680,47 +716,46 @@
       <script src="../../assets/global/plugins/excanvas.min.js"></script>
       <![endif]-->
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-       <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Daire','Ödenmemiş Aidat'],
-          <?php foreach ($aidatlar as $x) {
-             if($x['odendiMi'] == 0) { ?>
-               [<?php echo $x['number']; ?>, <?php echo $x['amount']; ?>],
-          <?php  }
-          } ?>
-         ]);
-
-        var options = {
-          chart: {
-            title: 'Aidatlar',
-            subtitle: 'Dairelere göre ödenmemiş aidatlar',
-          },
-          colors: ['#e0440e', '#e6693e'],
-          bars: 'horizontal' // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-       <script type="text/javascript">
-
+      <script type="text/javascript">
+         google.charts.load('current', {'packages':['bar']});
+         google.charts.setOnLoadCallback(drawChart);
+         
+         function drawChart() {
+           var data = google.visualization.arrayToDataTable([
+             ['Daire','Ödenmemiş Aidat'],
+             <?php foreach ($aidatlar as $x) {
+            if($x['odendiMi'] == 0) { ?>
+                  [<?php echo $x['number']; ?>, <?php echo $x['amount']; ?>],
+             <?php  }
+            } ?>
+            ]);
+         
+           var options = {
+             chart: {
+               title: 'Aidatlar',
+               subtitle: 'Dairelere göre ödenmemiş aidatlar',
+             },
+             colors: ['#e0440e', '#e6693e'],
+             bars: 'horizontal' // Required for Material Bar Charts.
+           };
+         
+           var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+         
+           chart.draw(data, google.charts.Bar.convertOptions(options));
+         }
+      </script>
+      <script type="text/javascript">
          // Load the Visualization API and the corechart package.
          google.charts.load('current', {'packages':['corechart']});
-
+         
          // Set a callback to run when the Google Visualization API is loaded.
          google.charts.setOnLoadCallback(drawChart);
-
+         
          // Callback that creates and populates a data table,
          // instantiates the pie chart, passes in the data and
          // draws it.
          function drawChart() {
-
+         
            // Create the data table.
            var data = new google.visualization.DataTable();
            data.addColumn('string', 'Topping');
@@ -729,43 +764,42 @@
              ['Gelir', <?php echo $toplam_gelir; ?>],
              ['Gider', <?php echo $toplam_gider; ?>]
            ]);
-
+         
            // Set chart options
            var options = {'title':'Toplam Gelir/Gider'
                           };
-
+         
            // Instantiate and draw our chart, passing in some options.
            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
            chart.draw(data, options);
          }
-       </script>
-
-       <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Ay','Gelir'],
-        <?php foreach($a as $key => $value) { ?>
-
-            [<?php echo $key; ?>,<?php echo $value; ?>],
-
-        <?php }  ?>
-
-         ]);
-
-        var options = {
-          chart: {
-            title: 'Toplam Gelir/Gider Ayrıntılı',
-            subtitle: 'Aylara göre toplam gelen para (- ise para kaybedilmiş)'
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
+      </script>
+      <script type="text/javascript">
+         google.charts.load('current', {'packages':['bar']});
+         google.charts.setOnLoadCallback(drawChart);
+         
+         function drawChart() {
+           var data = google.visualization.arrayToDataTable([
+           ['Ay','Gelir'],
+           <?php foreach($a as $key => $value) { ?>
+         
+               [<?php echo $key; ?>,<?php echo $value; ?>],
+         
+           <?php }  ?>
+         
+            ]);
+         
+           var options = {
+             chart: {
+               title: 'Toplam Gelir/Gider Ayrıntılı',
+               subtitle: 'Aylara göre toplam gelen para (- ise para kaybedilmiş)'
+             }
+           };
+         
+           var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+         
+           chart.draw(data, google.charts.Bar.convertOptions(options));
+         }
       </script>
       <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
       <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -780,14 +814,11 @@
       <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
       <!-- END CORE PLUGINS -->
       <!-- BEGIN PAGE LEVEL PLUGINS -->
-
       <!-- END PAGE LEVEL PLUGINS -->
       <!-- BEGIN PAGE LEVEL SCRIPTS -->
       <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
       <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
       <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-
-
       <!-- END PAGE LEVEL SCRIPTS -->
    </body>
    <!-- END BODY -->
