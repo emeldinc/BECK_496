@@ -82,6 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END PAGE LEVEL PLUGIN STYLES -->
     <!-- BEGIN PAGE STYLES -->
     <link href="assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
     <!-- END PAGE STYLES -->
     <!-- BEGIN THEME STYLES -->
     <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
@@ -2140,6 +2141,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+<script src="assets/global/plugins/moment.min.js"></script>
+<script src="assets/global/plugins/fullcalendar/fullcalendar.min.js"></script>
 <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
 <script src="assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
@@ -2151,6 +2154,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/calendar.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
@@ -2160,6 +2164,15 @@ License: You must have a valid license purchased only from themeforest(the above
         Index.init(); // init index page
         Tasks.initDashboardWidget(); // init tash dashboard widget
     });
+</script>
+<script>
+jQuery(document).ready(function() {       
+   // initiate layout and plugins
+   Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
+Demo.init(); // init demo features
+   Calendar.init();
+});
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
