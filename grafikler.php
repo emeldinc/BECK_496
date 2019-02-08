@@ -696,9 +696,10 @@
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'Aidatlar',
+            subtitle: 'Dairelere göre ödenmemiş aidatlar',
           },
+          colors: ['#e0440e', '#e6693e'],
           bars: 'horizontal' // Required for Material Bar Charts.
         };
 
