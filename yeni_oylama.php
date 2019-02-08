@@ -1,14 +1,10 @@
 <?php
+    include 'dbconnection.php';
     if(session_id() == '')
         session_start();
-    include 'dbconnection.php';
 
-    if(isset($_POST['oylama']))
-    {
-        echo "OFFF";
-        $sql = "INSERT INTO `oylama`(`ref_apartman_id`, `ref_site_id`, `title`, `description`, `start_date`, `end_date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])";
-        header("location: oylamalar.php");
-    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -677,7 +673,7 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <form action="yeni_oylama.php" id="form_sample_3" class="form-horizontal" name="oylama" method="POST">
+                            <form action="oylamakayit.php" id="form_sample_3" class="form-horizontal" name="oylama" method="POST">
                                 <div class="form-body">
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button>
