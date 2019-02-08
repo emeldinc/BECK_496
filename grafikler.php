@@ -49,12 +49,14 @@
    $odenmis_aidat = 0;
    $odenmemis_aidat = 0;
    foreach ($apartmandaki_daireler as $value) {
-      $sql_aidat = "SELECT * FROM aidat WHERE ref_daire_id = '".$value['id']."'";
+      $sql_aidat = "SELECT * FROM aidat,daire WHERE ref_daire_id = '".$value['id']."' AND daire.id = '".$value['id']."'";
       $aidat = $db->query($sql_aidat);
       while($row = $aidat->fetch_assoc()) {
       array_push($aidatlar, $row);
       }
    }
+
+   
 
 
 
@@ -68,7 +70,39 @@
 
       $toplam_aidat += $value['amount'];
    }
-   ?>
+   $yıl = date("Y");
+   $ay_gelir_gider = array();
+   $sql_ay_gelir = "SELECT  * FROM    gelir_gider
+                                       WHERE   `date` >= '".$yıl."-02-01' 
+                                       AND     `date` <= '".$yıl."-12-31'
+                                       AND     ref_apartman_id = '".$apartman_id."'";
+   $ay_gelirler = $db->query($sql_ay_gelir);
+
+   while($row = $ay_gelirler->fetch_assoc()) {
+      array_push($ay_gelir_gider, $row);
+   }
+
+   $a = array();
+   foreach ($ay_gelirler as $value) {
+
+      $unixtime = strtotime($value['date']);
+      $ay = date('m', $unixtime);
+
+      if(!array_key_exists($ay, $a)) {
+         $a[$ay] = 0;
+      }
+      
+      if($value['gelirMi'] == 1) {
+         $a[$ay] += $value['amount'];
+      }
+      else {
+         $a[$ay] -= $value['amount'];
+      }
+      
+   }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <!--<![endif]-->
@@ -652,12 +686,13 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]);
+          ['Daire','Ödenmemiş Aidat'],
+          <?php foreach ($aidatlar as $x) {
+             if($x['odendiMi'] == 0) { ?>
+               [<?php echo $x['number']; ?>, <?php echo $x['amount']; ?>],
+          <?php  }
+          } ?>
+         ]);
 
         var options = {
           chart: {
@@ -690,15 +725,12 @@
            data.addColumn('string', 'Topping');
            data.addColumn('number', 'Slices');
            data.addRows([
-             ['Mushrooms', 3],
-             ['Onions', 1],
-             ['Olives', 1],
-             ['Zucchini', 1],
-             ['Pepperoni', 2]
+             ['Gelir', <?php echo $toplam_gelir; ?>],
+             ['Gider', <?php echo $toplam_gider; ?>]
            ]);
 
            // Set chart options
-           var options = {'title':'How Much Pizza I Ate Last Night'
+           var options = {'title':'Toplam Gelir/Gider'
                           };
 
            // Instantiate and draw our chart, passing in some options.
@@ -713,17 +745,19 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]);
+        ['Ay','Gelir'],
+        <?php foreach($a as $key => $value) { ?>
+
+            [<?php echo $key; ?>,<?php echo $value; ?>],
+
+        <?php }  ?>
+
+         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017'
+            title: 'Toplam Gelir/Gider Ayrıntılı',
+            subtitle: 'Aylara göre toplam gelen para (- ise para kaybedilmiş)'
           }
         };
 
