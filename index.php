@@ -117,7 +117,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class = "row">
             <form action="daire_degistir.php" method="POST">
             <div class="col-md-7">
-               <strong>Daire Değiştir-></strong> 
+               <strong>Daire Değiştir-></strong>
                     <div class="form-group" style= "margin-top: 3%; width: 350px; display: inline-block;">
                         <select class="select2_category form-control" name = "ids" tabindex="1">
                             <?php
@@ -614,19 +614,39 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- END PORTLET-->
                 </div>
+                <?php
+                $top_duyuru = 0;
+                $que = "SELECT * FROM duyuru ";
+                $rs = mysqli_query($db,$que);
 
+                while ($b=mysqli_fetch_array($rs)){
+                  $ref_site_id = $b['ref_site_id'];
+                  $ref_user_id = $b['ref_user_id'];
+                  $ref_apartman_id = $b['ref_apartman_id'];
+
+                  $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                  $result = mysqli_query($db,$sql2);
+                  $row = mysqli_fetch_assoc($result);
+
+                  if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
+                    $top_duyuru = $top_duyuru +1;
+                  }
+                }
+
+                 ?>
                 <div class="col-md-6 col-sm-12">
                     <!-- BEGIN PORTLET-->
                     <div class="portlet light">
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i>
-                                <a href = "duyurular.php" class="caption-subject theme-font-color bold uppercase"><i class="icon-pin"></i> Duyurular</a>
+                                <a href = "duyurular.php" class="caption-subject theme-font-color bold uppercase"><i class="icon-pin"></i> Duyurular&nbsp <?php echo $top_duyuru; ?></a>
                             </div>
                         </div>
                         <div class="portlet-body">
                             <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                               <?php
+
                               $arr_duyuru_id=array();
                               $index = 0;
                               $arr_sql = "SELECT * FROM duyuru WHERE id ";
@@ -1490,7 +1510,7 @@ License: You must have a valid license purchased only from themeforest(the above
     });
 </script>
 <script>
-jQuery(document).ready(function() {       
+jQuery(document).ready(function() {
    // initiate layout and plugins
 	Metronic.init(); // init metronic core components
 	Layout.init(); // init current layout
