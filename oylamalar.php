@@ -133,8 +133,15 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     $sql_oytipi = "SELECT * FROM `oy_tipi` WHERE `ref_oylama_id` = ".$row['id'];
                                     $innerres = mysqli_query($db,$sql_oytipi);
+                                    $counter = 0;
                                     while($innerrow = mysqli_fetch_assoc($innerres))
                                     {
+                                        if($counter%3 == 0)
+                                            $renk = "success";
+                                        else if($counter%3 == 1)
+                                            $renk = "warning";
+                                        else
+                                            $renk = "danger";
                                         $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi = ".$row['id'];
                                         mysqli_query($db,$sql_oy);
                                         $sayi = mysqli_affected_rows($db);
@@ -146,30 +153,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                             echo $innerrow['description'];
                                         echo "</p>";
                                         echo "<div class=\"progress\">";
-                                           echo "<div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
+                                           echo "<div class=\"progress-bar progress-bar-$renk\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
                                            echo "</div>";
                                         echo "</div>";
+                                        $counter++;
                                     }
                                 }
                             ?>
 
-
-
-                            <h3>Stacked</h3>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 35%">
-									<span class="sr-only">
-									35% Complete (success) </span>
-                                </div>
-                                <div class="progress-bar progress-bar-warning" style="width: 20%">
-									<span class="sr-only">
-									20% Complete (warning) </span>
-                                </div>
-                                <div class="progress-bar progress-bar-danger" style="width: 10%">
-									<span class="sr-only">
-									10% Complete (danger) </span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
