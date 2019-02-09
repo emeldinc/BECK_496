@@ -28,8 +28,13 @@ if(isset($_POST['submit']))
 
     }
     else{
-      header('location: profil.php');
+      echo "<script> alert('Resim eklenemedi. jpeg formatinda olmali.') </script>";
+
     }
+  }
+  else{
+    echo "<script> alert('Resim eklenemedi. 1MB'dan kucuk olmali') </script>";
+
   }
 }
 

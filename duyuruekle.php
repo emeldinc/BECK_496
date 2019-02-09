@@ -122,7 +122,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="row">
 										<div class="col-md-offset-2 col-md-10">
 											<button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
-											<button type="button" class="btn default">Vazgeç</button>
+											<button type="button" class="btn default" onclick="location.href='duyurular.php';">Vazgeç</button>
 										</div>
 									</div>
 								</div>

@@ -255,7 +255,7 @@ License: You must have a valid license purchased only from themeforest(the above
                           </div>
 													<div class="margiv-top-10">
                             <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
-      											<button type="button" class="btn default">Vazgeç</button>
+      											<button type="button" class="btn default" onclick="location.href='index.php';">Vazgeç</button>
 													</div>
 												</form>
 											</div>
@@ -292,7 +292,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div>
                           <div class="margiv-top-10">
                             <button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i>Yükle</button>
-      											<a href="profil.php" class="btn default">Vazgeç </a>
+      											<a href="profil.php" class="btn default">Vazgeç</a>
 													</div>
 												</form>
 											</div>

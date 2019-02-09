@@ -129,7 +129,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet-body form">
 							<form class="form-horizontal form-bordered" action="duyuruduzenle_kayit.php?id= <?php echo $duyuru_id; ?>" method="POST" onsubmit="return postForm()" enctype="multipart/form-data">
                 <div class="form-title">
-          				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder=<?php echo $title; ?> name="title"/>
+          				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" value=<?php echo $title; ?> name="title"/>
           			</div>
 								<div class="form-body">
 									<div class="form-group">
@@ -148,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="row">
 										<div class="col-md-offset-2 col-md-10">
 											<button name = "submit" type="submit" class="btn green"><i class="fa fa-check"></i> Gönder</button>
-											<button type="button" class="btn default">Vazgeç</button>
+											<button type="button" class="btn default" onclick="location.href='duyurular.php';">Vazgeç</button>
 										</div>
 									</div>
 								</div>

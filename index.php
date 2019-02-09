@@ -106,7 +106,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed">
             <?php include('header.php'); ?>
             <!-- BEGIN PAGE BREADCRUMB -->
             <ul class="page-breadcrumb breadcrumb hide">
@@ -689,8 +689,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     }
                                     if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
 
-
-
                               ?>
                                 <div class="general-item-list">
                                     <div class="item">
@@ -700,7 +698,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <a href="" class="item-name primary-link"><?php echo $ref_username; ?></a>
                                                 <span class="item-label"><?php echo $date; ?></span>
                                             </div>
-                                            <span class="item-status"><span class="badge badge-empty badge-success"></span> Open</span>
                                         </div>
                                         <div class="item-body">
                                           <b>  <?php echo $title; ?></b>
