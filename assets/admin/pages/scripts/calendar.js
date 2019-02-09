@@ -70,9 +70,9 @@ var Calendar = function() {
                 });
             };
 
-            var addEvent = function(title) {
-                title = title.length === 0 ? "Untitled Event" : title;
-                var html = $('<div class="external-event label label-default">' + title + '</div>');
+            var addEvent = function(title,id) {
+                title = title.length === 0 ? "Başlıksız Etkinlik" : title;
+                var html = $('<div class="external-event label label-default" id = "'+id+'">'+ title + '</div>');
                 jQuery('#event_box').append(html);
                 initDrag(html);
             };
@@ -84,16 +84,23 @@ var Calendar = function() {
             $('#event_add').unbind('click').click(function() {
                 var title = $('#event_title').val();
                 addEvent(title);
+                 $.ajax({
+                    url: "etkinlik_ekle.php?description=" + title,
+                    type: 'POST',
+                    success: function(result) {
+                }});
             });
 
-            //predefined events
-            $('#event_box').html("");
-            addEvent("My Event 1");
-            addEvent("My Event 2");
-            addEvent("My Event 3");
-            addEvent("My Event 4");
-            addEvent("My Event 5");
-            addEvent("My Event 6");
+            $.ajax({ 
+               method: "GET", url: "etkinlik_getir.php",
+             }).done(function( data ) { 
+                var result = $.parseJSON(data);
+                    $.each( result, function( key, value ) {
+                        addEvent(value['description'],value['id']);
+                    });
+                });
+
+            
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
@@ -121,6 +128,13 @@ var Calendar = function() {
                     // is the "remove after drop" checkbox checked?
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
+                        
+                        var event_id = $(this).attr("id")
+                        $.ajax({
+                            url: "etkinlik_sil.php?event_id=" + event_id,
+                            type: 'POST',
+                            success: function(result) {
+                        }});
                         $(this).remove();
                     }
                 },
