@@ -111,82 +111,50 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <h3>Basic</h3>
-                            <p>Something something</p>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete </span>
-                                </div>
-                            </div>
-                            <h3>Striped</h3>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete (danger) </span>
-                                </div>
-                            </div>
-                            <h3>Animated</h3>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-									<span class="sr-only">
-									40% Complete (success) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-									<span class="sr-only">
-									20% Complete </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-									<span class="sr-only">
-									60% Complete (warning) </span>
-                                </div>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-									<span class="sr-only">
-									80% Complete (danger) </span>
-                                </div>
-                            </div>
+                            <?php
+                                $sql_oylama = "SELECT * FROM `oylama`";
+                                $res = mysqli_query($db,$sql_oylama);
+
+                                while($row = mysqli_fetch_assoc($res))
+                                {
+                                    echo "<h3>";
+                                        echo $row['title'];
+                                    echo "</h3>";
+                                    echo "<p>";
+                                        echo $row['description'];
+                                    echo "</p>";
+
+                                    $sql_oysayisi = "SELECT * FROM `oy` WHERE ref_oylama_id = ".$row['id'];
+                                    mysqli_query($db,$sql_oysayisi);
+                                    $toplamoy = mysqli_affected_rows($db);
+
+                                    //echo "<script> alert($toplamoy) </script>";
+
+
+                                    $sql_oytipi = "SELECT * FROM `oy_tipi` WHERE `ref_oylama_id` = ".$row['id'];
+                                    $innerres = mysqli_query($db,$sql_oytipi);
+                                    while($innerrow = mysqli_fetch_assoc($innerres))
+                                    {
+                                        $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi = ".$row['id'];
+                                        mysqli_query($db,$sql_oy);
+                                        $sayi = mysqli_affected_rows($db);
+                                        if($toplamoy == 0)
+                                            $yuzde = 0;
+                                        else
+                                            $yuzde = (($sayi/$toplamoy)*100);
+                                        echo "<p>";
+                                            echo $innerrow['description'];
+                                        echo "</p>";
+                                        echo "<div class=\"progress\">";
+                                           echo "<div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
+                                           echo "</div>";
+                                        echo "</div>";
+                                    }
+                                }
+                            ?>
+
+
+
                             <h3>Stacked</h3>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" style="width: 35%">

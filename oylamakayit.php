@@ -9,7 +9,7 @@
         $options = $_POST['options'];
 
         $options = explode(',', $options);
-        var_dump($options);
+        //var_dump($options);
 
         $description = $_POST['description'];
         $startdate = $_POST['startdate'];
@@ -20,10 +20,9 @@
         if(strtotime($startdate) >= strtotime($enddate) )
         {
             echo "<script> confirm('Başlangıç Tarihi Bitiş Tarihinden Büyük olamaz...') </script>";
-
             //header("location: yeni_oylama.php");
         }
-         $sql = "INSERT INTO `oylama`(`ref_user_id`,`ref_apartman_id`, `ref_site_id`, `title`, `description`, `start_date`, `end_date`) VALUES ($user,$apartman,$site,'$title','$description','$startdate','$enddate')";
+        $sql = "INSERT INTO `oylama`(`ref_user_id`,`ref_apartman_id`, `ref_site_id`, `title`, `description`, `start_date`, `end_date`) VALUES ($user,$apartman,$site,'$title','$description','$startdate','$enddate')";
 
 
         if(mysqli_query($db,$sql))
@@ -32,12 +31,12 @@
             $insert = $db -> insert_id;
             foreach ($options as $option)
             {
-                $sql = "INSERT INTO `oy_tipi` (`ref_oylama_id`,`description`) VALUES ($insert,$option)";
+                $sql = "INSERT INTO `oy_tipi` (`ref_oylama_id`,`description`) VALUES ($insert,'$option')";
                 mysqli_query($db,$sql);
             }
         }
         else
-            echo $db->error;
+            header("location: oylamalar.php");
 
 
 ?>
