@@ -2,6 +2,12 @@
     if(session_id() == '')
         session_start();
     include('dbconnection.php');
+
+    if(isset($_POST['oylamasil']))
+    {
+        $sql_oylamasil = "DELETE FROM `oylama` WHERE id = ".$_POST['oylamasil'];
+        mysqli_query($db,$sql_oylamasil);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +52,23 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico"/>
+
+    <script>
+        function oylama_sil(id)
+        {
+            var approval = confirm('Silmek İstediğinize Emin misiniz ?');
+            if(approval) {
+                $.ajax({
+                    type: "POST",
+                    data: {oylamasil: id},
+                    success: function (data) {
+                        location.reload();
+                    }
+                })
+            }
+        }
+
+    </script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -115,52 +138,75 @@ License: You must have a valid license purchased only from themeforest(the above
                                 $sql_oylama = "SELECT * FROM `oylama`";
                                 $res = mysqli_query($db,$sql_oylama);
 
-                                while($row = mysqli_fetch_assoc($res))
+                                if(mysqli_affected_rows($db) == 0)
+                                    echo "<h3> Henüz Aktif Oylama Bulunmamaktadır...</h3>";
+                                else
                                 {
-                                    echo "<h3>";
-                                        echo $row['title'];
-                                    echo "</h3>";
-                                    echo "<p>";
-                                        echo $row['description'];
-                                    echo "</p>";
-
-                                    $sql_oysayisi = "SELECT * FROM `oy` WHERE ref_oylama_id = ".$row['id'];
-                                    mysqli_query($db,$sql_oysayisi);
-                                    $toplamoy = mysqli_affected_rows($db);
-
-                                    //echo "<script> alert($toplamoy) </script>";
-
-
-                                    $sql_oytipi = "SELECT * FROM `oy_tipi` WHERE `ref_oylama_id` = ".$row['id'];
-                                    $innerres = mysqli_query($db,$sql_oytipi);
                                     $counter = 0;
-                                    while($innerrow = mysqli_fetch_assoc($innerres))
+                                    while($row = mysqli_fetch_assoc($res))
                                     {
-                                        if($counter%3 == 0)
-                                            $renk = "success";
-                                        else if($counter%3 == 1)
-                                            $renk = "warning";
-                                        else
-                                            $renk = "danger";
-                                        $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi = ".$row['id'];
-                                        mysqli_query($db,$sql_oy);
-                                        $sayi = mysqli_affected_rows($db);
-                                        if($toplamoy == 0)
-                                            $yuzde = 0;
-                                        else
-                                            $yuzde = (($sayi/$toplamoy)*100);
-                                        echo "<p>";
-                                            echo $innerrow['description'];
-                                        echo "</p>";
-                                        echo "<div class=\"progress\">";
-                                           echo "<div class=\"progress-bar progress-bar-$renk\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
-                                           echo "</div>";
-                                        echo "</div>";
-                                        $counter++;
+                                        if($counter != 0)
+                                            echo "<hr>";
+                                        echo "<div class=\"btn-group\" style=\"float: right\">
+														<button type=\"button\" class=\"btn btn-success\">Seçenekler</button>
+														<button type=\"button\" class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-angle-down\"></i></button>
+														<ul class=\"dropdown-menu\" role=\"menu\">
+															<li>
+																<a id=\"oylama_yap\" href=\"javascript:;\" > 
+																<i class=\"icon-note\"></i>
+																&nbsp;Oyla </a>																
+															</li>
+															<li>
+																<a id=\"oylama_sil\" href=\"javascript:;\" onclick=\"oylama_sil(".$row['id'].")\">
+																<i class=\"icon-trash\"></i>
+																&nbsp;Sil </a>
+															</li>
+														</ul>
+													</div>";
+                                        echo "<h1>";
+                                            echo $row['title'];
+                                        echo "</h1>";
+                                        echo "<h3>";
+                                            echo $row['description'];
+                                        echo "</h3>";
+
+                                        $sql_oysayisi = "SELECT * FROM `oy` WHERE ref_oylama_id = ".$row['id'];
+                                        mysqli_query($db,$sql_oysayisi);
+                                        $toplamoy = mysqli_affected_rows($db);
+
+                                        //echo "<script> alert($toplamoy) </script>";
+
+
+                                        $sql_oytipi = "SELECT * FROM `oy_tipi` WHERE `ref_oylama_id` = ".$row['id'];
+                                        $innerres = mysqli_query($db,$sql_oytipi);
+                                        while($innerrow = mysqli_fetch_assoc($innerres))
+                                        {
+                                            if($counter%3 == 0)
+                                                $renk = "success";
+                                            else if($counter%3 == 1)
+                                                $renk = "warning";
+                                            else
+                                                $renk = "danger";
+                                            $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi = ".$row['id'];
+                                            mysqli_query($db,$sql_oy);
+                                            $sayi = mysqli_affected_rows($db);
+                                            if($toplamoy == 0)
+                                                $yuzde = 0;
+                                            else
+                                                $yuzde = (($sayi/$toplamoy)*100);
+                                            echo "<p>";
+                                                echo $innerrow['description'];
+                                            echo "</p>";
+                                            echo "<div class=\"progress\">";
+                                               echo "<div class=\"progress-bar progress-bar-$renk\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            $counter++;
+                                        }
+
                                     }
                                 }
                             ?>
-
                         </div>
                     </div>
                 </div>
@@ -174,9 +220,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
-    <div class="page-footer-inner">
-        2014 &copy; Metronic by keenthemes.
-    </div>
+
     <div class="scroll-to-top">
         <i class="icon-arrow-up"></i>
     </div>
