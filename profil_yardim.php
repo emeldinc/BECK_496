@@ -71,7 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-			<?php include('header.php'); ?>
+			<?php $page='index';include('header.php'); ?>
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
 					<a href="profil.php">Profil</a>

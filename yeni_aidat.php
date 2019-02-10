@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('dbconnection.php');
 session_start();
 $apartman_id = $_SESSION['apartman_id'];
@@ -59,7 +59,7 @@ array_push($apartmandaki_daireler, $row);
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-			<?php include('header.php'); ?>
+			<?php $page='aidat_takip';include('header.php'); ?>
 			<!-- BEGIN PAGE HEAD -->
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
@@ -67,7 +67,7 @@ array_push($apartmandaki_daireler, $row);
 					<h1>Aidat Takip Sistemi</h1>
 				</div>
 				<!-- END PAGE TITLE -->
-			
+
 			</div>
 			<!-- END PAGE HEAD -->
 			<!-- BEGIN PAGE BREADCRUMB -->
@@ -127,12 +127,12 @@ array_push($apartmandaki_daireler, $row);
 											</div>
 										</div>
 									</div>
-											
+
 											<div class="form-actions">
 												<div class="row">
 													<div class="col-md-offset-3 col-md-9">
 														<button type="submit" class="btn btn-circle blue">Kaydet</button>
-														
+
 													</div>
 												</div>
 											</div>
@@ -181,13 +181,13 @@ array_push($apartmandaki_daireler, $row);
 <script src="assets/admin/pages/scripts/components-pickers.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-        jQuery(document).ready(function() {       
+        jQuery(document).ready(function() {
            // initiate layout and plugins
            Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
            ComponentsPickers.init();
-        });   
+        });
     </script>
 </body>
 <!-- END BODY -->

@@ -9,41 +9,41 @@
       echo '</script>';
    }
    $apartman_id = $_SESSION['apartman_id'];
-   
+
    $apartmandaki_daireler = array();
    $sql_daire = "SELECT * FROM daire WHERE ref_apartman_id = '".$apartman_id."'";
    $daireler = $db->query($sql_daire);
    while($row = $daireler->fetch_assoc()) {
       array_push($apartmandaki_daireler, $row);
    }
-   
+
    $sql_apartman_adi = "SELECT * FROM apartman WHERE id = '".$apartman_id."'";
    $apartman_adi = $db->query($sql_apartman_adi);
    $apartman_bilgileri = $apartman_adi->fetch_assoc();
-   
-   
+
+
    $gelir_giderler = array();
    $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
    $gelir_gider = $db->query($sql_gelir_gider);
    while($row = $gelir_gider->fetch_assoc()) {
       array_push($gelir_giderler, $row);
    }
-   
+
    $toplam_gelir = 0;
    $toplam_gider = 0;
    $toplam_para = 0;
    foreach ($gelir_giderler as $value) {
-   
+
       if($value['gelirMi'] == 1) {
          $toplam_gelir += $value['amount'];
       }
       else if($value['gelirMi'] == 0) {
          $toplam_gider += $value['amount'];
       }
-   
+
       $toplam_para += $value['amount'];
    }
-   
+
    $aidatlar = array();
    $toplam_aidat = 0;
    $odenmis_aidat = 0;
@@ -55,11 +55,11 @@
       array_push($aidatlar, $row);
       }
    }
-   
-   
-   
-   
-   
+
+
+
+
+
    foreach ($aidatlar as $value) {
       if($value['odendiMi'] == 1) {
          $odenmis_aidat += $value['amount'];
@@ -67,41 +67,41 @@
       else if($value['odendiMi'] == 0) {
          $odenmemis_aidat += $value['amount'];
       }
-   
+
       $toplam_aidat += $value['amount'];
    }
    $yıl = date("Y");
    $ay_gelir_gider = array();
    $sql_ay_gelir = "SELECT  * FROM    gelir_gider
-                                       WHERE   `date` >= '".$yıl."-02-01' 
+                                       WHERE   `date` >= '".$yıl."-02-01'
                                        AND     `date` <= '".$yıl."-12-31'
                                        AND     ref_apartman_id = '".$apartman_id."'";
    $ay_gelirler = $db->query($sql_ay_gelir);
-   
+
    while($row = $ay_gelirler->fetch_assoc()) {
       array_push($ay_gelir_gider, $row);
    }
-   
+
    $a = array();
    foreach ($ay_gelirler as $value) {
-   
+
       $unixtime = strtotime($value['date']);
       $ay = date('m', $unixtime);
-   
+
       if(!array_key_exists($ay, $a)) {
          $a[$ay] = 0;
       }
-      
+
       if($value['gelirMi'] == 1) {
          $a[$ay] += $value['amount'];
       }
       else {
          $a[$ay] -= $value['amount'];
       }
-      
+
    }
-   
-   
+
+
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +145,7 @@
    <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
    <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
    <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-               <?php include('header.php'); ?>
+               <?php $page='aidat_takip';include('header.php'); ?>
                <!-- BEGIN PAGE HEAD -->
                <div class="page-head">
                   <!-- BEGIN PAGE TITLE -->
@@ -233,7 +233,7 @@
       <script type="text/javascript">
          google.charts.load('current', {'packages':['bar']});
          google.charts.setOnLoadCallback(drawChart);
-         
+
          function drawChart() {
            var data = google.visualization.arrayToDataTable([
              ['Daire','Ödenmemiş Aidat'],
@@ -243,7 +243,7 @@
              <?php  }
             } ?>
             ]);
-         
+
            var options = {
              chart: {
                title: 'Aidatlar',
@@ -252,24 +252,24 @@
              colors: ['#e0440e', '#e6693e'],
              bars: 'horizontal' // Required for Material Bar Charts.
            };
-         
+
            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-         
+
            chart.draw(data, google.charts.Bar.convertOptions(options));
          }
       </script>
       <script type="text/javascript">
          // Load the Visualization API and the corechart package.
          google.charts.load('current', {'packages':['corechart']});
-         
+
          // Set a callback to run when the Google Visualization API is loaded.
          google.charts.setOnLoadCallback(drawChart);
-         
+
          // Callback that creates and populates a data table,
          // instantiates the pie chart, passes in the data and
          // draws it.
          function drawChart() {
-         
+
            // Create the data table.
            var data = new google.visualization.DataTable();
            data.addColumn('string', 'Topping');
@@ -278,11 +278,11 @@
              ['Gelir', <?php echo $toplam_gelir; ?>],
              ['Gider', <?php echo $toplam_gider; ?>]
            ]);
-         
+
            // Set chart options
            var options = {'title':'Toplam Gelir/Gider'
                           };
-         
+
            // Instantiate and draw our chart, passing in some options.
            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
            chart.draw(data, options);
@@ -291,27 +291,27 @@
       <script type="text/javascript">
          google.charts.load('current', {'packages':['bar']});
          google.charts.setOnLoadCallback(drawChart);
-         
+
          function drawChart() {
            var data = google.visualization.arrayToDataTable([
            ['Ay','Gelir'],
            <?php foreach($a as $key => $value) { ?>
-         
+
                [<?php echo $key; ?>,<?php echo $value; ?>],
-         
+
            <?php }  ?>
-         
+
             ]);
-         
+
            var options = {
              chart: {
                title: 'Toplam Gelir/Gider Ayrıntılı',
                subtitle: 'Aylara göre toplam gelen para (- ise para kaybedilmiş)'
              }
            };
-         
+
            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-         
+
            chart.draw(data, google.charts.Bar.convertOptions(options));
          }
       </script>
