@@ -1,4 +1,4 @@
-<?php 
+<?php
    include('dbconnection.php');
    session_start();
    $apartman_id = $_SESSION['apartman_id'];
@@ -58,7 +58,7 @@
    <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
    <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
    <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-            <?php include('header.php'); ?>
+            <?php $page='aidat_takip';include('header.php'); ?>
             <!-- BEGIN PAGE HEAD -->
             <div class="page-head">
                <!-- BEGIN PAGE TITLE -->
@@ -193,22 +193,22 @@
       <script src="assets/admin/pages/scripts/components-editors.js"></script>
       <!-- END PAGE LEVEL SCRIPTS -->
       <script>
-         jQuery(document).ready(function() {       
+         jQuery(document).ready(function() {
             // initiate layout and plugins
             Metronic.init(); // init metronic core components
          Layout.init(); // init current layout
          Demo.init(); // init demo features
             ComponentsPickers.init();
-         });   
+         });
       </script>
       <script>
-         jQuery(document).ready(function() {       
+         jQuery(document).ready(function() {
             // initiate layout and plugins
             Metronic.init(); // init metronic core components
          Layout.init(); // init current layout
          Demo.init(); // init demo features
             ComponentsEditors.init();
-         });   
+         });
       </script>
    </body>
    <!-- END BODY -->

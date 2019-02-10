@@ -397,39 +397,39 @@
                 <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                 <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                 <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <li>
+                    <li class="<?php if($page == 'index'){ echo 'active';} ?>">
                         <a href="index.php">
                             <i class="icon-home"></i>
                             <span class="title">Anasayfa</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'mesajlar'){ echo 'active';} ?>">
                         <a href="mesajlar.php">
                             <i class="icon-envelope"></i>
                             <span class="title">Mesajlar</span>
 
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'duyurular'){ echo 'active';} ?>">
                         <a href="duyurular.php">
                             <i class="icon-pin"></i>
                             <span class="title">Duyurular</span>
 
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'oylamalar'){ echo 'active';} ?>">
                         <a href="oylamalar.php">
                             <i class="icon-bar-chart"></i>
                             <span class="title">Oylamalar</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'aidat_takip'){ echo 'active';} ?>">
                         <a href="aidat_takip_sayfasi.php">
                             <i class="icon-wallet"></i>
                             <span class="title">Aidat Takibi</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'kayit_islemleri'){ echo 'active';} ?>">
                         <a href="javascript:;">
                             <i class="icon-settings"></i>
                             <span class="title">Kayıt İşlemleri</span>
@@ -447,7 +447,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="<?php if($page == 'hakkimizda'){ echo 'active';} ?>">
                         <a href="hakkimizda.php">
                             <i class="icon-info"></i>
                             <span class="title">Hakkımızda</span>

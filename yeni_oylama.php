@@ -47,13 +47,13 @@
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-            <?php include('header.php'); ?>
+            <?php $page='oylamalar'; include('header.php'); ?>
             <div class="page-head">
-                
+
                 <div class="page-title">
                     <h1>Yeni Oylama Oluşturma</h1>
                 </div>
-                
+
             </div>
             <!-- END PAGE HEAD -->
             <!-- BEGIN PAGE BREADCRUMB -->

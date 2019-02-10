@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-         <?php include('header.php'); ?>
+         <?php $page='oylamalar';include('header.php'); ?>
             <!-- BEGIN PAGE BREADCRUMB -->
             <ul class="page-breadcrumb breadcrumb">
                 <li>
@@ -176,7 +176,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															<li>
 																<a id=\"oylama_yap\" data-toggle=\"modal\" href=\"#oylama_".$row['id']."\" > 
 																<i class=\"icon-note\"></i>
-																&nbsp;Oyla </a>																
+																&nbsp;Oyla </a>
 															</li>
 															<li>
 																<a id=\"oylama_sil\" href=\"javascript:;\" onclick=\"oylama_sil(".$row['id'].")\">

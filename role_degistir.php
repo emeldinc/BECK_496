@@ -1,6 +1,6 @@
 <?php
       session_start();
-      include('dbconnection.php'); 
+      include('dbconnection.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,14 +46,14 @@
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-			<?php include('header.php'); ?>
+			<?php $page='kayit_islemleri';include('header.php'); ?>
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
 					<h1>Rol Değiştir</h1>
 				</div>
 				<!-- END PAGE TITLE -->
-			
+
 			</div>
 			<!-- END PAGE HEAD -->
 			<!-- BEGIN PAGE BREADCRUMB -->
@@ -113,7 +113,7 @@
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn blue-hoki">Onayla</button>
-											
+
 										</div>
 									</div>
 								</div>
@@ -128,7 +128,7 @@
 			<!-- END PAGE BREADCRUMB -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			
+
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>
