@@ -8,6 +8,16 @@
         $sql_oylamasil = "DELETE FROM `oylama` WHERE id = ".$_POST['oylamasil'];
         mysqli_query($db,$sql_oylamasil);
     }
+
+    if(isset($_POST['oylamayap']))
+    {
+        $user = $_SESSION['user_id'];
+        $oylama_id = $_POST['oylamayap'];
+        $oy = $_POST['oy'];
+        $sql_oylamayap = "INSERT INTO `oy`(`ref_user_id`, `ref_oylama_id`, `ref_oy_tipi_id`) VALUES ($user,$oylama_id,$oy)";
+        mysqli_query($db,$sql_oylamayap);
+        echo $sql_oylamayap;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script>
         function oylama_sil(id)
         {
-            var approval = confirm('Silmek İstediğinize Emin misiniz ?');
+            var approval = confirm('Bu oylamayı silmek istediğinize emin misiniz ?');
             if(approval) {
                 $.ajax({
                     type: "POST",
@@ -66,6 +76,18 @@ License: You must have a valid license purchased only from themeforest(the above
                     }
                 })
             }
+        }
+
+        function oylama_yap(oylama,oy)
+        {
+            $.ajax({
+                type: "POST",
+                data: {oylamayap: oylama,oy: oy},
+                success: function (data) {
+                    location.reload();
+                }
+            })
+
         }
 
     </script>
@@ -152,7 +174,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<button type=\"button\" class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-angle-down\"></i></button>
 														<ul class=\"dropdown-menu\" role=\"menu\">
 															<li>
-																<a id=\"oylama_yap\" href=\"javascript:;\" > 
+																<a id=\"oylama_yap\" data-toggle=\"modal\" href=\"#oylama_".$row['id']."\" > 
 																<i class=\"icon-note\"></i>
 																&nbsp;Oyla </a>																
 															</li>
@@ -176,39 +198,89 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         //echo "<script> alert($toplamoy) </script>";
 
-
                                         $sql_oytipi = "SELECT * FROM `oy_tipi` WHERE `ref_oylama_id` = ".$row['id'];
                                         $innerres = mysqli_query($db,$sql_oytipi);
                                         while($innerrow = mysqli_fetch_assoc($innerres))
                                         {
-                                            if($counter%3 == 0)
+
+                                            if($counter%4 == 0)
                                                 $renk = "success";
-                                            else if($counter%3 == 1)
+                                            else if($counter%4 == 1)
                                                 $renk = "warning";
-                                            else
+                                            else if($counter%4 == 2)
                                                 $renk = "danger";
-                                            $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi = ".$row['id'];
+                                            else
+                                                $renk = "primary";
+                                            $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi_id = ". $innerrow['id'] . " AND ref_oylama_id = ".$row['id'];
                                             mysqli_query($db,$sql_oy);
                                             $sayi = mysqli_affected_rows($db);
                                             if($toplamoy == 0)
                                                 $yuzde = 0;
                                             else
-                                                $yuzde = (($sayi/$toplamoy)*100);
+                                                $yuzde = (($sayi / $toplamoy)*100);
+                                            echo "<script> alert($sql_oy) </script>";
                                             echo "<p>";
                                                 echo $innerrow['description'];
                                             echo "</p>";
                                             echo "<div class=\"progress\">";
-                                               echo "<div class=\"progress-bar progress-bar-$renk\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%\">";
+                                               echo "<div class=\"progress-bar progress-bar-$renk\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ". $yuzde ."%;\">";
                                             echo "</div>";
                                             echo "</div>";
                                             $counter++;
-                                        }
 
+
+                                        }
+                                        echo "<div class=\"modal fade bs-modal-lg\" id=\"oylama_".$row['id']."\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\" style=\"display: none;\">
+                                                    <div class=\"modal-dialog modal-lg\">
+                                                        <div class=\"modal-content\">
+                                                            <div class=\"modal-header\">
+                                                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\"></button>
+                                                                <h1 class=\"modal-title\"> ".$row['title']." </h1>
+                                                                <h3> ".$row['description']." </h3>
+                                                                <p>Lütfen birini seçiniz...</p>
+                                                            </div>
+                                                            <div class=\"modal-body\">";
+                                                                $innerres = mysqli_query($db,$sql_oytipi);
+                                                                $counter = 0;
+                                                                while($innerrow = mysqli_fetch_assoc($innerres))
+                                                                {
+                                                                    if($counter%4 == 0)
+                                                                        $renk = "success";
+                                                                    else if($counter%4 == 1)
+                                                                        $renk = "warning";
+                                                                    else if($counter%4 == 2)
+                                                                        $renk = "danger";
+                                                                    else
+                                                                        $renk = "primary";
+                                                                    $sql_oy = "SELECT * FROM `oy` WHERE ref_oy_tipi_id = ". $innerrow['id'] . " AND ref_oylama_id = ".$row['id'];
+                                                                    mysqli_query($db,$sql_oy);
+                                                                    $sayi = mysqli_affected_rows($db);
+
+                                                                    if($toplamoy == 0)
+                                                                        $yuzde = 20;
+                                                                    else
+                                                                        $yuzde = (int)(($sayi/$toplamoy)*100);
+
+                                                                    echo "<button type=\"button\" style=\"width: ".(20+(($yuzde)*0.8))."%;\" class=\"btn btn-".$renk."\" onclick=\"oylama_yap(".$row['id'].",".$innerrow['id'].");\"'> ".$innerrow['description']." ".$yuzde."% </button>";
+                                                                    echo "<br><br>";
+                                                                    $counter++;
+                                                                }
+                                        echo                "</div>
+                                                            <div class=\"modal-footer\">
+                                                                <button type=\"button\" class=\"btn default\" data-dismiss=\"modal\">Vazgeç</button>
+                                                                <button type=\"button\" class=\"btn blue\">Oyla</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>";
                                     }
                                 }
                             ?>
                         </div>
                     </div>
+
                 </div>
                 <!-- END PAGINATION PORTLET-->
             </div>
