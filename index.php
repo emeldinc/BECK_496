@@ -166,10 +166,13 @@ License: You must have a valid license purchased only from themeforest(the above
 										<hr/>
 										<div id="event_box">
 										</div>
+                                        <br />
 										<label for="drop-remove">
 										<input type="checkbox" id="drop-remove"/>Taşıdıktan sonra sil </label>
 										<hr class="visible-xs"/>
 									</div>
+                                    <br />
+                                    ** Silmek istediğiniz etkinlik için takvimden etkinliğe sol tıklayın.
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">

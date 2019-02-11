@@ -330,24 +330,20 @@
                             <span class="title">Aidat Takibi</span>
                         </a>
                     </li>
-                    <li class="<?php if($page == 'kayit_islemleri'){ echo 'active';} ?>">
-                        <a href="javascript:;">
-                            <i class="icon-settings"></i>
-                            <span class="title">Kayıt İşlemleri</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="eksik_site_bilgileri.php">
-                                <i class="icon-pencil"></i>
-                                Adres Ekle</a>
-                            </li>
-                            <li>
-                                <a href="role_degistir.php">
-                                <i class="icon-pencil"></i>
-                                Rol Değiştir</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
+                        
+                   <li>
+                       <a href="eksik_site_bilgileri.php">
+                       <i class="icon-settings"></i>
+                       Adres Ekle</a>
+                   </li>
+                   <li class = "<?php if($page == 'rol_degistir'){ echo 'active';} ?>">
+                       <a href="role_degistir.php">
+                       <i class="icon-pencil"></i>
+                       Rol Değiştir</a>
+                   </li>
+                        
+                  
                     <li class="<?php if($page == 'hakkimizda'){ echo 'active';} ?>">
                         <a href="hakkimizda.php">
                             <i class="icon-users"></i>
