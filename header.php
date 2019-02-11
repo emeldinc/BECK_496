@@ -335,12 +335,12 @@
                    <li>
                        <a href="eksik_site_bilgileri.php">
                        <i class="icon-settings"></i>
-                       Adres Ekle</a>
+                       <span class="title">Adres Ekle</span></a>
                    </li>
                    <li class = "<?php if($page == 'rol_degistir'){ echo 'active';} ?>">
                        <a href="role_degistir.php">
                        <i class="icon-pencil"></i>
-                       Rol Değiştir</a>
+                       <span class="title">Rol Değiştir</span></a>
                    </li>
                         
                   

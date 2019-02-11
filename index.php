@@ -76,13 +76,13 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
     <link href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
     <link href="assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
     <link href="assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css">
     <!-- END PAGE LEVEL PLUGIN STYLES -->
     <!-- BEGIN PAGE STYLES -->
     <link href="assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="assets/global/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
     <!-- END PAGE STYLES -->
     <!-- BEGIN THEME STYLES -->
     <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
@@ -1486,7 +1486,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
 <script src="assets/global/plugins/moment.min.js"></script>
-<script src="assets/global/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="assets/global/plugins/fullcalendar/fullcalendar.js"></script>
+<script src="assets/global/plugins/fullcalendar/lang/tr.js"></script>
+
 <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
 <script src="assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
