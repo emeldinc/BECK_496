@@ -5,8 +5,20 @@
 
     if(isset($_POST['oylamasil']))
     {
-        $sql_oylamasil = "DELETE FROM `oylama` WHERE id = ".$_POST['oylamasil'];
-        mysqli_query($db,$sql_oylamasil);
+        $user = $_SESSION['user_id'];
+        $oylama_id = $_POST['oylamasil'];
+        $sql_oylamasil = "SELECT * FROM `oylama` WHERE ref_user_id = $user AND id = ".$oylama_id;
+        $res = mysqli_query($db,$sql_oylamasil);
+        $row = mysqli_fetch_assoc($res);
+        if($row['ref_user_id'] == $user)
+        {
+            $sql_oylamasil = "DELETE FROM `oylama` WHERE id = ".$_POST['oylamasil'];
+            mysqli_query($db,$sql_oylamasil);
+        }
+        else
+        {
+            echo "<script> alert('Bu oylamayı silemezsiniz...') </script>";
+        }
     }
 
     if(isset($_POST['oylamayap']))
@@ -14,30 +26,28 @@
         $user = $_SESSION['user_id'];
         $oylama_id = $_POST['oylamayap'];
         $oy = $_POST['oy'];
-        $sql_oylamayap = "INSERT INTO `oy`(`ref_user_id`, `ref_oylama_id`, `ref_oy_tipi_id`) VALUES ($user,$oylama_id,$oy)";
-        mysqli_query($db,$sql_oylamayap);
-        echo $sql_oylamayap;
+        $sql_onceki_oylama = "SELECT * FROM `oy` WHERE ref_user_id = $user AND ref_oylama_id = $oylama_id";
+        mysqli_query($db,$sql_onceki_oylama);
+        if(mysqli_affected_rows($db) < 1)
+        {
+            $sql_oylamayap = "INSERT INTO `oy`(`ref_user_id`, `ref_oylama_id`, `ref_oy_tipi_id`) VALUES ($user,$oylama_id,$oy)";
+            mysqli_query($db,$sql_oylamayap);
+
+        }
+        else
+        {
+            echo "<script> alert('Daha önceden oylama yaptığınız için tekrar kullanamazsınız...') </script>";
+        }
     }
 ?>
 
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
+
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
+
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+
 <head>
     <meta charset="utf-8"/>
     <title>Oylamalar</title>
@@ -80,14 +90,16 @@ License: You must have a valid license purchased only from themeforest(the above
 
         function oylama_yap(oylama,oy)
         {
-            $.ajax({
-                type: "POST",
-                data: {oylamayap: oylama,oy: oy},
-                success: function (data) {
-                    location.reload();
-                }
-            })
-
+            var approval = confirm('Emin misiniz ?');
+            if(approval) {
+                $.ajax({
+                    type: "POST",
+                    data: {oylamayap: oylama, oy: oy},
+                    success: function (response) {
+                        location.reload();
+                    }
+                })
+            }
         }
 
     </script>
@@ -164,17 +176,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                     echo "<h3> Henüz Aktif Oylama Bulunmamaktadır...</h3>";
                                 else
                                 {
-                                    $counter = 0;
+                                    $count = 0;
                                     while($row = mysqli_fetch_assoc($res))
                                     {
-                                        if($counter != 0)
+                                        $counter = 0;
+                                        if($count != 0)
                                             echo "<hr>";
                                         echo "<div class=\"btn-group\" style=\"float: right\">
 														<button type=\"button\" class=\"btn btn-success\">Seçenekler</button>
 														<button type=\"button\" class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-angle-down\"></i></button>
 														<ul class=\"dropdown-menu\" role=\"menu\">
 															<li>
-																<a id=\"oylama_yap\" data-toggle=\"modal\" href=\"#oylama_".$row['id']."\" > 
+																<a id=\"oylama_yap\" data-toggle=\"modal\" href=\"#oylama_".$row['id']."\"> 
 																<i class=\"icon-note\"></i>
 																&nbsp;Oyla </a>
 															</li>
@@ -185,16 +198,19 @@ License: You must have a valid license purchased only from themeforest(the above
 															</li>
 														</ul>
 													</div>";
+                                        $sql_oysayisi = "SELECT * FROM `oy` WHERE ref_oylama_id = ".$row['id'];
+                                        mysqli_query($db,$sql_oysayisi);
+                                        $toplamoy = mysqli_affected_rows($db);
+
                                         echo "<h1>";
                                             echo $row['title'];
                                         echo "</h1>";
                                         echo "<h3>";
                                             echo $row['description'];
                                         echo "</h3>";
+                                        echo  "<h5><cite>Toplam Kullanılan Oy:</cite> $toplamoy</h5>";
 
-                                        $sql_oysayisi = "SELECT * FROM `oy` WHERE ref_oylama_id = ".$row['id'];
-                                        mysqli_query($db,$sql_oysayisi);
-                                        $toplamoy = mysqli_affected_rows($db);
+
 
                                         //echo "<script> alert($toplamoy) </script>";
 
@@ -218,7 +234,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 $yuzde = 0;
                                             else
                                                 $yuzde = (($sayi / $toplamoy)*100);
-                                            echo "<script> alert($sql_oy) </script>";
+                                            //echo "<script> alert($sql_oy) </script>";
                                             echo "<p>";
                                                 echo $innerrow['description'];
                                             echo "</p>";
@@ -256,14 +272,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     mysqli_query($db,$sql_oy);
                                                                     $sayi = mysqli_affected_rows($db);
 
-                                                                    if($toplamoy == 0)
-                                                                        $yuzde = 20;
-                                                                    else
-                                                                        $yuzde = (int)(($sayi/$toplamoy)*100);
 
-                                                                    echo "<button type=\"button\" style=\"width: ".(20+(($yuzde)*0.8))."%;\" class=\"btn btn-".$renk."\" onclick=\"oylama_yap(".$row['id'].",".$innerrow['id'].");\"'> ".$innerrow['description']." ".$yuzde."% </button>";
+
+                                                                    if($toplamoy == 0)
+                                                                    {
+                                                                        $yuzde = 20;
+                                                                        $gercek_yuzde = 0;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        $yuzde = (int)(($sayi/$toplamoy)*100);
+                                                                        $gercek_yuzde = $yuzde;
+                                                                    }
+                                                                    echo "<button type=\"button\" style=\"width: ".(20+(($yuzde)*0.8))."%;\" class=\"btn btn-".$renk."\" title=\"#1oy1oydur\" onclick=\"oylama_yap(".$row['id'].",".$innerrow['id'].");\"' > ".$innerrow['description']." ".$gercek_yuzde."% </button>";
                                                                     echo "<br><br>";
                                                                     $counter++;
+
                                                                 }
                                         echo                "</div>
                                                             <div class=\"modal-footer\">
@@ -275,6 +299,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <!-- /.modal-dialog -->
                                                 </div>";
+                                        $count++;
                                     }
                                 }
                             ?>
