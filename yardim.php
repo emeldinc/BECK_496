@@ -31,7 +31,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Profil | Yardım</title>
+<title>Yardım</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -71,14 +71,14 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
-			<?php $page='index';include('header.php'); ?>
+			<?php $page='yardim';include('header.php'); ?>
 			<ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="profil.php">Profil</a>
+        <li>
+					<a href="index.php">Anasayfa</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="profil_yardim.php">Yardım</a>
+					<a href="yardim.php">Yardım</a>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
@@ -86,44 +86,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					<!-- BEGIN PROFILE SIDEBAR -->
-					<div class="profile-sidebar" style="width:250px;">
-						<!-- PORTLET MAIN -->
-						<div class="portlet light profile-sidebar-portlet">
-							<!-- SIDEBAR USERPIC -->
-              <div class="profile-userpic">
-								<img src="<?php echo $image;?>" class="img-responsive" alt="">
-							</div>
-							<!-- END SIDEBAR USERPIC -->
-							<!-- SIDEBAR USER TITLE -->
-              <div class="profile-usertitle">
-                <div class="profile-usertitle-name">
-                  <?php echo $_SESSION['username']; ?>
-                </div>
-                <div class="profile-usertitle-job">
-                <?php echo $_SESSION['user_role']; ?>
-                </div>
-              </div>
-							<!-- END SIDEBAR USER TITLE -->
-							<!-- SIDEBAR MENU -->
-              <div class="profile-usermenu">
-								<ul class="nav">
-									<li>
-										<a href="profil.php">
-										<i class="icon-settings"></i>
-									Profil Ayarları </a>
-									</li>
-								<li class="active">
-										<a href="profil_yardim.php">
-										<i class="icon-info"></i>
-										Yardım </a>
-									</li>
-								</ul>
-							</div>
-							<!-- END MENU -->
-						</div>
-					</div>
-					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
 					<div class="profile-content">
 						<div class="row">

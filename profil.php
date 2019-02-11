@@ -71,7 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
- 			<?php $page='index';include('header.php'); ?>
+ 			<?php $page='profil';include('header.php'); ?>
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
 				<div class="page-title">
@@ -190,28 +190,11 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="profile-usertitle-job">
 								<?php echo $_SESSION['user_role']; ?>
 								</div>
+                </br>
 							</div>
 							<!-- END SIDEBAR USER TITLE -->
-
-							<!-- SIDEBAR MENU -->
-							<div class="profile-usermenu">
-								<ul class="nav">
-									<li class="active">
-										<a href="profil.php">
-										<i class="icon-settings"></i>
-									Profil Ayarları </a>
-									</li>
-									<li>
-										<a href="profil_yardim.php">
-										<i class="icon-info"></i>
-										Yardım </a>
-									</li>
-								</ul>
-							</div>
-							<!-- END MENU -->
 						</div>
 						<!-- END PORTLET MAIN -->
-
 					</div>
 					<!-- END BEGIN PROFILE SIDEBAR -->
 					<!-- BEGIN PROFILE CONTENT -->
