@@ -205,7 +205,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="portlet-title tabbable-line">
 										<div class="caption caption-md">
 											<i class="icon-globe theme-font hide"></i>
-											<span class="caption-subject font-blue-madison bold ">Profil Ayarları</span>
+											<span class="caption-subject font-blue-madison bold ">  <i class="icon-user"></i> Profil Ayarları</span>
 										</div>
 										<ul class="nav nav-tabs">
 											<li class="active">

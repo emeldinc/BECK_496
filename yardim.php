@@ -72,13 +72,23 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
 			<?php $page='yardim';include('header.php'); ?>
+      <div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<div class="page-title">
+					<h1>Yardım</h1>
+				</div>
+				<!-- END PAGE TITLE -->
+				<!-- BEGIN PAGE TOOLBAR -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
-        <li>
+				<li>
 					<a href="index.php">Anasayfa</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
-					<a href="yardim.php">Yardım</a>
+					<a href="yardım.php">Yardım</a>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
@@ -94,122 +104,124 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="portlet-title tabbable-line">
 										<div class="caption caption-md">
 											<i class="icon-globe theme-font hide"></i>
-											<span class="caption-subject font-blue-madison bold">BİLGİLENDİRME</span>
+											<span class="caption-subject font-blue-madison bold"><i class="icon-support"></i> BİLGİLENDİRME</span>
 										</div>
 										<ul class="nav nav-tabs">
 											<li class="active">
-												<a href="#tab_1_1" data-toggle="tab">Anasayfa Hakkında </a>
+												<a href="#tab_1_1" data-toggle="tab">Anasayfa </a>
 											</li>
 											<li>
-												<a href="#tab_1_2" data-toggle="tab">Duyurular Hakkında</a>
-											</li>
-											<li>
-												<a href="#tab_1_3" data-toggle="tab">Oylama Sitemi Hakkında</a>
+												<a href="#tab_1_2" data-toggle="tab">Duyurular </a>
 											</li>
                       <li>
-                        <a href="#tab_1_4" data-toggle="tab">Aidat Takibi Hakkında</a>
+                        <a href="#tab_1_3" data-toggle="tab">Oylamalar</a>
+                      </li>
+                      <li>
+                        <a href="#tab_1_4" data-toggle="tab">Aidat Takibi</a>
+                      </li>
+                      <li>
+                        <a href="#tab_1_5" data-toggle="tab">Mesajlar</a>
                       </li>
 										</ul>
 									</div>
 									<div class="portlet-body">
 										<div class="tab-content">
-											<!-- GENERAL QUESTION TAB -->
-											<div class="tab-pane active" id="tab_1_1">
-												<div id="accordion1" class="panel-group">
-													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
-															1. Adres Değişikliği? (mesela) </a>
-															</h4>
-														</div>
-														<div id="accordion1_1" class="panel-collapse collapse in">
-															<div class="panel-body">
-																 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
-															2. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_2" class="panel-collapse collapse">
-															<div class="panel-body">
-																 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-success">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
-															3. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_3" class="panel-collapse collapse">
-															<div class="panel-body">
-																 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-warning">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">
-															4. Wolf moon officia aute, non cupidatat skateboard dolor brunch ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_4" class="panel-collapse collapse">
-															<div class="panel-body">
-																 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-danger">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
-															5. Leggings occaecat craft beer farm-to-table, raw denim aesthetic ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_5" class="panel-collapse collapse">
-															<div class="panel-body">
-																 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
-															6. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_6" class="panel-collapse collapse">
-															<div class="panel-body">
-																 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
-															</div>
-														</div>
-													</div>
-													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-															<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
-															7. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft ? </a>
-															</h4>
-														</div>
-														<div id="accordion1_7" class="panel-collapse collapse">
-															<div class="panel-body">
-																 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- END GENERAL QUESTION TAB -->
+                      <div class="tab-pane active" id="tab_1_1">
+                        <div id="accordion1" class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+                              1. Adres Değişikliği? (mesela) </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_1" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+                              2. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_2" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-success">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
+                              3. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_3" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-warning">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">
+                              4. Wolf moon officia aute, non cupidatat skateboard dolor brunch ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_4" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-danger">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
+                              5. Leggings occaecat craft beer farm-to-table, raw denim aesthetic ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_5" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
+                              6. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_6" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+                              7. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion1_7" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- END GENERAL QUESTION TAB -->
 											<!-- MEMBERSHIP TAB -->
 											<div class="tab-pane" id="tab_1_2">
 												<div id="accordion2" class="panel-group">
@@ -465,7 +477,109 @@ License: You must have a valid license purchased only from themeforest(the above
                           </div>
                         </div>
                       </div>
-
+                      <div class="tab-pane" id="tab_1_5">
+                        <div id="accordion3" class="panel-group">
+                          <div class="panel panel-danger">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_1">
+                              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_1" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                                <p>
+                                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </p>
+                                <p>
+                                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                </p>
+                                <p>
+                                   Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-success">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_2">
+                              2. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_2" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_3">
+                              3. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_3" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_4">
+                              4. Wolf moon officia aute, non cupidatat skateboard dolor brunch ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_4" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_5">
+                              5. Leggings occaecat craft beer farm-to-table, raw denim aesthetic ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_5" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_6">
+                              6. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_6" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_7">
+                              7. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft ? </a>
+                              </h4>
+                            </div>
+                            <div id="accordion3_7" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 											<!-- END TERMS OF USE TAB -->
 										</div>
 									</div>

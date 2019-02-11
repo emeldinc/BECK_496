@@ -350,7 +350,7 @@
                     </li>
                     <li class="<?php if($page == 'hakkimizda'){ echo 'active';} ?>">
                         <a href="hakkimizda.php">
-                            <i class="icon-info"></i>
+                            <i class="icon-users"></i>
                             <span class="title">Hakkımızda</span>
                         </a>
                     </li>
