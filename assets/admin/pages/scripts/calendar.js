@@ -83,11 +83,12 @@ var Calendar = function() {
 
             $('#event_add').unbind('click').click(function() {
                 var title = $('#event_title').val();
-                addEvent(title);
-                 $.ajax({
+                $.ajax({
                     url: "etkinlik_ekle.php?description=" + title,
                     type: 'POST',
                     success: function(result) {
+                    var x = $.parseJSON(result);
+                    addEvent(title,x);
                 }});
             });
 
@@ -98,7 +99,7 @@ var Calendar = function() {
                     $.each( result, function( key, value ) {
                         addEvent(value['description'],value['id']);
                     });
-                });
+            });
 
             
 
@@ -109,6 +110,12 @@ var Calendar = function() {
                 slotMinutes: 15,
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
+                eventDrop: function(event, delta, revertFunc) {
+                    var event_id = $(event).attr("id");
+                    console.log($(this));
+
+                    
+                },
                 drop: function(date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
@@ -117,9 +124,17 @@ var Calendar = function() {
                     var copiedEventObject = $.extend({}, originalEventObject);
 
                     // assign it the date that was reported
+                    var event_id = $(this).attr("id");
                     copiedEventObject.start = date;
                     copiedEventObject.allDay = allDay;
                     copiedEventObject.className = $(this).attr("data-class");
+                    var myDate = new Date(copiedEventObject.start._d);
+
+                    $.ajax({
+                            url: "takvime_ekle.php?event_id=" + event_id+"&date="+myDate.toLocaleString(),
+                            type: 'POST',
+                            success: function(result) {
+                    }});
 
                     // render the event on the calendar
                     // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
@@ -129,7 +144,7 @@ var Calendar = function() {
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
                         
-                        var event_id = $(this).attr("id")
+                        var event_id = $(this).attr("id");
                         $.ajax({
                             url: "etkinlik_sil.php?event_id=" + event_id,
                             type: 'POST',
@@ -138,48 +153,15 @@ var Calendar = function() {
                         $(this).remove();
                     }
                 },
-                events: [{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    backgroundColor: Metronic.getBrandColor('yellow')
-                }, {
-                    title: 'Long Event',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d - 3, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('red')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d + 4, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false,
-                }, {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    backgroundColor: Metronic.getBrandColor('grey'),
-                    allDay: false,
-                }, {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    backgroundColor: Metronic.getBrandColor('purple'),
-                    allDay: false,
-                }, {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    backgroundColor: Metronic.getBrandColor('yellow'),
-                    url: 'http://google.com/',
-                }]
+            events: {
+            url: 'takvimden_getir.php',
+            type: 'POST',
+            dataType: 'json',
+
+                error: function(error) {
+                    alert(error);
+                }
+            }
             });
 
         }

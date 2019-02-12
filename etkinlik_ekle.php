@@ -13,7 +13,8 @@ $sql = "INSERT INTO beckdoor.etkinlik (description, ref_apartman_id, ref_site_id
     VALUES ('".$description."','".$apartman_id."','".$site_id."')";
 
 if (mysqli_query($db,$sql)) {
-        
+  $insert_id = $db->insert_id;
+  echo json_encode($insert_id);
 } else {
     echo $db->error;
 }
