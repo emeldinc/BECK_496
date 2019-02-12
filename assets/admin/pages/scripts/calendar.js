@@ -88,11 +88,11 @@ var Calendar = function() {
                     type: 'POST',
                     success: function(result) {
                     var x = $.parseJSON(result);
-                    if(x === "etkinlik var") {
-                        alert("Aynı isimde bir etkinlik var zaten...")
+                    if(x !== "etkinlik var") {
+                        addEvent(title,x);
                     }
                     else {
-                        addEvent(title,x);
+                        alert("Aynı isimde bir etkinlik var zaten...")
                     }
                     
                     
@@ -168,6 +168,10 @@ var Calendar = function() {
                 error: function(error) {
                     alert(error);
                 }
+            },
+            eventClick: function(event) {
+                return confirm("Bu işlem etkinliği sistemden tamamen silecektir emin misiniz...");
+                
             }
             });
 

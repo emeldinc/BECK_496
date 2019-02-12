@@ -13,6 +13,7 @@ $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
+    	$row['url'] = "takvimden_sil.php?event_id=".$row['id'];
         array_push($result_array, $row);
     }
 }
