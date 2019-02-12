@@ -21,11 +21,13 @@ else {
 	$sql_insert = "INSERT INTO beckdoor.etkinlik (start_date, description, ref_apartman_id, ref_site_id,silindiMi)
     VALUES ('".$datetime."','".$row['description']."','".$row['ref_apartman_id']."','".$row['ref_site_id']."',1)";
 	if (mysqli_query($db,$sql_insert)) {
-	  
+	  echo json_encode("sayfayi yenile");
 	} else {
 	    echo $db->error;
 	}
 }
+
+
 
 
 

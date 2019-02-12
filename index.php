@@ -172,6 +172,10 @@ License: You must have a valid license purchased only from themeforest(the above
 										<hr class="visible-xs"/>
 									</div>
                                     <br />
+                                    *Aynı başlığa sahip etkinlikleri takvime birden fazla kez eklemek için sürükledikten sonra sayfanın yenilenmesini bekleyin...
+                                    <br />
+                                    <br />
+
                                     ** Silmek istediğiniz etkinlik için takvimden etkinliğe sol tıklayın.
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>

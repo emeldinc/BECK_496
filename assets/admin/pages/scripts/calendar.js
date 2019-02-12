@@ -5,7 +5,10 @@ var Calendar = function() {
         //main function to initiate the module
         init: function() {
             Calendar.initCalendar();
+              $('#calendar').fullCalendar('option', 'height', 550);
         },
+
+
 
         initCalendar: function() {
 
@@ -119,6 +122,7 @@ var Calendar = function() {
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 eventDrop: function(event, delta, revertFunc) {
                     var event_id = $(event).attr("id");
+                    console.log(event_id);
                     var myDate = new Date(event.start._d);
                     $.ajax({
                             url: "takvimi_guncelle.php?event_id=" + event_id+"&date="+myDate.toLocaleString(),
@@ -129,6 +133,10 @@ var Calendar = function() {
 
                     
                 },
+                eventClick: function(event) {
+                return confirm("Bu işlem etkinliği sistemden tamamen silecektir emin misiniz...");
+                
+                },
                 drop: function(date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
@@ -138,15 +146,21 @@ var Calendar = function() {
 
                     // assign it the date that was reported
                     var event_id = $(this).attr("id");
+                    copiedEventObject.id = event_id;
+                    copiedEventObject.url = "takvimden_sil.php?event_id="+event_id;
                     copiedEventObject.start = date;
                     copiedEventObject.allDay = allDay;
                     copiedEventObject.className = $(this).attr("data-class");
                     var myDate = new Date(copiedEventObject.start._d);
 
-                    $.ajax({
+                     $.ajax({
                             url: "takvime_ekle.php?event_id=" + event_id+"&date="+myDate.toLocaleString(),
                             type: 'POST',
                             success: function(result) {
+                                var y = $.parseJSON(result);
+                                if(y === "sayfayi yenile") {
+                                    window.location.reload(false);
+                                }
                     }});
 
                     // render the event on the calendar
@@ -157,7 +171,7 @@ var Calendar = function() {
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
                         
-                        var event_id = $(this).attr("id");
+                        var event_id = copiedEventObject.id;
                         $.ajax({
                             url: "etkinlik_sil.php?event_id=" + event_id,
                             type: 'POST',
@@ -165,7 +179,10 @@ var Calendar = function() {
                         }});
                         $(this).remove();
                     }
+
+                   
                 },
+
             events: {
             url: 'takvimden_getir.php',
             type: 'POST',
@@ -175,10 +192,7 @@ var Calendar = function() {
                     alert(error);
                 }
             },
-            eventClick: function(event) {
-                return confirm("Bu işlem etkinliği sistemden tamamen silecektir emin misiniz...");
-                
-            }
+            
             });
 
         }
