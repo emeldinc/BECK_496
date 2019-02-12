@@ -26,14 +26,14 @@ var Calendar = function() {
                     h = {
                         right: 'title, prev, next',
                         center: '',
-                        left: 'agendaDay, agendaWeek, month, today'
+                        left: 'month, today'
                     };
                 } else {
                     $('#calendar').removeClass("mobile");
                     h = {
                         right: 'title',
                         center: '',
-                        left: 'agendaDay, agendaWeek, month, today, prev,next'
+                        left: 'month, today, prev,next'
                     };
                 }
             } else {
@@ -42,14 +42,14 @@ var Calendar = function() {
                     h = {
                         left: 'title, prev, next',
                         center: '',
-                        right: 'today,month,agendaWeek,agendaDay'
+                        right: 'today,month'
                     };
                 } else {
                     $('#calendar').removeClass("mobile");
                     h = {
                         left: 'title',
                         center: '',
-                        right: 'prev,next,today,month,agendaWeek,agendaDay'
+                        right: 'prev,next,today,month'
                     };
                 }
             }
@@ -119,7 +119,13 @@ var Calendar = function() {
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 eventDrop: function(event, delta, revertFunc) {
                     var event_id = $(event).attr("id");
-                    console.log($(this));
+                    var myDate = new Date(event.start._d);
+                    $.ajax({
+                            url: "takvimi_guncelle.php?event_id=" + event_id+"&date="+myDate.toLocaleString(),
+                            type: 'POST',
+                            success: function(result) {
+                    }});
+                    
 
                     
                 },
