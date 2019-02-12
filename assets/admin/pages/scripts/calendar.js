@@ -88,7 +88,14 @@ var Calendar = function() {
                     type: 'POST',
                     success: function(result) {
                     var x = $.parseJSON(result);
-                    addEvent(title,x);
+                    if(x === "etkinlik var") {
+                        alert("Aynı isimde bir etkinlik var zaten...")
+                    }
+                    else {
+                        addEvent(title,x);
+                    }
+                    
+                    
                 }});
             });
 
