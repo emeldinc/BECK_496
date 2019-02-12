@@ -168,15 +168,18 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
                                         <br />
 										<label for="drop-remove">
-										<input type="checkbox" id="drop-remove"/>Taşıdıktan sonra sil </label>
+										<input type="checkbox" id="drop-remove"/>Taşıdıktan sonra kutudan çıkar </label>
 										<hr class="visible-xs"/>
 									</div>
                                     <br />
-                                    *Aynı başlığa sahip etkinlikleri takvime birden fazla kez eklemek için sürükledikten sonra sayfanın yenilenmesini bekleyin...
+                                    * Aynı başlığa sahip etkinlikleri takvime birden fazla kez eklemek için sürükledikten sonra sayfanın yenilenmesini bekleyin...
                                     <br />
                                     <br />
 
                                     ** Silmek istediğiniz etkinlik için takvimden etkinliğe sol tıklayın.
+                                    <br />
+                                    <br />
+                                    *** Geçmiş etkinlikler kırmızı, bugünün etkinlikleri sarı, ve gelecek etkinlikler yeşil renkle gösterilmiştir. Eğer takvimde hiç olmayan bir etkinlik eklerseniz mavi gözükür.
 									<!-- END DRAGGABLE EVENTS PORTLET-->
 								</div>
 								<div class="col-md-9 col-sm-12">

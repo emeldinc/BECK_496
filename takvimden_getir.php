@@ -13,6 +13,18 @@ $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
+    	$tarih = date("Y-m-d");
+    	$etkinlik_tarihi = $row['start'];
+    	if($tarih < $etkinlik_tarihi) {
+    		$row['backgroundColor'] = '#38945A';
+    	}
+    	else if($tarih == $etkinlik_tarihi) {
+    		$row['backgroundColor'] = '#D8BD36';
+    	}
+    	else if($tarih > $etkinlik_tarihi) {
+    		$row['backgroundColor'] = '#D66E6E';
+    	}
+    	
     	$row['url'] = "takvimden_sil.php?event_id=".$row['id'];
         array_push($result_array, $row);
     }
