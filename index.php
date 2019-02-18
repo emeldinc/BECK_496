@@ -2,7 +2,7 @@
    include('dbconnection.php');
        if(session_id() == '') {
            session_start();
-           $user_id = $_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         $sql_user_daire = "SELECT * FROM user_daire WHERE ref_user_id = '".$user_id."'";
         $user_daire = $db->query($sql_user_daire);
         $daire_idleri = array();
@@ -36,8 +36,16 @@
            $_SESSION['apartman_id'] = $konum_array[0]['ref_apartman_id'];
            $_SESSION['site_id'] = $konum_array[0]['ref_site_id'];
         }
-   
-    }
+
+        $sql_aidat = "SELECT * FROM beckdoor.aidat WHERE ref_daire_id = '".$_SESSION['daire_id']."'";
+        $user_aidat = mysqli_query($db,$sql_aidat);
+        $aidatlar = array();
+        while($row = $user_aidat->fetch_assoc()) {
+            array_push($aidatlar, $row);
+        }
+       
+
+      }
    ?>
 <!DOCTYPE html>
 <!--
@@ -194,6 +202,78 @@
                   </div>
                </div>
             </div>
+            <div class = "row">
+              <div class="col-md-12 col-sm-12">
+                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                 <div class="portlet box yellow">
+                    <div class="portlet-title">
+                       <div class="caption">
+                          </i>Aidat Tablonuz
+                       </div>
+                    </div>
+                    <div class="portlet-body">
+                       <table class="table table-striped table-bordered table-hover" id="sample_2">
+                          <thead>
+                             <tr>
+                                <th>
+                                   Daire
+                                </th>
+                                <th>
+                                   Miktar
+                                </th>
+                                <th>
+                                   Tarih
+                                </th>
+                                <th>
+                                   Durum
+                                </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                             <?php 
+                             if(empty($aidatlar)) { ?>
+                              <tr class="odd gradeX">
+                                <td>
+                                Henüz bir aidat kaydınız yok...
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                             <?php }
+                             foreach($aidatlar as $aidat) {
+                                $sql = "SELECT * FROM daire WHERE id = '".$aidat['ref_daire_id']."'";
+                                     $res = mysqli_query($db,$sql);
+                                     $row = mysqli_fetch_assoc($res);
+                                     ?>
+                             <tr class="odd gradeX">
+                                <td>
+                                   <?php echo "Daire ".$row['number'];?>
+                                </td>
+                                <td>
+                                   <?php echo $aidat['amount'];?>
+                                </td>
+                                <td>
+                                   <?php echo $aidat['date'];?>
+                                </td>
+                                <td>
+                                   <?php if($aidat['odendiMi'] == 1) { ?>
+                                   <span class="label label-sm label-success">
+                                   Ödendi </span>
+                                   <?php } else { ?>
+                                   <span class="label label-sm label-danger">
+                                   Ödenmedi </span>
+                                   <?php } ?>
+                                </td>
+                              </tr>
+                             <?php } ?>
+                          </tbody>
+                       </table>
+                    </div>
+                 </div>
+                 <!-- END EXAMPLE TABLE PORTLET-->
+              </div>
+            </div>  
             <div class = "row">
                <div class="col-md-4 col-sm-12">
                   <!-- BEGIN PORTLET-->
