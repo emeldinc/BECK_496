@@ -335,7 +335,7 @@
                             foreach ($etkinlikler as $etkinlik) { 
                                      $time_etkinlik = strtotime($etkinlik['start_date']);
                                      $datediff = $time_etkinlik - $time;
-                                     $kalan_gün = round($datediff / (60 * 60 * 24))+1; 
+                                     $kalan_gün = round($datediff / (60 * 60 * 24)); 
                                      if(1 <= $kalan_gün && $kalan_gün <= 10) { ?>
                                  <li>
                                  <div class="col1">
@@ -544,190 +544,9 @@
                   <!-- END PORTLET-->
                </div>
             </div>
-            <div class = "row">
-               <div class="col-md-12 col-sm-12">
-                  <!-- BEGIN PORTLET-->
-                  <div class="portlet light ">
-                     <div class="portlet-title">
-                        <div class="caption caption-md">
-                           <i class="icon-bar-chart theme-font-color hide"></i>
-                           <span class="caption-subject theme-font-color bold uppercase">Sales Summary</span>
-                           <span class="caption-helper hide">weekly stats...</span>
-                        </div>
-                        <div class="actions">
-                           <div class="btn-group btn-group-devided" data-toggle="buttons">
-                              <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
-                              <input type="radio" name="options" class="toggle" id="option1">Today</label>
-                              <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-                              <input type="radio" name="options" class="toggle" id="option2">Week</label>
-                              <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-                              <input type="radio" name="options" class="toggle" id="option2">Month</label>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="portlet-body">
-                        <div class="row list-separated">
-                           <div class="col-md-3 col-sm-3 col-xs-6">
-                              <div class="font-grey-mint font-sm">
-                                 Total Sales
-                              </div>
-                              <div class="uppercase font-hg font-red-flamingo">
-                                 13,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </div>
-                           <div class="col-md-3 col-sm-3 col-xs-6">
-                              <div class="font-grey-mint font-sm">
-                                 Revenue
-                              </div>
-                              <div class="uppercase font-hg theme-font-color">
-                                 4,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </div>
-                           <div class="col-md-3 col-sm-3 col-xs-6">
-                              <div class="font-grey-mint font-sm">
-                                 Expenses
-                              </div>
-                              <div class="uppercase font-hg font-purple">
-                                 11,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </div>
-                           <div class="col-md-3 col-sm-3 col-xs-6">
-                              <div class="font-grey-mint font-sm">
-                                 Growth
-                              </div>
-                              <div class="uppercase font-hg font-blue-sharp">
-                                 9,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </div>
-                        </div>
-                        <ul class="list-separated list-inline-xs hide">
-                           <li>
-                              <div class="font-grey-mint font-sm">
-                                 Total Sales
-                              </div>
-                              <div class="uppercase font-hg font-red-flamingo">
-                                 13,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </li>
-                           <li>
-                           </li>
-                           <li class="border">
-                              <div class="font-grey-mint font-sm">
-                                 Revenue
-                              </div>
-                              <div class="uppercase font-hg theme-font-color">
-                                 4,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </li>
-                           <li class="divider">
-                           </li>
-                           <li>
-                              <div class="font-grey-mint font-sm">
-                                 Expenses
-                              </div>
-                              <div class="uppercase font-hg font-purple">
-                                 11,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </li>
-                           <li class="divider">
-                           </li>
-                           <li>
-                              <div class="font-grey-mint font-sm">
-                                 Growth
-                              </div>
-                              <div class="uppercase font-hg font-blue-sharp">
-                                 9,760 <span class="font-lg font-grey-mint">$</span>
-                              </div>
-                           </li>
-                        </ul>
-                        <div id="sales_statistics" class="portlet-body-morris-fit morris-chart" style="height: 260px">
-                        </div>
-                     </div>
-                  </div>
-                  <!-- END PORTLET-->
-               </div>
-            </div>
+            
            
-            <div class="row">
-               <div class="col-md-6 col-sm-6">
-                  <!-- BEGIN REGIONAL STATS PORTLET-->
-                  <div class="portlet light ">
-                     <div class="portlet-title">
-                        <div class="caption caption-md">
-                           <i class="icon-bar-chart theme-font-color hide"></i>
-                           <span class="caption-subject theme-font-color bold uppercase">Regional Stats</span>
-                        </div>
-                        <div class="actions">
-                           <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                           <i class="icon-cloud-upload"></i>
-                           </a>
-                           <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                           <i class="icon-wrench"></i>
-                           </a>
-                           <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;">
-                           </a>
-                           <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                           <i class="icon-trash"></i>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="portlet-body">
-                        <div id="region_statistics_loading">
-                           <img src="assets/admin/layout/img/loading.gif" alt="loading"/>
-                        </div>
-                        <div id="region_statistics_content" class="display-none">
-                           <div class="btn-toolbar margin-bottom-10">
-                              <div class="btn-group btn-group-circle" data-toggle="buttons">
-                                 <a href="" class="btn grey-salsa btn-sm active">
-                                 Users </a>
-                                 <a href="" class="btn grey-salsa btn-sm">
-                                 Orders </a>
-                              </div>
-                              <div class="btn-group pull-right">
-                                 <a href="" class="btn btn-circle grey-salsa btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                 Select Region <span class="fa fa-angle-down">
-                                 </span>
-                                 </a>
-                                 <ul class="dropdown-menu pull-right">
-                                    <li>
-                                       <a href="javascript:;" id="regional_stat_world">
-                                       World </a>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:;" id="regional_stat_usa">
-                                       USA </a>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:;" id="regional_stat_europe">
-                                       Europe </a>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:;" id="regional_stat_russia">
-                                       Russia </a>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:;" id="regional_stat_germany">
-                                       Germany </a>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                           <div id="vmap_world" class="vmaps display-none">
-                           </div>
-                           <div id="vmap_usa" class="vmaps display-none">
-                           </div>
-                           <div id="vmap_europe" class="vmaps display-none">
-                           </div>
-                           <div id="vmap_russia" class="vmaps display-none">
-                           </div>
-                           <div id="vmap_germany" class="vmaps display-none">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- END REGIONAL STATS PORTLET-->
-               </div>
-            </div>
+           
             <!-- END PAGE CONTENT INNER -->
             </div>
             </div>
@@ -753,13 +572,6 @@
             <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
             <!-- END CORE PLUGINS -->
             <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <script src="assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-            <script src="assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
             <script src="assets/global/plugins/moment.min.js"></script>
             <script src="assets/global/plugins/fullcalendar/fullcalendar.js"></script>
             <script src="assets/global/plugins/fullcalendar/lang/tr.js"></script>
@@ -772,7 +584,7 @@
             <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
             <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
             <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-            <script src="assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
+            
             <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
             <script src="assets/admin/pages/scripts/calendar.js"></script>
             <!-- END PAGE LEVEL SCRIPTS -->
@@ -781,7 +593,7 @@
                    Metronic.init(); // init metronic core componets
                    Layout.init(); // init layout
                    Demo.init(); // init demo features
-                   Index.init(); // init index page
+                   
                    Tasks.initDashboardWidget(); // init tash dashboard widget
                });
             </script>
