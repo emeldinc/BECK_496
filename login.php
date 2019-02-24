@@ -96,7 +96,7 @@
 
 		<div class="create-account">
 			<p>
-				Henüz bir hesabınız yok mu?&nbsp; <a href="javascript:;" id="register-btn">
+				Henüz bir hesabınız yok mu?&nbsp; <a href="yeni_kayit.php" id="register-btn">
 				Yeni hesap aç </a>
 			</p>
 		</div>
@@ -105,57 +105,7 @@
 	<!-- END LOGIN FORM -->
 
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="kayit.php" method="POST">
-		<h3>Kayıt Ol</h3>
-		<p>
-			 Kayıt bilgilerinizi giriniz:
-		</p>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Adınız</label>
-			<div class="input-icon">
-				<i class="fa fa-font"></i>
-				<input class="form-control placeholder-no-fix" type="text" placeholder="Ad" name="firstname"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">Soyadınız</label>
-			<div class="input-icon">
-				<i class="fa fa-font"></i>
-				<input class="form-control placeholder-no-fix" type="text" placeholder="Soyad" name="lastname"/>
-			</div>
-		</div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Kullanıcı Adınız</label>
-            <div class="input-icon">
-                <i class="fa fa-font"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Kullanıcı adı" name="username"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">Kullanıcı adı</label>
-            <div class="input-icon">
-                <i class="fa fa-key"></i>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Sifre" name="password"/>
-            </div>
-        </div>
-		<div class="form-group">
-			<label class="control-label">Rol</label>
-			<select name="role" id="select2" class="select2 form-control">
-				<option value=""></option>
-				<option value="yasayan">Yaşayan</option>
-				<option value="gorevli">Görevli</option>
-				<option value="yonetici">Yönetici</option>
-			</select>
-		</div>
-		<div class="form-actions">
-			<button id="register-back-btn" type="button" class="btn">
-			<i class="m-icon-swapleft"></i> Geri </button>
-			<button type="submit" id="register-submit-btn" class="btn blue pull-right">
-			Kayıt ol <i class="m-icon-swapright m-icon-white"></i>
-			</button>
-		</div>
-	</form>
+
 	<!-- END REGISTRATION FORM -->
 </div>
 
