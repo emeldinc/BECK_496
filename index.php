@@ -382,7 +382,7 @@
                            <div class="scroller" style="height: 305px; overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2" data-initialized="1">
                               <div class="general-item-list">
                                  <?php
-                                    $sql_oylama = "SELECT * FROM `oylama` ";
+                                    $sql_oylama = "SELECT * FROM `oylama` WHERE ref_apartman_id = ".$_SESSION['apartman_id'];
                                     $res = mysqli_query($db,$sql_oylama);
                                     while($row = mysqli_fetch_assoc($res))
                                     {
