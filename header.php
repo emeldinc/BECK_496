@@ -309,7 +309,7 @@ $index = $notification_top - 1;
 
 
                    <li>
-                       <a href="eksik_site_bilgileri.php">
+                       <a href="yeni_ev_kayit.php">
                        <i class="icon-settings"></i>
                        <span class="title">Adres Ekle</span></a>
                    </li>
