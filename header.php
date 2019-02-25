@@ -17,9 +17,10 @@ while ($a=mysqli_fetch_array($rs)){
   $result = mysqli_query($db,$sql2);
   $row = mysqli_fetch_assoc($result);
   $date = $a['now_date'];
-  $now = time();
+  date_default_timezone_set('Europe/Istanbul');
+  $now = date('Y-m-d H:i:s');
   $duyuru_date = strtotime($a['now_date']);
-  $diff = abs($now - $duyuru_date);
+  $diff = abs(strtotime($now) - $duyuru_date);
 
   if($diff < 86400){
 
@@ -31,7 +32,7 @@ while ($a=mysqli_fetch_array($rs)){
       $date_time = "$hour saat önce";
     }
     else{
-      $date_time = "$minute dakika önce";
+      $date_time = "$minute dk önce";
     }
     if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
       $notification_top = $notification_top +1;
