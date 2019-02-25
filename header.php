@@ -1,4 +1,51 @@
+<?php
+if(session_id() == '') {
+    session_start();
+  }
+$que = "SELECT * FROM duyuru ";
+$rs = mysqli_query($db,$que);
+$notification_top = 0;
+$title_arr = array();
+$date_arr = array();
+$index = 0;
+while ($a=mysqli_fetch_array($rs)){
+  $ref_site_id = $a['ref_site_id'];
+  $ref_user_id = $a['ref_user_id'];
+  $ref_apartman_id = $a['ref_apartman_id'];
 
+  $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+  $result = mysqli_query($db,$sql2);
+  $row = mysqli_fetch_assoc($result);
+  $date = $a['now_date'];
+  $now = time();
+  $duyuru_date = strtotime($a['now_date']);
+  $diff = abs($now - $duyuru_date);
+
+  if($diff < 86400){
+
+    $date_time = 0;
+    $minute = floor($diff / 60);
+    $hour = floor($minute / 60);
+
+    if($hour > 0){
+      $date_time = "$hour saat önce";
+    }
+    else{
+      $date_time = "$minute dakika önce";
+    }
+    if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
+      $notification_top = $notification_top +1;
+      $title_arr[$index] = $a['title'];
+      $date_arr[$index] = $date_time;
+      $index = $index +1;
+
+    }
+  }
+}
+echo $notification_top;
+$index = $notification_top - 1;
+
+?>
 <!-- BEGIN HEADER -->
       <div class="page-header navbar navbar-fixed-top">
          <!-- BEGIN HEADER INNER -->
@@ -40,113 +87,42 @@
                      </li>
                      <!-- BEGIN NOTIFICATION DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+
                      <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-bell"></i>
                         <span class="badge badge-success">
-                        7 </span>
+                        <?php echo $notification_top; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                            <li class="external">
-                              <h3><span class="bold">12 pending</span> notifications</h3>
-                              <a href="extra_profile.html">view all</a>
+                              <h3><span class="bold">24 saat içerisinde </span> bildirimler</h3>
+                              <a href="duyurular.php">view all</a>
                            </li>
+
                            <li>
                               <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                <?php
+                                while($index > -1 ){
+
+                                 ?>
                                  <li>
                                     <a href="javascript:;">
-                                    <span class="time">just now</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-success">
-                                    <i class="fa fa-plus"></i>
-                                    </span>
-                                    New user registered. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">3 mins</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-danger">
-                                    <i class="fa fa-bolt"></i>
-                                    </span>
-                                    Server #12 overloaded. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">10 mins</span>
+                                    <span class="time"><?php echo $date_arr[$index]; ?></span>
                                     <span class="details">
                                     <span class="label label-sm label-icon label-warning">
                                     <i class="fa fa-bell-o"></i>
                                     </span>
-                                    Server #2 not responding. </span>
+                                  <?php echo $title_arr[$index]; ?> </span>
                                     </a>
                                  </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">14 hrs</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-info">
-                                    <i class="fa fa-bullhorn"></i>
-                                    </span>
-                                    Application error. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">2 days</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-danger">
-                                    <i class="fa fa-bolt"></i>
-                                    </span>
-                                    Database overloaded 68%. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">3 days</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-danger">
-                                    <i class="fa fa-bolt"></i>
-                                    </span>
-                                    A user IP blocked. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">4 days</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-warning">
-                                    <i class="fa fa-bell-o"></i>
-                                    </span>
-                                    Storage Server #4 not responding dfdfdfd. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">5 days</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-info">
-                                    <i class="fa fa-bullhorn"></i>
-                                    </span>
-                                    System Error. </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:;">
-                                    <span class="time">9 days</span>
-                                    <span class="details">
-                                    <span class="label label-sm label-icon label-danger">
-                                    <i class="fa fa-bolt"></i>
-                                    </span>
-                                    Storage server failed. </span>
-                                    </a>
-                                 </li>
+                                   <?php $index = $index -1;} ?>
                               </ul>
                            </li>
+
                         </ul>
                      </li>
+
                      <!-- END NOTIFICATION DROPDOWN -->
                      <li class="separator hide">
                      </li>
@@ -330,10 +306,10 @@
                             <span class="title">Aidat Takibi</span>
                         </a>
                     </li>
-                    
-                        
+
+
                    <li>
-                       <a href="yeni_ev_kayit.php">
+                       <a href="eksik_site_bilgileri.php">
                        <i class="icon-settings"></i>
                        <span class="title">Adres Ekle</span></a>
                    </li>
@@ -342,8 +318,8 @@
                        <i class="icon-pencil"></i>
                        <span class="title">Rol Değiştir</span></a>
                    </li>
-                        
-                  
+
+
                     <li class="<?php if($page == 'hakkimizda'){ echo 'active';} ?>">
                         <a href="hakkimizda.php">
                             <i class="icon-users"></i>
