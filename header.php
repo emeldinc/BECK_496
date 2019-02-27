@@ -46,6 +46,16 @@ while ($a=mysqli_fetch_array($rs)){
 echo $notification_top;
 $index = $notification_top - 1;
 
+$sql_for_events = "SELECT * FROM etkinlik WHERE ref_apartman_id = '".$_SESSION['apartman_id']."' AND ref_site_id = '".$_SESSION['site_id']."'";
+$events_arr = array();
+$events = mysqli_query($db,$sql_for_events);
+while($event_row = mysqli_fetch_assoc($events)) {
+  array_push($events_arr,$event_row);
+}
+
+
+
+
 ?>
 <!-- BEGIN HEADER -->
       <div class="page-header navbar navbar-fixed-top">
@@ -118,6 +128,44 @@ $index = $notification_top - 1;
                                     </a>
                                  </li>
                                    <?php $index = $index -1;} ?>
+                              </ul>
+                           </li>
+
+                        </ul>
+                     </li>
+
+                    <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <i class="icon-calendar"></i>
+                        
+                        </a>
+                        <ul class="dropdown-menu">
+                           <li class="external">
+                              <h3><span class="bold">Tamamlanan etkinlikler </span> </h3>
+                              
+                           </li>
+
+                           <li>
+                              <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                <?php 
+                                function sortFunctionE( $a, $b ) {
+                                  return strtotime($b["start_date"]) - strtotime($a["start_date"]);
+                                }
+                                usort($events_arr, "sortFunctionE");
+                                foreach($events_arr as $event) { 
+                                if(strtotime($event["start_date"]) < strtotime("now")) { ?>
+                                 <li>
+                                    <a href="javascript:;">
+                                    <span class="time"><?php echo $event['start_date']; ?></span>
+                                    <span class="details">
+                                    <span class="label label-sm label-success">Tamamlandı</span>
+                                    </span>
+                                    <?php echo $event['description']; ?> </span>
+                                    </a>
+                                 </li>
+                                <?php
+                                  } 
+                                } ?>
                               </ul>
                            </li>
 
