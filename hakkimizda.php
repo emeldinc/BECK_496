@@ -80,29 +80,30 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="row margin-bottom-30">
 						<div class="col-md-6">
 							<p>
-								 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+								 Teknolojinin gelişmesiyle birlikte gün geçtikçe ihtiyaç duyulan her şey elimizin altında bulunmaktadır. İletişim, haberleşme, araştırma, bankacılık işlemleri gibi tüm ihtiyaçlar daha kolay çözülür hale gelmiştir. Teknolojinin gelişimi sebebiyle iş olanakları ve yeni sektörler artmaktadır. Dolayısıyla iş gücü ve insanların iş yoğunlukları artış göstermektedir. Bunlar göz önünde bulundurulduğunda komşuluk ilişkileri eskiye oranla azalma göstermektedir. İnsanların komşularıyla görüşmesi, yaşadığı evdeki ilişkilerini takip etmesi zorlaşmaktadır. Bizde BECK Grubu olarak bu ev ilişkilerine kolaylık geliştirmeyi amaçlayarak bu projeyi oluşturduk. İnsanların komşularıyla olan iletişimini güçlendirerek hızlı hale getirmek, yaşadığı apartmanın veya sitenin finansınnın takibini kolaylaştırmak, etkinliklerin takibinin hızla yapılması, fiziksel olarak toplantıya katılmadan kararların görüşülmesi aynı zamanda yapılacak oylamaların kolaylaştırılması adına ev ilişkilerini el altında bulunabilecek hale getirdik. Akıllı telefonların yaygınlaşması aynı zamanda bilgisayar kullanan insanların artmasıyla bu işlemler artık daha hızlı ve kolay yapılabilmektedir. Akıllı ev teknolojisi Beckdoor web sitesi ve Android uygulamasıyla artık bir tık uzağınızda bulunuyor. İnsanların adreslerine ve seçtikleri yaşayan, yönetici, apartman görevlisi rollerine göre profil oluşturarak Beckdoor sitesi ve uygulamasını kullanarak erişebileceği bölümler;
 							</p>
 							<ul class="list-unstyled margin-top-10 margin-bottom-10">
-								<li>
-									<i class="fa fa-check icon-default"></i> Nam liber tempor cum soluta
+                <li>
+									<i class="fa fa-check icon-default"></i> Kullanıcı Profili
 								</li>
 								<li>
-									<i class="fa fa-check icon-success"></i> Mirum est notare quam
+									<i class="fa fa-check icon-default"></i> Mesajlar
 								</li>
-								<li>
-									<i class="fa fa-check icon-info"></i> Lorem ipsum dolor sit amet
+                <li>
+									<i class="fa fa-check icon-default"></i> Duyurular
 								</li>
-								<li>
-									<i class="fa fa-check icon-danger"></i> Mirum est notare quam
+                <li>
+									<i class="fa fa-check icon-default"></i> Oylamalar
 								</li>
-								<li>
-									<i class="fa fa-check icon-warning"></i> Mirum est notare quam
+                <li>
+									<i class="fa fa-check icon-default"></i> Aidat Takip Sistemi
 								</li>
+
 							</ul>
 							<!-- Blockquotes -->
 							<blockquote class="hero">
 								<p>
-									 Lorem ipsum dolor sit amet, consectetuer sed diam nonummy nibh euismod tincidunt.
+									 <b>BECK Gururla Sunar...</b>
 								</p>
 
 							</blockquote>
@@ -125,7 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<div class="team-info">
 									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
+										 TOBB Ekonomi ve Teknoloji Üniversitesi Bilgisayar Mühendisliği öğrencisi
 									</p>
 									<ul class="social-icons pull-right">
 										<li>
@@ -158,7 +159,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<div class="team-info">
 									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
+										 TOBB Ekonomi ve Teknoloji Üniversitesi Bilgisayar Mühendisliği öğrencisi
 									</p>
 									<ul class="social-icons pull-right">
 										<li>
@@ -191,7 +192,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<div class="team-info">
 									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
+										 TOBB Ekonomi ve Teknoloji Üniversitesi Bilgisayar Mühendisliği öğrencisi
 									</p>
 									<ul class="social-icons pull-right">
 										<li>
@@ -224,7 +225,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<div class="team-info">
 									<p>
-										 Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...
+										 TOBB Ekonomi ve Teknoloji Üniversitesi Bilgisayar Mühendisliği öğrencisi
 									</p>
 									<ul class="social-icons pull-right">
 										<li>
@@ -262,16 +263,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-	<div class="page-footer-inner">
-		 2014 &copy; Metronic by keenthemes.
-	</div>
-	<div class="scroll-to-top">
-		<i class="icon-arrow-up"></i>
-	</div>
-</div>
-<!-- END FOOTER -->
+
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
