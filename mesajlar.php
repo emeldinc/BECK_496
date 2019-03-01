@@ -40,6 +40,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+<link href="assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/pages/css/timeline.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -62,106 +64,61 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
 <?php $page='mesajlar';include('header.php'); ?>
 
-	<ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="index.php">Anasayfa</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="mesajlar.php">Mesajlar</a>
-				</li>
-			</ul>
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
-					<!-- BEGIN TODO CONTENT -->
-					<div class="todo-content">
-						<div class="portlet light">
-							<!-- PROJECT HEAD -->
-							<div class="portlet-title">
-								<div class="caption">
-									<i class="icon-bar-chart font-green-sharp hide"></i>
-									<span class="caption-helper">MESAJLAR</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase"></span>
-								</div>
-							</div>
-							<!-- end PROJECT HEAD -->
-							<div class="portlet-body">
-								<div class="row">
-									<div class="col-md-5 col-sm-4">
-										<div class="scroller" style="max-height: 800px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
-											<div class="todo-tasklist">
-												<div class="todo-tasklist-item todo-tasklist-item-border-green">
-													<div class="todo-tasklist-item-title">
-														İsim
-													</div>
-													<div class="todo-tasklist-item-text">
-														 Mesaj
-													</div>
-													<div class="todo-tasklist-controls pull-left">
-														<span class="todo-tasklist-date"><i class="fa fa-calendar"></i> Mesaj Tarihi </span>
-													</div>
+<ul class="page-breadcrumb breadcrumb">
+<li>
+<a href="index.php">Anasayfa</a>
+<i class="fa fa-circle"></i>
+</li>
+<li>
+<a href="mesajlar.php">Mesajlar</a>
+</li>
+</ul>
+
+<div class = "row">
+	<div class="portlet solid white">
+		<div class="portlet-body">
+			 <div class="page-quick-sidebar-wrapper" style = "height:700px !important;">
+					<div class="page-quick-sidebar">
+						<div class="page-quick-sidebar-chat">
+								<div class="page-quick-sidebar-item">
+									<div class="page-quick-sidebar-chat-user">
+										<div class="page-quick-sidebar-chat-user-messages">
+											<div class="post out">
+											<!--<img class="avatar" alt="" src="../../assets/admin/layout/img/avatar3.jpg"/> -->
+												<div class="message">
+													<span class="arrow"></span>
+													<strong class="name">Bob Nilson</strong>
+													<span class="datetime">20:15</span>
+													<span class="body">
+													 When could you send me the report ? </span>
+												</div>
+											</div>
+										</div>
+										<div class="page-quick-sidebar-chat-user-form">
+											<div class="input-group">
+											<input type="text" class="form-control" placeholder="Mesajınızı buraya yazın...">
+												<div class="input-group-btn">
+													<button type="button" class="btn blue"><i class="icon-paper-clip"></i></button>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="todo-tasklist-devider">
-									</div>
-									<div class="col-md-7 col-sm-8">
-										<div class="scroller" style="max-height: 800px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
-											<form action="#" class="form-horizontal">
-												<!-- TASK HEAD -->
-												<div class="form">
-													<div class="form-group">
-														<div class="col-md-8 col-sm-8">
-															<div class="todo-taskbody-user">
-																<span class="todo-username pull-left"><?php echo $_SESSION['firstname']; ?></span>
-															</div>
-														</div>
-													</div>
-													<!-- END TASK HEAD -->
-													<!-- TASK TITLE -->
-													<div class="form-group">
-														<div class="col-md-12">
-															<input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Mesaj Başlığı">
-														</div>
-													</div>
-													<!-- TASK DESC -->
-													<div class="form-group">
-														<div class="col-md-12">
-															<textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder="Mesaj"></textarea>
-														</div>
-													</div>
-													<!-- END TASK DESC -->
-													<!-- TASK TAGS -->
-													<div class="form-actions right todo-form-actions">
-														<button class="btn btn-circle btn-sm green-haze">Gönder</button>
-														<button class="btn btn-circle btn-sm btn-default">Vazgeç</button>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
 								</div>
 							</div>
-						</div>
 					</div>
-					<!-- END TODO CONTENT -->
 				</div>
 			</div>
-			<!-- END PAGE CONTENT-->
-		</div>
-	</div>
-	<!-- END CONTENT -->
+	    </div>
 </div>
-<!-- END CONTAINER -->
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script>
-<![endif]-->
+
+
+
+
+
+			
 <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
@@ -181,13 +138,17 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE PLUGINS & SCRIPTS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/timeline.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
+QuickSidebar.init(); // init quick sidebar
 Demo.init(); // init demo features
 Todo.init(); // init todo page
+Timeline.init(); // init timeline page
 });
 </script>
 <!-- END JAVASCRIPTS -->

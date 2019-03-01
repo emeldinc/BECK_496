@@ -3,13 +3,7 @@ Core script to handle the entire theme and core functions
 **/
 var QuickSidebar = function () {
 
-    // Handles quick sidebar toggler
-    var handleQuickSidebarToggler = function () {
-        // quick sidebar toggler
-        $('.top-menu .dropdown-quick-sidebar-toggler a, .page-quick-sidebar-toggler').click(function (e) {
-            $('body').toggleClass('page-quick-sidebar-open'); 
-        });
-    };
+   
 
     // Handles quick sidebar chats
     var handleQuickSidebarChat = function () {
@@ -61,18 +55,16 @@ var QuickSidebar = function () {
             var preparePost = function(dir, time, name, avatar, message) {
                 var tpl = '';
                 tpl += '<div class="post '+ dir +'">';
-                tpl += '<img class="avatar" alt="" src="' + Layout.getLayoutImgPath() + avatar +'.jpg"/>';
                 tpl += '<div class="message">';
                 tpl += '<span class="arrow"></span>';
-                tpl += '<a href="#" class="name">Bob Nilson</a>&nbsp;';
+                tpl += '<strong class="name">Bob Nilson</strong>&nbsp;';
                 tpl += '<span class="datetime">' + time + '</span>';
                 tpl += '<span class="body">';
-                tpl += message;
+                tpl += " "+message;
                 tpl += '</span>';
                 tpl += '</div>';
                 tpl += '</div>';
-
-                return tpl;
+            return tpl;
             };
 
             // handle post
@@ -118,56 +110,13 @@ var QuickSidebar = function () {
         });
     };
 
-    // Handles quick sidebar tasks
-    var handleQuickSidebarAlerts = function () {
-        var wrapper = $('.page-quick-sidebar-wrapper');
-        var wrapperAlerts = wrapper.find('.page-quick-sidebar-alerts');
-
-        var initAlertsSlimScroll = function () {
-            var alertList = wrapper.find('.page-quick-sidebar-alerts-list');
-            var alertListHeight;
-
-            alertListHeight = wrapper.height() - wrapper.find('.nav-justified > .nav-tabs').outerHeight();
-
-            // alerts list 
-            Metronic.destroySlimScroll(alertList);
-            alertList.attr("data-height", alertListHeight);
-            Metronic.initSlimScroll(alertList);
-        };
-
-        initAlertsSlimScroll();
-        Metronic.addResizeHandler(initAlertsSlimScroll); // reinitialize on window resize
-    };
-
-    // Handles quick sidebar settings
-    var handleQuickSidebarSettings = function () {
-        var wrapper = $('.page-quick-sidebar-wrapper');
-        var wrapperAlerts = wrapper.find('.page-quick-sidebar-settings');
-
-        var initSettingsSlimScroll = function () {
-            var settingsList = wrapper.find('.page-quick-sidebar-settings-list');
-            var settingsListHeight;
-
-            settingsListHeight = wrapper.height() - wrapper.find('.nav-justified > .nav-tabs').outerHeight();
-
-            // alerts list 
-            Metronic.destroySlimScroll(settingsList);
-            settingsList.attr("data-height", settingsListHeight);
-            Metronic.initSlimScroll(settingsList);
-        };
-
-        initSettingsSlimScroll();
-        Metronic.addResizeHandler(initSettingsSlimScroll); // reinitialize on window resize
-    };
-
+   
     return {
 
         init: function () {
-            //layout handlers
-            handleQuickSidebarToggler(); // handles quick sidebar's toggler
+            
             handleQuickSidebarChat(); // handles quick sidebar's chats
-            handleQuickSidebarAlerts(); // handles quick sidebar's alerts
-            handleQuickSidebarSettings(); // handles quick sidebar's setting
+            
         }
     };
 
