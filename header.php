@@ -82,7 +82,7 @@ while($event_row = mysqli_fetch_assoc($events)) {
             <div class="page-top">
                <!-- BEGIN HEADER SEARCH BOX -->
                <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-               <form class="search-form" action="extra_search.html" method="GET">
+               <form class="search-form" action="search.php" method="GET">
                   <div class="input-group">
                      <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
                      <span class="input-group-btn">
@@ -137,22 +137,22 @@ while($event_row = mysqli_fetch_assoc($events)) {
                     <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-calendar"></i>
-                        
+
                         </a>
                         <ul class="dropdown-menu">
                            <li class="external">
                               <h3><span class="bold">Tamamlanan etkinlikler </span> </h3>
-                              
+
                            </li>
 
                            <li>
                               <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                <?php 
+                                <?php
                                 function sortFunctionE( $a, $b ) {
                                   return strtotime($b["start_date"]) - strtotime($a["start_date"]);
                                 }
                                 usort($events_arr, "sortFunctionE");
-                                foreach($events_arr as $event) { 
+                                foreach($events_arr as $event) {
                                 if(strtotime($event["start_date"]) < strtotime("now")) { ?>
                                  <li>
                                     <a href="javascript:;">
@@ -164,7 +164,7 @@ while($event_row = mysqli_fetch_assoc($events)) {
                                     </a>
                                  </li>
                                 <?php
-                                  } 
+                                  }
                                 } ?>
                               </ul>
                            </li>
