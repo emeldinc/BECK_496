@@ -107,7 +107,7 @@ while($event_row = mysqli_fetch_assoc($events)) {
                         </a>
                         <ul class="dropdown-menu">
                            <li class="external">
-                              <h3><span class="bold">24 saat içerisinde </span> bildirimler</h3>
+                              <h3><span class="bold">24 saat içerisindeki </span> duyurular</h3>
                               <a href="duyurular.php">view all</a>
                            </li>
 

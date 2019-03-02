@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="search.php">Arama Sonuçları</a>
+					<span class= "timeline-body-title font-blue-madison"><h4><b>Arama Sonuçları</b></h4></span>
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
@@ -92,19 +92,27 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div id="tab_1_2" class="tab-pane active">
                 <?php
                 $search = $_GET['query'];
+                if($search == NULL){
+                  echo $db->error;
+                  echo "<script> alert('Aranacak kelime girilmemistir...') </script>";
+
+                }
                 $arr_duyuru_id=array();
                 $index = 0;
                 $arr_sql = "SELECT * FROM duyuru WHERE id ";
                 $arr_res = mysqli_query($db,$arr_sql);
                 while ($a=mysqli_fetch_array($arr_res)){
-                  if(strstr($a['title'],$search)){
-                    $arr_duyuru_id[$index] = $a['id'];
-                    $index = $index + 1;
+                  if($search != NULL){
+                    if(strstr($a['title'],$search)){
+                      $arr_duyuru_id[$index] = $a['id'];
+                      $index = $index + 1;
+                    }
+                    else if(strstr($a['description'],$search)){
+                      $arr_duyuru_id[$index] = $a['id'];
+                      $index = $index + 1;
+                    }
                   }
-                  else if(strstr($a['description'],$search)){
-                    $arr_duyuru_id[$index] = $a['id'];
-                    $index = $index + 1;
-                  }
+
 
                 }
                 sort($arr_duyuru_id); //Son eklenenleri ustte gostermek icin
@@ -152,7 +160,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												</h2>
 												<p>
 													<?php
-                          echo $description; 
+                          echo $description;
                         ?> </a>
 												</p>
 											</div>
