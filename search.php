@@ -87,25 +87,79 @@ License: You must have a valid license purchased only from themeforest(the above
 								<a data-toggle="tab" href="#tab_1_4">
 								Etkinlikler için Sonuçlar </a>
 							</li>
-
 						</ul>
 						<div class="tab-content">
 							<div id="tab_1_2" class="tab-pane active">
-              <div class="row">
-							<div class="col-md-6">
+                <?php
+                $search = $_GET['query'];
+                $arr_duyuru_id=array();
+                $index = 0;
+                $arr_sql = "SELECT * FROM duyuru WHERE id ";
+                $arr_res = mysqli_query($db,$arr_sql);
+                while ($a=mysqli_fetch_array($arr_res)){
+                  if(strstr($a['title'],$search)){
+                    $arr_duyuru_id[$index] = $a['id'];
+                    $index = $index + 1;
+                  }
+                  else if(strstr($a['description'],$search)){
+                    $arr_duyuru_id[$index] = $a['id'];
+                    $index = $index + 1;
+                  }
+
+                }
+                sort($arr_duyuru_id); //Son eklenenleri ustte gostermek icin
+                $index = $index - 1;
+
+                while($index >= 0){
+                  $sql = "SELECT * FROM duyuru ";
+                  $res = mysqli_query($db,$sql);
+
+                  while ($b=mysqli_fetch_array($res)){
+                    if($index == -1)
+                      continue;
+
+                    if(($arr_duyuru_id[$index] == $b['id'])){
+                      $index = $index - 1;
+
+                      $duyuru_id = $b['id'];
+                      $date = $b['now_date'];
+                      $ref_site_id = $b['ref_site_id'];
+                      $ref_user_id = $b['ref_user_id'];
+                      $ref_apartman_id = $b['ref_apartman_id'];
+                      $title = $b['title'];
+                      $description= $b['description'];
+                      $image_path = NULL;
+                      $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                      $result = mysqli_query($db,$sql2);
+                      $row = mysqli_fetch_assoc($result);
+                      if (mysqli_affected_rows($db) >= 1) {
+                        $ref_username = $row['username'];
+                        $image_path = $row['image_path'];
+                      }
+                      else{
+                        $db->error;
+                      }
+                      if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
+
+                 ?>
+                <div class="row">
+							    <div class="col-md-6">
 										<div class="booking-result">
 											<div class="booking-info">
 												<h2>
-												<a href="javascript:;">
-												title </a>
+												<a href="duyuru_detaylari.php?id=<?php echo $duyuru_id; ?>">
+												<?php echo $title; ?> </a>
 												</h2>
 												<p>
-													 description </a>
+													<?php
+                          echo $description; 
+                        ?> </a>
 												</p>
 											</div>
 										</div>
 									</div>
 								</div>
+                <?php }}}} ?>
                 </div>
 
 							<!--end tab-pane-->
