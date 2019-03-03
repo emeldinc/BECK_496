@@ -161,7 +161,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<p>
 													<?php
                           echo $description;
-                        ?> </a>
+                        ?>
 												</p>
 											</div>
 										</div>
@@ -169,28 +169,78 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
                 <?php }}}} ?>
                 </div>
-
 							<!--end tab-pane-->
 							<div id="tab_1_3" class="tab-pane">
-								<div class="row">
-
+                <?php
+                $site_id = $_SESSION['site_id'];
+                $apartman_id = $_SESSION['apartman_id'];
+                $search = $_GET['query'];
+                $sql_oylama = "SELECT * FROM oylama";
+                $res = mysqli_query($db,$sql_oylama);
+                while($row = mysqli_fetch_assoc($res))
+                {
+                  if(($site_id != 0)&&($site_id == $row['ref_site_id'])||($apartman_id == $row['ref_apartman_id'])){
+                    $title = $row['title'];
+                    $description = $row['description'];
+                    if($search != NULL ){
+                ?>
+                <div class="row">
+							    <div class="col-md-6">
+										<div class="booking-result">
+											<div class="booking-info">
+												<h2>
+  												<a href="oylamalar.php">
+    												<?php
+                            if(strstr($title,$search)){
+                              echo $title;
+                            } ?> </a>
+  											</h2>
+  											<p>
+  												<?php
+                          if(strstr($description,$search)){
+                            echo $description;
+                          }
+                          ?>
+												</p>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="search-classic">
-									<h4>
-									<a href="javascript:;">title </a>
-									</h4>
-									<a href="javascript:;"></a>
-									<p>
-
-									</p>
-								</div>
+              <?php } } } ?>
               </div>
 
 							<!--end tab-pane-->
 							<div id="tab_1_4" class="tab-pane">
-								<div class="row">
+                <?php
+                $search = $_GET['query'];
+                $site_id = $_SESSION['site_id'];
+                $apartman_id = $_SESSION['apartman_id'];
+                $sql_etkinlik = "SELECT * FROM etkinlik";
+                $res = mysqli_query($db,$sql_etkinlik);
+                while($row = mysqli_fetch_assoc($res))
+                {
+                  if(($site_id != 0)&&($site_id == $row['ref_site_id'])||($apartman_id == $row['ref_apartman_id'])){
+                    $description = $row['description'];
+                    if($search != NULL ){
+                ?>
+                <div class="row">
+							    <div class="col-md-6">
+										<div class="booking-result">
+											<div class="booking-info">
+												<h2>
+  												<a href="index.php">
+    												<?php
+                              if(strstr($description,$search)){
+                                echo $description;
+                              }
+                          ?> </a>
+  											</h2>
 
+											</div>
+										</div>
+									</div>
 								</div>
+              <?php } } } ?>
 
 							</div>
 							<!--end tab-pane-->

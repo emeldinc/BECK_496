@@ -7,14 +7,14 @@
         $user_daire = $db->query($sql_user_daire);
         $daire_idleri = array();
         $konum_array = array();
-   
-   
+
+
         while($row = $user_daire->fetch_assoc()) {
             array_push($daire_idleri, $row['ref_daire_id']);
         }
-   
+
         foreach ($daire_idleri as $daire_id) {
-   
+
             $sql_daire_bilgileri = "SELECT * FROM daire WHERE id = '$daire_id'";
             $daire = mysqli_query($db,$sql_daire_bilgileri);
             $row_daire = mysqli_fetch_assoc($daire);
@@ -28,9 +28,9 @@
             $konum = mysqli_query($db,$sql_konum_bilgileri);
             $row_konum = mysqli_fetch_assoc($konum);
             array_push($konum_array,$row_konum);
-   
+
         }
-   
+
         if($_SESSION['daire_id'] == '' && $_SESSION['apartman_id'] == '' && $_SESSION['site_id'] == '') {
            $_SESSION['daire_id'] = $konum_array[0]['id'];
            $_SESSION['apartman_id'] = $konum_array[0]['ref_apartman_id'];
@@ -43,7 +43,7 @@
         while($row = $user_aidat->fetch_assoc()) {
             array_push($aidatlar, $row);
         }
-       
+
 
       }
    ?>
@@ -59,10 +59,10 @@
    Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
    License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
    -->
-<!--[if IE 8]> 
+<!--[if IE 8]>
 <html lang="en" class="ie8 no-js">
    <![endif]-->
-   <!--[if IE 9]> 
+   <!--[if IE 9]>
    <html lang="en" class="ie9 no-js">
       <![endif]-->
       <!--[if !IE]><!-->
@@ -230,7 +230,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                             <?php 
+                             <?php
                              if(empty($aidatlar)) { ?>
                               <tr class="odd gradeX">
                                 <td>
@@ -273,7 +273,7 @@
                  </div>
                  <!-- END EXAMPLE TABLE PORTLET-->
               </div>
-            </div>  
+            </div>
             <div class = "row">
                <div class="col-md-4 col-sm-12">
                   <!-- BEGIN PORTLET-->
@@ -284,13 +284,13 @@
                            <span class="caption-subject theme-font-color bold uppercase">YAKLAŞMAKTA OLAN ETKİNLİKLER</span>
                            <br />
                            <span class="caption-subject">(10 gün içerisindeki etkinlikler)</span>
-                           
+
                         </div>
                      </div>
                      <div class="portlet-body">
                         <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                            <ul class="feeds">
-                            <?php 
+                            <?php
                             $site_id_x = $_SESSION['site_id'];
                             $apartman_id_x = $_SESSION['apartman_id'];
                             $sql_etkinlikler = "SELECT * FROM beckdoor.etkinlik WHERE ref_apartman_id = '".$apartman_id_x."' AND ref_site_id = '".$site_id_x."' AND start_date IS NOT NULL";
@@ -310,7 +310,7 @@
                                         </div>
                                     </div>
                                  </div>
-                                </li> 
+                                </li>
                             <?php }
                             else {
                             function sortFunction( $a, $b ) {
@@ -330,12 +330,12 @@
                                         </div>
                                     </div>
                                  </div>
-                                </li> 
-                            <?php } 
-                            foreach ($etkinlikler as $etkinlik) { 
+                                </li>
+                            <?php }
+                            foreach ($etkinlikler as $etkinlik) {
                                      $time_etkinlik = strtotime($etkinlik['start_date']);
                                      $datediff = $time_etkinlik - $time;
-                                     $kalan_gün = round($datediff / (60 * 60 * 24)); 
+                                     $kalan_gün = round($datediff / (60 * 60 * 24));
                                      if(1 <= $kalan_gün && $kalan_gün <= 10) { ?>
                                  <li>
                                  <div class="col1">
@@ -358,7 +358,7 @@
                                     </div>
                                  </div>
                               </li>
-                            <?php } 
+                            <?php }
 
                                 }
                             } ?>
@@ -447,21 +447,21 @@
                   $top_duyuru = 0;
                   $que = "SELECT * FROM duyuru ";
                   $rs = mysqli_query($db,$que);
-                  
+
                   while ($b=mysqli_fetch_array($rs)){
                     $ref_site_id = $b['ref_site_id'];
                     $ref_user_id = $b['ref_user_id'];
                     $ref_apartman_id = $b['ref_apartman_id'];
-                  
+
                     $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
                     $result = mysqli_query($db,$sql2);
                     $row = mysqli_fetch_assoc($result);
-                  
+
                     if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
                       $top_duyuru = $top_duyuru +1;
                     }
                   }
-                  
+
                    ?>
                <div class="col-md-4 col-sm-12">
                   <!-- BEGIN PORTLET-->
@@ -485,18 +485,18 @@
                               }
                               sort($arr_duyuru_id); //Son eklenenleri ustte gostermek icin
                               $index = $index - 1;
-                              
+
                               while($index >= 0){
                                 $sql = "SELECT * FROM duyuru ";
                                 $res = mysqli_query($db,$sql);
-                              
+
                                 while ($b=mysqli_fetch_array($res)){
                                   if($index == -1)
                                     continue;
-                              
+
                                   if(($arr_duyuru_id[$index] == $b['id'])){
                                     $index = $index - 1;
-                              
+
                                     $duyuru_id = $b['id'];
                                     $date = $b['now_date'];
                                     $ref_site_id = $b['ref_site_id'];
@@ -516,7 +516,7 @@
                                       $db->error;
                                     }
                                     if(($ref_site_id != 0)&&($ref_site_id == $_SESSION['site_id'])||($ref_apartman_id == $_SESSION['apartman_id'])){
-                              
+
                               ?>
                            <div class="general-item-list">
                               <div class="item">
@@ -544,9 +544,9 @@
                   <!-- END PORTLET-->
                </div>
             </div>
-            
-           
-           
+
+
+
             <!-- END PAGE CONTENT INNER -->
             </div>
             </div>
@@ -584,7 +584,7 @@
             <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
             <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
             <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-            
+
             <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
             <script src="assets/admin/pages/scripts/calendar.js"></script>
             <!-- END PAGE LEVEL SCRIPTS -->
@@ -593,7 +593,7 @@
                    Metronic.init(); // init metronic core componets
                    Layout.init(); // init layout
                    Demo.init(); // init demo features
-                   
+
                    Tasks.initDashboardWidget(); // init tash dashboard widget
                });
             </script>

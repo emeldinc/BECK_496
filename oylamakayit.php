@@ -3,8 +3,8 @@
         if(session_id() == '')
             session_start();
         $user = $_SESSION['user_id'];
-        $apartman = $_SESSION['site_id'];
-        $site = $_SESSION['apartman_id'];
+        $apartman = $_SESSION['apartman_id'];
+        $site = $_SESSION['site_id'];
         $title = $_POST['title'];
         $options = $_POST['options'];
 
