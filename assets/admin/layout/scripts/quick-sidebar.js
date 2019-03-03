@@ -52,7 +52,7 @@ var QuickSidebar = function () {
                 return;
             }
 
-            var preparePost = function(dir, time, name, avatar, message) {
+            var preparePost = function(dir, time, name, message) {
                 var tpl = '';
                 tpl += '<div class="post '+ dir +'">';
                 tpl += '<div class="message">';
@@ -69,7 +69,7 @@ var QuickSidebar = function () {
 
             // handle post
             var time = new Date();
-            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), "Bob Nilson", 'avatar3', text);
+            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), "Bob Nilson", text);
             message = $(message);
             chatContainer.append(message);
 
@@ -91,7 +91,7 @@ var QuickSidebar = function () {
             // simulate reply
             setTimeout(function(){
                 var time = new Date();
-                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'avatar2', 'Lorem ipsum doloriam nibh...');
+                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'Lorem ipsum doloriam nibh...');
                 message = $(message);
                 chatContainer.append(message);
 

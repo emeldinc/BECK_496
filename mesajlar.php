@@ -52,6 +52,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+<style>
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black !important;
+  opacity: 1; /* Firefox */
+}
+</style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -77,43 +83,64 @@ License: You must have a valid license purchased only from themeforest(the above
 </li>
 </ul>
 
-<div class = "row">
-	<div class="portlet solid white">
-		<div class="portlet-body">
-			 <div class="page-quick-sidebar-wrapper" style = "height:700px !important;">
+<div class="portlet box blue tabbable">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-gift"></i>Mesajlaşma
+		</div>
+		<ul class="nav nav-tabs">
+			<li class="">
+				<a href="#portlet_tab_2" data-toggle="tab" aria-expanded="false">
+				Geçmiş Mesajlar </a>
+			</li>
+			<li class="active">
+				<a href="#portlet_tab_1" data-toggle="tab" aria-expanded="true">
+				Chat </a>
+			</li>
+		</ul>
+	</div>
+	<div class="portlet-body">
+		<div class="tab-content">
+			<div class="tab-pane active" id="portlet_tab_1">
+			    <div class="page-quick-sidebar-wrapper" style = "height:600px !important;">
 					<div class="page-quick-sidebar">
 						<div class="page-quick-sidebar-chat">
-								<div class="page-quick-sidebar-item">
-									<div class="page-quick-sidebar-chat-user">
-										<div class="page-quick-sidebar-chat-user-messages">
-											<div class="post out">
-											<!--<img class="avatar" alt="" src="../../assets/admin/layout/img/avatar3.jpg"/> -->
-												<div class="message">
-													<span class="arrow"></span>
-													<strong class="name">Bob Nilson</strong>
-													<span class="datetime">20:15</span>
-													<span class="body">
-													 When could you send me the report ? </span>
-												</div>
+							<div class="page-quick-sidebar-item">
+								<div class="page-quick-sidebar-chat-user">
+									<div class="page-quick-sidebar-chat-user-messages">
+										<div class="post out">
+										<!--<img class="avatar" alt="" src="../../assets/admin/layout/img/avatar3.jpg"/> -->
+											<div class="message">
+												<span class="arrow"></span>
+												<strong class="name">Bob Nilson</strong>
+												<span class="datetime">20:15</span>
+												<span class="body">
+												 When could you send me the report ? </span>
 											</div>
 										</div>
-										<div class="page-quick-sidebar-chat-user-form">
-											<div class="input-group">
-											<input type="text" class="form-control" placeholder="Mesajınızı buraya yazın...">
-												<div class="input-group-btn">
-													<button type="button" class="btn blue"><i class="icon-paper-clip"></i></button>
-												</div>
+									</div>
+									<div class="page-quick-sidebar-chat-user-form">
+										<div class="input-group">
+										<input style = "background-color: #D1D2D3; fo" type="text" class="form-control" placeholder="Mesajınızı buraya yazın...">
+											<div class="input-group-btn">
+												<button type="button" class="btn blue"><i class="icon-paper-clip"></i></button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-	    </div>
+			<div class="tab-pane" id="portlet_tab_2">
+				<p>
+					 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.
+				</p>
+			</div>
+		</div>
+	</div>
 </div>
-
 
 
 
