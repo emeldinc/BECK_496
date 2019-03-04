@@ -1,11 +1,6 @@
-/**
-Core script to handle the entire theme and core functions
-**/
 var QuickSidebar = function () {
 
-   
-
-    // Handles quick sidebar chats
+   // Handles quick sidebar chats
     var handleQuickSidebarChat = function () {
         var wrapper = $('.page-quick-sidebar-wrapper');
         var wrapperChat = wrapper.find('.page-quick-sidebar-chat');
@@ -51,13 +46,13 @@ var QuickSidebar = function () {
             if (text.length === 0) {
                 return;
             }
-
+            
             var preparePost = function(dir, time, name, message) {
                 var tpl = '';
                 tpl += '<div class="post '+ dir +'">';
                 tpl += '<div class="message">';
                 tpl += '<span class="arrow"></span>';
-                tpl += '<strong class="name">Bob Nilson</strong>&nbsp;';
+                tpl += '<strong class="name">'+name+'</strong>&nbsp;';
                 tpl += '<span class="datetime">' + time + '</span>';
                 tpl += '<span class="body">';
                 tpl += " "+message;
@@ -68,8 +63,9 @@ var QuickSidebar = function () {
             };
 
             // handle post
+            var  username = '<?php echo $username; ?>';
             var time = new Date();
-            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), "Bob Nilson", text);
+            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), username, text);
             message = $(message);
             chatContainer.append(message);
 

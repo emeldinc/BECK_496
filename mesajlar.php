@@ -165,7 +165,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE PLUGINS & SCRIPTS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-<script src="assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/timeline.js" type="text/javascript"></script>
 <script>
@@ -177,6 +176,130 @@ Demo.init(); // init demo features
 Todo.init(); // init todo page
 Timeline.init(); // init timeline page
 });
+var QuickSidebar = function () {
+
+   // Handles quick sidebar chats
+    var handleQuickSidebarChat = function () {
+        var wrapper = $('.page-quick-sidebar-wrapper');
+        var wrapperChat = wrapper.find('.page-quick-sidebar-chat');
+
+        var initChatSlimScroll = function () {
+            var chatUsers = wrapper.find('.page-quick-sidebar-chat-users');
+            var chatUsersHeight;
+
+            chatUsersHeight = wrapper.height() - wrapper.find('.nav-justified > .nav-tabs').outerHeight();
+
+            // chat user list 
+            Metronic.destroySlimScroll(chatUsers);
+            chatUsers.attr("data-height", chatUsersHeight);
+            Metronic.initSlimScroll(chatUsers);
+
+            var chatMessages = wrapperChat.find('.page-quick-sidebar-chat-user-messages');
+            var chatMessagesHeight = chatUsersHeight - wrapperChat.find('.page-quick-sidebar-chat-user-form').outerHeight() - wrapperChat.find('.page-quick-sidebar-nav').outerHeight();
+
+            // user chat messages 
+            Metronic.destroySlimScroll(chatMessages);
+            chatMessages.attr("data-height", chatMessagesHeight);
+            Metronic.initSlimScroll(chatMessages);
+        };
+
+        initChatSlimScroll();
+        Metronic.addResizeHandler(initChatSlimScroll); // reinitialize on window resize
+
+        wrapper.find('.page-quick-sidebar-chat-users .media-list > .media').click(function () {
+            wrapperChat.addClass("page-quick-sidebar-content-item-shown");
+        });
+
+        wrapper.find('.page-quick-sidebar-chat-user .page-quick-sidebar-back-to-list').click(function () {
+            wrapperChat.removeClass("page-quick-sidebar-content-item-shown");
+        });
+
+        var handleChatMessagePost = function (e) {
+            e.preventDefault();
+
+            var chatContainer = wrapperChat.find(".page-quick-sidebar-chat-user-messages");
+            var input = wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control');
+
+            var text = input.val();
+            if (text.length === 0) {
+                return;
+            }
+            
+            var preparePost = function(dir, time, name, message) {
+                var tpl = '';
+                tpl += '<div class="post '+ dir +'">';
+                tpl += '<div class="message">';
+                tpl += '<span class="arrow"></span>';
+                tpl += '<strong class="name">'+name+'</strong>&nbsp;';
+                tpl += '<span class="datetime">' + time + '</span>';
+                tpl += '<span class="body">';
+                tpl += " "+message;
+                tpl += '</span>';
+                tpl += '</div>';
+                tpl += '</div>';
+            return tpl;
+            };
+
+            // handle post
+            var  username = '<?php echo $username; ?>';
+            var time = new Date();
+            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), username, text);
+            message = $(message);
+            chatContainer.append(message);
+			$.ajax({
+                url: "mesaj_ekle.php?sender="+username+"&date="+time.toLocaleString()+"&content="+text,
+                type: 'POST',
+                success: function(result) {}
+            });
+
+            var getLastPostPos = function() {
+                var height = 0;
+                chatContainer.find(".post").each(function() {
+                    height = height + $(this).outerHeight();
+                });
+
+                return height;
+            };           
+
+            chatContainer.slimScroll({
+                scrollTo: getLastPostPos()
+            });
+
+            input.val("");
+
+            // simulate reply
+            setTimeout(function(){
+                var time = new Date();
+                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'Lorem ipsum doloriam nibh...');
+                message = $(message);
+                chatContainer.append(message);
+
+                chatContainer.slimScroll({
+                    scrollTo: getLastPostPos()
+                });
+            }, 3000);
+        };
+
+        wrapperChat.find('.page-quick-sidebar-chat-user-form .btn').click(handleChatMessagePost);
+        wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control').keypress(function (e) {
+            if (e.which == 13) {
+                handleChatMessagePost(e);
+                return false;
+            }
+        });
+    };
+
+   
+    return {
+
+        init: function () {
+            
+            handleQuickSidebarChat(); // handles quick sidebar's chats
+            
+        }
+    };
+
+}();
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
