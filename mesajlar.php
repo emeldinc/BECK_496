@@ -2,6 +2,28 @@
       session_start();
       include('dbconnection.php');
 
+      $sql_messages = "SELECT * FROM mesaj WHERE 
+      mesaj.ref_site_id = '".$_SESSION['site_id']."'
+      AND mesaj.ref_apartman_id = '".$_SESSION['apartman_id']."'";
+
+      $sql_adres = "SELECT * FROM apartman,site WHERE
+      apartman.id = '".$_SESSION['apartman_id']."'
+      AND site.id = '".$_SESSION['site_id']."'";
+
+      $result_adres = $db->query($sql_adres);
+      $row_adres = $result_adres->fetch_assoc();
+
+      $result_message = $db->query($sql_messages);
+      $message_arr = array();
+	  if ($result_message->num_rows > 0) {
+		    while($row_message = $result_message->fetch_assoc()) {
+		    	array_push($message_arr,$row_message);
+		    }
+	   }
+
+	  
+
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -86,57 +108,43 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="portlet box blue tabbable">
 	<div class="portlet-title">
 		<div class="caption">
-			<i class="fa fa-gift"></i>Mesajlaşma
+			<i class="fa fa-send"></i>
+			Chatroom <?php echo $row_adres['city']." ".$row_adres['state']." ".$row_adres['name']." ".$row_adres['number']; ?>
 		</div>
-		<ul class="nav nav-tabs">
-			<li class="">
-				<a href="#portlet_tab_2" data-toggle="tab" aria-expanded="false">
-				Geçmiş Mesajlar </a>
-			</li>
-			<li class="active">
-				<a href="#portlet_tab_1" data-toggle="tab" aria-expanded="true">
-				Chat </a>
-			</li>
-		</ul>
 	</div>
 	<div class="portlet-body">
-		<div class="tab-content">
-			<div class="tab-pane active" id="portlet_tab_1">
-			    <div class="page-quick-sidebar-wrapper" style = "height:600px !important;">
-					<div class="page-quick-sidebar">
-						<div class="page-quick-sidebar-chat">
-							<div class="page-quick-sidebar-item">
-								<div class="page-quick-sidebar-chat-user">
-									<div class="page-quick-sidebar-chat-user-messages">
-										<div class="post out">
+		<div class="page-quick-sidebar-wrapper" style = "height:600px !important;">
+			<div class="page-quick-sidebar">
+				<div class="page-quick-sidebar-chat">
+					<div class="page-quick-sidebar-item">
+						<div class="page-quick-sidebar-chat-user">
+							<div class="page-quick-sidebar-chat-user-messages">
+								<?php foreach($message_arr as $message) {
+								$time = strtotime($message['date']);
+								$newformat = date('d-m-Y H:i',$time); ?>
+									<div class="post out">
 										<!--<img class="avatar" alt="" src="../../assets/admin/layout/img/avatar3.jpg"/> -->
-											<div class="message">
-												<span class="arrow"></span>
-												<strong class="name">Bob Nilson</strong>
-												<span class="datetime">20:15</span>
-												<span class="body">
-												 When could you send me the report ? </span>
-											</div>
+										<div class="message">
+											<span class="arrow"></span>
+											<strong class="name"><?php echo $message['username']; ?></strong>
+											<strong class="datetime"><?php echo $newformat; ?></strong>
+											<span class="body">
+											 <?php echo $message['content']; ?> </span>
 										</div>
 									</div>
-									<div class="page-quick-sidebar-chat-user-form">
-										<div class="input-group">
-										<input style = "background-color: #D1D2D3; fo" type="text" class="form-control" placeholder="Mesajınızı buraya yazın...">
-											<div class="input-group-btn">
-												<button type="button" class="btn blue"><i class="icon-paper-clip"></i></button>
-											</div>
-										</div>
+								<?php } ?>
+							</div>
+							<div class="page-quick-sidebar-chat-user-form">
+								<div class="input-group">
+								<input style = "background-color: #D1D2D3; fo" type="text" class="form-control" placeholder="Mesajınızı buraya yazın...">
+									<div class="input-group-btn">
+										<button type="button" class="btn blue"><i class="icon-paper-clip"></i></button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="tab-pane" id="portlet_tab_2">
-				<p>
-					 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.
-				</p>
 			</div>
 		</div>
 	</div>
@@ -177,8 +185,8 @@ Todo.init(); // init todo page
 Timeline.init(); // init timeline page
 });
 var QuickSidebar = function () {
-
-   // Handles quick sidebar chats
+	var size = '<?php echo count($message_arr); ?>';
+	// Handles quick sidebar chats
     var handleQuickSidebarChat = function () {
         var wrapper = $('.page-quick-sidebar-wrapper');
         var wrapperChat = wrapper.find('.page-quick-sidebar-chat');
@@ -213,11 +221,51 @@ var QuickSidebar = function () {
         wrapper.find('.page-quick-sidebar-chat-user .page-quick-sidebar-back-to-list').click(function () {
             wrapperChat.removeClass("page-quick-sidebar-content-item-shown");
         });
+        var chatContainer = wrapperChat.find(".page-quick-sidebar-chat-user-messages");
+        var getLastPostPos = function() {
+                var height = 0;
+                chatContainer.find(".post").each(function() {
+                    height = height + $(this).outerHeight();
+                });
+
+                return height;
+        };
+        setInterval(function(){
+        	 	var date = new Date();
+        	 	MyDateString = ('0' + date.getDate()).slice(-2) + '-'
+	             + ('0' + (date.getMonth()+1)).slice(-2) + '-'
+	             + date.getFullYear();
+            	$.ajax({
+                url: "mesaj_getir.php?date="+date.toLocaleString(),
+                type: 'POST',
+                success: function(result) {
+					var messages = $.parseJSON(result);
+                    $.each( messages, function( key, value ) {
+                        var message = '';
+		                message += '<div class="post '+ 'out' +'">';
+		                message += '<div class="message">';
+		                message += '<span class="arrow"></span>';
+		                message += '<strong class="name">'+value['username']+'</strong>&nbsp;';
+		                message += '<strong class="datetime">' + (MyDateString+" "+('0' + (date.getHours())).slice(-2) + ':' + ('0' + (date.getMinutes())).slice(-2)) + '</strong>';
+		                message += '<span class="body">';
+		                message += " "+value['content'];
+		                message += '</span>';
+		                message += '</div>';
+		                message += '</div>';
+		            	message = $(message);
+		            	chatContainer.append(message);
+						chatContainer.slimScroll({
+		                    scrollTo: getLastPostPos()
+		                });
+                    });
+                }
+            	});
+            }, 1000);
 
         var handleChatMessagePost = function (e) {
             e.preventDefault();
 
-            var chatContainer = wrapperChat.find(".page-quick-sidebar-chat-user-messages");
+            
             var input = wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control');
 
             var text = input.val();
@@ -231,7 +279,7 @@ var QuickSidebar = function () {
                 tpl += '<div class="message">';
                 tpl += '<span class="arrow"></span>';
                 tpl += '<strong class="name">'+name+'</strong>&nbsp;';
-                tpl += '<span class="datetime">' + time + '</span>';
+                tpl += '<strong class="datetime">' + time + '</strong>';
                 tpl += '<span class="body">';
                 tpl += " "+message;
                 tpl += '</span>';
@@ -240,10 +288,14 @@ var QuickSidebar = function () {
             return tpl;
             };
 
-            // handle post
+            
+			
             var  username = '<?php echo $username; ?>';
             var time = new Date();
-            var message = preparePost('out', (time.getHours() + ':' + time.getMinutes()), username, text);
+            MyDateString = ('0' + time.getDate()).slice(-2) + '-'
+             + ('0' + (time.getMonth()+1)).slice(-2) + '-'
+             + time.getFullYear();
+            var message = preparePost('out', (MyDateString+" "+('0' + (time.getHours())).slice(-2) + ':' + ('0' + (time.getMinutes())).slice(-2)), username, text);
             message = $(message);
             chatContainer.append(message);
 			$.ajax({
@@ -252,37 +304,18 @@ var QuickSidebar = function () {
                 success: function(result) {}
             });
 
-            var getLastPostPos = function() {
-                var height = 0;
-                chatContainer.find(".post").each(function() {
-                    height = height + $(this).outerHeight();
-                });
-
-                return height;
-            };           
-
-            chatContainer.slimScroll({
+			           
+			chatContainer.slimScroll({
                 scrollTo: getLastPostPos()
             });
 
             input.val("");
 
-            // simulate reply
-            setTimeout(function(){
-                var time = new Date();
-                var message = preparePost('in', (time.getHours() + ':' + time.getMinutes()), "Ella Wong", 'Lorem ipsum doloriam nibh...');
-                message = $(message);
-                chatContainer.append(message);
-
-                chatContainer.slimScroll({
-                    scrollTo: getLastPostPos()
-                });
-            }, 3000);
         };
 
         wrapperChat.find('.page-quick-sidebar-chat-user-form .btn').click(handleChatMessagePost);
         wrapperChat.find('.page-quick-sidebar-chat-user-form .form-control').keypress(function (e) {
-            if (e.which == 13) {
+				if (e.which == 13) {
                 handleChatMessagePost(e);
                 return false;
             }

@@ -3,7 +3,7 @@
 	session_start();
 	$sender = $_GET['sender'];
 	$date = $_GET['date'];
-	$datetime = date('Y-m-d H:m',strtotime($date));
+	$datetime = date('Y-m-d H:i:s',strtotime($date));
 	$content = $_GET['content'];
 	$apartman_id = $_SESSION['apartman_id'];
 	$site_id = $_SESSION['site_id'];
