@@ -37,7 +37,7 @@
            $_SESSION['site_id'] = $konum_array[0]['ref_site_id'];
         }
 
-        $sql_aidat = "SELECT * FROM beckdoor.aidat WHERE ref_daire_id = '".$_SESSION['daire_id']."'";
+        $sql_aidat = "SELECT * FROM aidat WHERE ref_daire_id = '".$_SESSION['daire_id']."'";
         $user_aidat = mysqli_query($db,$sql_aidat);
         $aidatlar = array();
         while($row = $user_aidat->fetch_assoc()) {
@@ -293,7 +293,7 @@
                             <?php
                             $site_id_x = $_SESSION['site_id'];
                             $apartman_id_x = $_SESSION['apartman_id'];
-                            $sql_etkinlikler = "SELECT * FROM beckdoor.etkinlik WHERE ref_apartman_id = '".$apartman_id_x."' AND ref_site_id = '".$site_id_x."' AND start_date IS NOT NULL";
+                            $sql_etkinlikler = "SELECT * FROM etkinlik WHERE ref_apartman_id = '".$apartman_id_x."' AND ref_site_id = '".$site_id_x."' AND start_date IS NOT NULL";
                             $etkinlikler = array();
                             $result_x = $db->query($sql_etkinlikler);
                             if ($result_x->num_rows > 0) {
