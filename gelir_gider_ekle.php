@@ -10,7 +10,7 @@
     $apartman_id = $_GET['apartman_id'];
     $description =  $_POST['description'];
   
-    $sql = "INSERT INTO beckdoor.gelir_gider (ref_apartman_id ,`date`,amount,description,gelirMi)
+    $sql = "INSERT INTO gelir_gider (ref_apartman_id ,`date`,amount,description,gelirMi)
     VALUES ('".$apartman_id."','".$tarih."','".$miktar."','".$description."','".$gelirMi."')";
 
     if(mysqli_query($db,$sql)) {

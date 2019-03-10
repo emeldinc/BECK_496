@@ -9,7 +9,7 @@
     $gelir_gider_id = $_GET['gelir_gider_id'];
     $aciklama = $_POST['description'];
 
-    $sql = "UPDATE beckdoor.gelir_gider SET amount = '".$miktar."', date = '".$tarih."',description = '".$aciklama."' 
+    $sql = "UPDATE gelir_gider SET amount = '".$miktar."', date = '".$tarih."',description = '".$aciklama."' 
     WHERE id = '".$gelir_gider_id."'";
 
     if(mysqli_query($db,$sql)) {

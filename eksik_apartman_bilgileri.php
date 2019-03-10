@@ -68,7 +68,7 @@
                                  <div class="form-group">
                                     <?php include('dbconnection.php');
                                     $insert_id = $_GET['insert_id']; 
-                                    $sql = "SELECT * FROM beckdoor.site WHERE id = '".$insert_id."'";
+                                    $sql = "SELECT * FROM site WHERE id = '".$insert_id."'";
                                     $siteler = $db->query($sql); ?>
                                     <select class="select2_category form-control" name = "site_id" tabindex="1">
                                        <?php while($row = $siteler->fetch_assoc()) { ?>

@@ -8,7 +8,7 @@ $site_id = $_SESSION['site_id'];
 
 $result_array = array();
 
-$sql = "SELECT id,description as title,start_date as start FROM beckdoor.etkinlik WHERE ref_apartman_id = '".$apartman_id."' AND ref_site_id = '".$site_id."' AND start_date IS NOT NULL";
+$sql = "SELECT id,description as title,start_date as start FROM etkinlik WHERE ref_apartman_id = '".$apartman_id."' AND ref_site_id = '".$site_id."' AND start_date IS NOT NULL";
 $result = $db->query($sql);
 
 if ($result->num_rows > 0) {

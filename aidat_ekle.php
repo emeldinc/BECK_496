@@ -8,7 +8,7 @@
     $daire_id = $_POST['daire'];
     $tarih = $_POST['tarih'];
 
-    $sql = "INSERT INTO beckdoor.aidat (ref_daire_id ,amount, `date`, odendiMi)
+    $sql = "INSERT INTO aidat (ref_daire_id ,amount, `date`, odendiMi)
     VALUES ('".$daire_id."','".$miktar."','".$tarih."',0)";
 
     if(mysqli_query($db,$sql)) {

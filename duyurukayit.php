@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
     $ref_site_id = 0;
   }
 
-  $sql = "INSERT INTO beckdoor.duyuru (ref_user_id,ref_apartman_id,ref_site_id,now_date,title,description)
+  $sql = "INSERT INTO duyuru (ref_user_id,ref_apartman_id,ref_site_id,now_date,title,description)
   VALUES ('$ref_user_id','$ref_apartman_id','$ref_site_id',NOW(),'".$title."','$description')";
   if(mysqli_query($db,$sql)){
 

@@ -10,7 +10,7 @@ include('dbconnection.php');
     $role = $_POST['role'];
     $image_path = "assets/images/no-image.jpeg";
 
-    $sql = "INSERT INTO beckdoor.user (username,password, firstname, lastname, role, image_path)
+    $sql = "INSERT INTO user (username,password, firstname, lastname, role, image_path)
     VALUES ('$username','$password','$firstname', '$lastname','$role','$image_path')";
 
     if (mysqli_query($db,$sql)) {

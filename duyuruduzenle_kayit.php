@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
   $res = mysqli_query($db,$sql);
   while ($b=mysqli_fetch_array($res)){
     if($duyuru_id == $b['id']){
-      $sql2 = "UPDATE beckdoor.duyuru SET ref_site_id='$ref_site_id',now_date=NOW(), title='$title', description='$description' WHERE id=$duyuru_id";
+      $sql2 = "UPDATE duyuru SET ref_site_id='$ref_site_id',now_date=NOW(), title='$title', description='$description' WHERE id=$duyuru_id";
       $res2 = mysqli_query($db,$sql2);
     }
   }

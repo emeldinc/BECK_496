@@ -14,7 +14,7 @@ if(isset($_POST['submit']))
         $res = mysqli_query($db,$sql);
         while ($b=mysqli_fetch_array($res)){
           if($user_id == $b['id']){
-            $sql2 = "UPDATE beckdoor.user SET image_path='$file_path' WHERE id=$user_id";
+            $sql2 = "UPDATE user SET image_path='$file_path' WHERE id=$user_id";
             $res2 = mysqli_query($db,$sql2);
             $_SESSION['image_path'] = $file_path;
           }

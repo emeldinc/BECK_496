@@ -23,14 +23,14 @@ class update_user_info {
      */
     public function StoreUserInfo($username, $password, $firstname, $lastname, $role, $image_path) {
     
-        $stmt = $this->conn->prepare("INSERT INTO beckdoor.user(username, password, firstname, lastname, role, image_path) VALUES(?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO user(username, password, firstname, lastname, role, image_path) VALUES(?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $name, $password, $firstname, $lastname, $role, $image_path);
         $result = $stmt->execute();
         $stmt->close();
 
         // check for successful store
         if ($result) {
-            $stmt = $this->conn->prepare("SELECT username, password, firstname, lastname, role, image_path FROM beckdoor.user WHERE username = ?");
+            $stmt = $this->conn->prepare("SELECT username, password, firstname, lastname, role, image_path FROM user WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $stmt-> bind_result($token2,$token3,$token4,$token5,$token6,$token7);
@@ -54,7 +54,7 @@ class update_user_info {
      */
     public function VerifyUserAuthentication($username, $password) {
 
-        $stmt = $this->conn->prepare("SELECT username, password, firstname, lastname, role, image_path FROM beckdoor.user WHERE username = ?");
+        $stmt = $this->conn->prepare("SELECT username, password, firstname, lastname, role, image_path FROM user WHERE username = ?");
 
         $stmt->bind_param("s", $username);
 

@@ -2,7 +2,7 @@
 include('dbconnection.php');
 
 $value = $_POST;
-$sql = "INSERT INTO beckdoor.apartman (ref_site_id, name, `number`)
+$sql = "INSERT INTO apartman (ref_site_id, name, `number`)
 VALUES ('".$value['site_id']."', '".$value['isim']."', '".$value['numara']."')";
 
 if ($db->query($sql) === TRUE) {

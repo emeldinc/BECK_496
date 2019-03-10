@@ -7,7 +7,7 @@
    
     $gelir_gider_id = $_GET['gelir_gider_id'];
 
-    $sql = "DELETE FROM beckdoor.gelir_gider
+    $sql = "DELETE FROM gelir_gider
     WHERE id = '".$gelir_gider_id."'";
 
     if(mysqli_query($db,$sql)) {

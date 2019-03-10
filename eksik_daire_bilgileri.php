@@ -68,7 +68,7 @@
                                  <div class="form-group">
                                     <?php include('dbconnection.php');
                                     $insert_id = $_GET['insert_id'];  
-                                    $sql = "SELECT * FROM beckdoor.apartman WHERE id = '".$insert_id."'";
+                                    $sql = "SELECT * FROM apartman WHERE id = '".$insert_id."'";
                                     $apartmanlar = $db->query($sql); ?>
                                     <select class="select2_category form-control" name = "apartman_id" tabindex="1">
                                        <?php while($row = $apartmanlar->fetch_assoc()) { ?>

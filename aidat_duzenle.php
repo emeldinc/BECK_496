@@ -8,7 +8,7 @@
     $tarih = $_POST['tarih'];
     $aidat_id = $_GET['aidat_id'];
 
-    $sql = "UPDATE beckdoor.aidat SET amount = '".$miktar."', date = '".$tarih."'
+    $sql = "UPDATE aidat SET amount = '".$miktar."', date = '".$tarih."'
     WHERE id = '".$aidat_id."'";
 
     if(mysqli_query($db,$sql)) {

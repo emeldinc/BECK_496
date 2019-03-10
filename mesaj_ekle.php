@@ -8,7 +8,7 @@
 	$apartman_id = $_SESSION['apartman_id'];
 	$site_id = $_SESSION['site_id'];
 	$user_id = $_SESSION['user_id'];
-	$sql = "INSERT INTO beckdoor.mesaj (`date`,sender,username,content,ref_apartman_id,ref_site_id)
+	$sql = "INSERT INTO mesaj (`date`,sender,username,content,ref_apartman_id,ref_site_id)
 			VALUES ('".$datetime."','".$user_id."','".$sender."','".$content."','".$apartman_id."','".$site_id."')";
 	if (mysqli_query($db,$sql)) {} 
 	else {

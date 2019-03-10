@@ -8,7 +8,7 @@ $site_id = $_SESSION['site_id'];
 
 $result_array = array();
 
-$sql = "SELECT * FROM beckdoor.etkinlik WHERE ref_apartman_id = '".$apartman_id."' AND ref_site_id = '".$site_id."' AND silindiMi = 0";
+$sql = "SELECT * FROM etkinlik WHERE ref_apartman_id = '".$apartman_id."' AND ref_site_id = '".$site_id."' AND silindiMi = 0";
 $result = $db->query($sql);
 
 if ($result->num_rows > 0) {

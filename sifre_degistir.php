@@ -13,7 +13,7 @@ if(isset($_POST['submit']))
   while ($b=mysqli_fetch_array($res)){
     if($user_id == $b['id']){
         if($password==$b['password']){
-          $sql2 = "UPDATE beckdoor.user SET password='$new_password'  WHERE id=$user_id";
+          $sql2 = "UPDATE user SET password='$new_password'  WHERE id=$user_id";
           $res2 = mysqli_query($db,$sql2);
             header('location: profil.php');
 

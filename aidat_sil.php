@@ -7,7 +7,7 @@
    
     $aidat_id = $_GET['aidat_id'];
 
-    $sql = "DELETE FROM beckdoor.aidat
+    $sql = "DELETE FROM aidat
     WHERE id = '".$aidat_id."'";
 
     if(mysqli_query($db,$sql)) {
