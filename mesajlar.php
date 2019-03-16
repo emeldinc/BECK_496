@@ -260,7 +260,7 @@ var QuickSidebar = function () {
                     });
                 }
             	});
-            }, 1000);
+            }, 5000);
 
         var handleChatMessagePost = function (e) {
             e.preventDefault();
