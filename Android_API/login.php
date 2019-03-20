@@ -6,6 +6,7 @@
         $response = array("error" => FALSE);
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $password = substr(md5($_POST['password']), 0, 30);
         $sql = "SELECT * FROM `user` WHERE `username` = $username AND ``password` = $password";
         $res = mysqli_query($db,$sql);
         if(mysqli_affected_rows($db) == 1)
