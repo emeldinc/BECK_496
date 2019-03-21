@@ -1,13 +1,11 @@
 <?php 
-
-	if(session_id() == '')
     session_start();
 	include('dbconnection.php');
-
+    
     $miktar = $_POST['miktar'];
     $gelirMi = $_POST['gelirMi'];
     $tarih = $_POST['tarih'];
-    $apartman_id = $_GET['apartman_id'];
+    $apartman_id = $_SESSION['apartman_id'];
     $description =  $_POST['description'];
   
     $sql = "INSERT INTO beckdoor.gelir_gider (ref_apartman_id ,`date`,amount,description,gelirMi)
@@ -21,9 +19,4 @@
         echo $db->error;
         echo "<script> alert('Kaydiniz olusturulamamistir...') </script>";
     }
-
-   
-
-
-
-    ?>
+?>

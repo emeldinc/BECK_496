@@ -82,24 +82,26 @@
       array_push($ay_gelir_gider, $row);
    }
 
-   $a = array();
+   $ay_grafik = array();
    foreach ($ay_gelirler as $value) {
 
       $unixtime = strtotime($value['date']);
       $ay = date('m', $unixtime);
 
-      if(!array_key_exists($ay, $a)) {
-         $a[$ay] = 0;
+      if(!array_key_exists($ay, $ay_grafik)) {
+         $ay_grafik[$ay] = 0;
       }
 
       if($value['gelirMi'] == 1) {
-         $a[$ay] += $value['amount'];
+         $ay_grafik[$ay] += $value['amount'];
       }
       else {
-         $a[$ay] -= $value['amount'];
+         $ay_grafik[$ay] -= $value['amount'];
       }
 
    }
+
+   
 
 
    ?>
@@ -178,7 +180,7 @@
                            </div>
                         </div>
                         <div class="portlet-body">
-                           <?php if(empty($a)) { ?>
+                           <?php if(empty($ay_grafik)) { ?>
                            Henüz bir veri girilmemiş...
                            <?php } else { ?>
                            <div id="columnchart_material" style = "width:100%; height:250px;"></div>
@@ -295,7 +297,7 @@
          function drawChart() {
            var data = google.visualization.arrayToDataTable([
            ['Ay','Gelir'],
-           <?php foreach($a as $key => $value) { ?>
+           <?php foreach($ay_grafik as $key => $value) { ?>
 
                [<?php echo $key; ?>,<?php echo $value; ?>],
 

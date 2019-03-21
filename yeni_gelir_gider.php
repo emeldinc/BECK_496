@@ -2,9 +2,10 @@
    include('dbconnection.php');
    session_start();
    $apartman_id = $_SESSION['apartman_id'];
-   $sql_apartman = "SELECT * FROM beckdoor.apartman WHERE id = '".$apartman_id."'";
+   $sql_apartman = "SELECT * FROM apartman WHERE id = '".$apartman_id."'";
    $apartman = mysqli_query($db, $sql_apartman);
-   $row = mysqli_fetch_assoc($apartman);
+   $ap = mysqli_fetch_assoc($apartman);
+
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +87,7 @@
                <div class = "col-md-12">
                   <?php $rol = $_SESSION['user_role']; ?>
                   <div class="alert alert-info">
-                     <strong><?php echo $row['name']." ".$row['number']." numara" ?></strong> için gelir-gider ekleyin.
+                     <strong><?php echo $ap["name"]." ".$ap["number"]." numara"; ?></strong> için gelir-gider ekleyin.
                   </div>
                </div>
             </div>
