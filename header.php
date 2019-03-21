@@ -177,7 +177,7 @@ while($event_row = mysqli_fetch_assoc($events)) {
                      </li>
                      <!-- BEGIN INBOX DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                     <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                     <li onmouseover = "reset_count();" class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-envelope-open"></i>
                         <span id = "count2" class="badge badge-danger">
@@ -185,9 +185,10 @@ while($event_row = mysqli_fetch_assoc($events)) {
                         </a>
                         <ul class="dropdown-menu">
                            <li class="external">
-                              <h3><span id = "count" class="bold"></span> yeni mesajınız var</h3>
+                              <h3><span class="bold"></span>yeni mesajlar</h3>
                               <a href="mesajlar.php">hepsini göster</a>
                            </li>
+                           
                            <li>
                               <ul id ="messages" class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
                                   
@@ -348,8 +349,11 @@ while($event_row = mysqli_fetch_assoc($events)) {
 <script type="text/javascript">
   var _startCount = 0;
   var count = 0;
-  document.getElementById("count").innerHTML = _startCount;
-  document.getElementById("count2").innerHTML = _startCount;  
+  document.getElementById("count2").innerHTML = _startCount;
+
+  function reset_count() {
+    count = 0;
+  }
 
   setInterval(function(){
     var date = new Date();
@@ -362,7 +366,6 @@ while($event_row = mysqli_fetch_assoc($events)) {
         success: function(result) {
           var messages = $.parseJSON(result);
           count = count + messages.length;
-          document.getElementById("count").innerHTML = count;
           document.getElementById("count2").innerHTML = count;
           
           $.each( messages, function( key, value ) {
