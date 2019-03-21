@@ -37,9 +37,9 @@
             $response['error'] = TRUE;
             $response['error_msg'] = "Invalid Username or Password...";
         }
+        echo $response;
+
         echo json_encode($response);
-        print(json_encode($response));
-        return json_encode($response);
     }
 /*
 require_once 'update_user_info.php';
