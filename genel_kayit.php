@@ -44,10 +44,11 @@
     {
         $site_id;
         $apartman_id;
+        $daire_id;
         $site_secenek = $_POST['site_secenek'];
         if($site_secenek == "-1")
         {
-            $sql = "INSERT INTO beckdoor.site (name, city, state, postal_code)
+            $sql = "INSERT INTO `site` (name, city, state, postal_code)
                     VALUES ('".$_POST['site_adi']."', '".$_POST['sehir']."', '".$_POST['ilce']."', '".$_POST['posta_kodu']."')";
             if ($db->query($sql) === TRUE) {
                 $site_id = $db->insert_id;
@@ -75,16 +76,22 @@
         {
             $apartman_id = $_POST['apartman_secenek'];
         }
-        $sql_for_daire = "INSERT INTO beckdoor.daire (`ref_apartman_id`,`number`)
+        $sql_for_daire = "INSERT INTO `daire` (`ref_apartman_id`,`number`)
                           VALUES ('$apartman_id',".$_POST['daire_numara'].")";
 
         if ($db->query($sql_for_daire))
         {
-            $sql_for_user_daire = "INSERT INTO beckdoor.user_daire (ref_user_id, ref_daire_id)
+            $sql_for_user_daire = "INSERT INTO `user_daire` (ref_user_id, ref_daire_id)
                                    VALUES (".$_SESSION['user_id'].",".$db->insert_id.")";
             $db->query($sql_for_user_daire);
+            $daire_id = $db->insert_id;
         }
         else
             echo "<script> alert('". $db->error . "') </script>";
+
+        $_SESSION['site_id'] = $site_id;
+        $_SESSION['apartman_id'] = $apartman_id;
+        $_SESSION['daire_id'] = $daire_id;
+
     }
 ?>
