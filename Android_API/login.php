@@ -1,5 +1,11 @@
 <?php
 
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: access");
+    header("Access-Control-Allow-Methods: POST");
+    header("Access-Control-Allow-Credentials: true");
+    header('Content-Type: application/json');
+
     $servername = "mysql.hostinger.com";
     $username = "u413882592_root";
     $password = "beckdoor123";
@@ -18,6 +24,7 @@
         $res = mysqli_query($db,$sql);
         if(mysqli_affected_rows($db) == 1)
         {
+            http_response_code(200);
             $row = mysqli_fetch_assoc($res);
             $response['username'] = $row['username'];
             $response['user_id'] = $row['id'];
