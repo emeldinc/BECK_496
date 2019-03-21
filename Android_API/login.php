@@ -1,5 +1,12 @@
 <?php
-    include '../dbconnection.php';
+
+    $servername = "mysql.hostinger.com";
+    $username = "u413882592_root";
+    $password = "beckdoor123";
+    $dbname = "u413882592_beckd";
+
+    // Create connection
+    $db = new mysqli($servername, $username, $password,$dbname);
 
     if(isset($_POST['username']) && isset($_POST['password']))
     {
@@ -24,6 +31,8 @@
             $response['error_msg'] = "Invalid Username or Password...";
         }
         echo json_encode($response);
+        print(json_encode($response));
+        return json_encode($response);
     }
 /*
 require_once 'update_user_info.php';

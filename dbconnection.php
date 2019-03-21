@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "mysql.hostinger.com";
 $username = "u413882592_root";
 $password = "beckdoor123";
 $dbname = "u413882592_beckd";
