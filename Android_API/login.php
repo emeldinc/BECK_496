@@ -14,33 +14,31 @@
     // Create connection
     $db = new mysqli($servername, $username, $password,$dbname);
 
-    if(isset($_POST['username']) && isset($_POST['password']))
-    {
-        $response = array("error" => FALSE);
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $password = substr(md5($_POST['password']), 0, 30);
-        $sql = "SELECT * FROM `user` WHERE `username` = '$username' AND `password` = '$password'";
-        $res = mysqli_query($db,$sql);
-        if(mysqli_affected_rows($db) == 1)
-        {
-            http_response_code(200);
-            $row = mysqli_fetch_assoc($res);
-            $response['username'] = $row['username'];
-            $response['user_id'] = $row['id'];
-            $response['firstname'] = $row['firstname'];
-            $response['lastname'] = $row['lastname'];
-            $response['role'] = $row['role'];
-        }
-        else
-        {
-            $response['error'] = TRUE;
-            $response['error_msg'] = "Invalid Username or Password...";
-        }
-        echo $response;
 
-        echo json_encode($response);
+    $response = array("error" => FALSE);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $password = substr(md5($_POST['password']), 0, 30);
+    $sql = "SELECT * FROM `user` WHERE `username` = '$username' AND `password` = '$password'";
+    $res = mysqli_query($db,$sql);
+    if(mysqli_affected_rows($db) == 1)
+    {
+        http_response_code(200);
+        $row = mysqli_fetch_assoc($res);
+        $response['username'] = $row['username'];
+        $response['user_id'] = $row['id'];
+        $response['firstname'] = $row['firstname'];
+        $response['lastname'] = $row['lastname'];
+        $response['role'] = $row['role'];
     }
+    else
+    {
+        $response['error'] = TRUE;
+        $response['error_msg'] = "Invalid Username or Password...";
+    }
+    echo json_encode($response);
+    print(json_encode($response));
+    return json_encode($response);
 /*
 require_once 'update_user_info.php';
 $db = new update_user_info();
