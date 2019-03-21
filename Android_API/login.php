@@ -12,7 +12,7 @@
     $response = array("error" => FALSE);
     $username = $_GET['username'];
     $password = $_GET['password'];
-    $password = substr(md5($_POST['password']), 0, 30);
+    $password = substr(md5($password), 0, 30);
     $sql = "SELECT * FROM `user` WHERE `username` = '$username' AND `password` = '$password'";
     $res = mysqli_query($db,$sql);
     if(mysqli_affected_rows($db) == 1)
