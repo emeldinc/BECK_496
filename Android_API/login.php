@@ -6,13 +6,7 @@
     header("Access-Control-Allow-Credentials: true");
     header('Content-Type: application/json');
 
-    $servername = "mysql.hostinger.com";
-    $username = "u413882592_root";
-    $password = "beckdoor123";
-    $dbname = "u413882592_beckd";
-
-    // Create connection
-    $db = new mysqli($servername, $username, $password,$dbname);
+    include ('../dbconnection.php');
 
 
     $response = array("error" => FALSE);
@@ -35,10 +29,10 @@
     {
         $response['error'] = TRUE;
         $response['error_msg'] = "Invalid Username or Password...";
+        $response['wrong_username'] = $username;
+        $response['wrong_password'] = $password;
     }
     echo json_encode($response);
-    print(json_encode($response));
-    return json_encode($response);
 /*
 require_once 'update_user_info.php';
 $db = new update_user_info();
