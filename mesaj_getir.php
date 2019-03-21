@@ -10,7 +10,7 @@ $user_id = $_SESSION['user_id'];
 
 $sql_mesaj_getir = "SELECT * FROM mesaj WHERE ref_apartman_id = '".$apartman_id."' AND 
 ref_site_id = '".$site_id."' AND
-date >= '".$datetime."' AND
+date > '".$datetime."' AND
 sender != '".$user_id."'";
 
 $result = $db->query($sql_mesaj_getir);
