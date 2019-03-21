@@ -2,7 +2,7 @@
 
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: access");
-    header("Access-Control-Allow-Methods: POST");
+    header("Access-Control-Allow-Methods: GET");
     header("Access-Control-Allow-Credentials: true");
     header('Content-Type: application/json');
 
@@ -10,8 +10,8 @@
 
 
     $response = array("error" => FALSE);
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_GET['username'];
+    $password = $_GET['password'];
     $password = substr(md5($_POST['password']), 0, 30);
     $sql = "SELECT * FROM `user` WHERE `username` = '$username' AND `password` = '$password'";
     $res = mysqli_query($db,$sql);
