@@ -4,7 +4,7 @@
     header("Access-Control-Allow-Headers: access");
     header("Access-Control-Allow-Methods: GET");
     header("Access-Control-Allow-Credentials: true");
-    header('Content-Type: application/json');
+    header('Content-type: application/json; charset=utf-8');
 
     include '../dbconnection.php';
 
