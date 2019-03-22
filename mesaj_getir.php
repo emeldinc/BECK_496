@@ -3,15 +3,14 @@
 include("dbconnection.php");
 session_start();
 $date = $_GET['date'];
-$datetime = date('Y-m-d H:i:s',strtotime($date));
-
+$datetime = date('Y-m-d H:i:s',strtotime($date)-5);
 $apartman_id = $_SESSION['apartman_id'];
 $site_id = $_SESSION['site_id'];
 $user_id = $_SESSION['user_id'];
 
 $sql_mesaj_getir = "SELECT * FROM mesaj WHERE ref_apartman_id = '".$apartman_id."' AND 
 ref_site_id = '".$site_id."' AND
-date = '".$datetime."' AND
+date > '".$datetime."' AND
 sender != '".$user_id."'";
 
 $result = $db->query($sql_mesaj_getir);

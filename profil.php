@@ -2,7 +2,7 @@
       session_start();
       include('dbconnection.php');
       $user_id = $_SESSION['user_id'];
-      $sql = "SELECT * FROM user ";
+      $sql = "SELECT * FROM `user` ";
       $res = mysqli_query($db,$sql);
       while ($b=mysqli_fetch_array($res)){
         if($user_id == $b['id']){

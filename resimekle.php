@@ -10,11 +10,11 @@ if(isset($_POST['submit']))
       $file_path="assets/images/".$file_name;
       $user_id=$_SESSION['user_id'];
       if(move_uploaded_file($_FILES["resim"]["tmp_name"], $file_path)){
-        $sql = "SELECT * FROM user ";
+        $sql = "SELECT * FROM `user` ";
         $res = mysqli_query($db,$sql);
         while ($b=mysqli_fetch_array($res)){
           if($user_id == $b['id']){
-            $sql2 = "UPDATE user SET image_path='$file_path' WHERE id=$user_id";
+            $sql2 = "UPDATE `user` SET image_path='$file_path' WHERE id=$user_id";
             $res2 = mysqli_query($db,$sql2);
             $_SESSION['image_path'] = $file_path;
           }

@@ -1,5 +1,6 @@
 <?php
-   include('dbconnection.php');
+    include('dbconnection.php');
+
        if(session_id() == '') {
            session_start();
         $user_id = $_SESSION['user_id'];
@@ -43,10 +44,8 @@
         while($row = $user_aidat->fetch_assoc()) {
             array_push($aidatlar, $row);
         }
-
-
-   }
-   include ('security.php');
+    }
+    include ('security.php');
    ?>
 <!DOCTYPE html>
 <!--
@@ -454,7 +453,7 @@
                     $ref_user_id = $b['ref_user_id'];
                     $ref_apartman_id = $b['ref_apartman_id'];
 
-                    $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                    $sql2 = "SELECT * FROM `user` WHERE id = '$ref_user_id'";
                     $result = mysqli_query($db,$sql2);
                     $row = mysqli_fetch_assoc($result);
 
@@ -506,7 +505,7 @@
                                     $title = $b['title'];
                                     $description= $b['description'];
                                     $image_path = NULL;
-                                    $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                                    $sql2 = "SELECT * FROM `user` WHERE id = '$ref_user_id'";
                                     $result = mysqli_query($db,$sql2);
                                     $row = mysqli_fetch_assoc($result);
                                     if (mysqli_affected_rows($db) >= 1) {

@@ -21,13 +21,15 @@
    $apartman_adi = $db->query($sql_apartman_adi);
    $apartman_bilgileri = $apartman_adi->fetch_assoc();
 
-
+   
    $gelir_giderler = array();
-   $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$apartman_id."'";
+   $sql_gelir_gider = "SELECT * FROM gelir_gider WHERE ref_apartman_id = '".$_SESSION['apartman_id']."'";
    $gelir_gider = $db->query($sql_gelir_gider);
-   while($row = $gelir_gider->fetch_assoc()) {
-   	array_push($gelir_giderler, $row);
+   while($_gelirgider = $gelir_gider->fetch_assoc()) {
+   	array_push($gelir_giderler, $_gelirgider);
    }
+
+   
 
    $toplam_gelir = 0;
    $toplam_gider = 0;

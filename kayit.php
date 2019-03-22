@@ -10,11 +10,11 @@ include('dbconnection.php');
     $role = $_POST['role'];
     $image_path = "assets/images/no-image.jpeg";
 
-    $sql = "INSERT INTO user (username,password, firstname, lastname, role, image_path)
+    $sql = "INSERT INTO `user` (username,password, firstname, lastname, role, image_path)
     VALUES ('$username','$password','$firstname', '$lastname','$role','$image_path')";
 
     if (mysqli_query($db,$sql)) {
-        $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+        $sql = "SELECT * FROM `user` WHERE username = '$username' AND password = '$password'";
         $res = mysqli_query($db,$sql);
         $row = mysqli_fetch_assoc($res);
         $_SESSION['username'] = $username;

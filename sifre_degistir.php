@@ -8,12 +8,12 @@ if(isset($_POST['submit']))
   $new_password = substr(md5($_POST['new_password']),0,30);
   $user_id = $_SESSION['user_id'];
 
-  $sql = "SELECT * FROM user ";
+  $sql = "SELECT * FROM `user` ";
   $res = mysqli_query($db,$sql);
   while ($b=mysqli_fetch_array($res)){
     if($user_id == $b['id']){
         if($password==$b['password']){
-          $sql2 = "UPDATE user SET password='$new_password'  WHERE id=$user_id";
+          $sql2 = "UPDATE `user` SET password='$new_password'  WHERE id=$user_id";
           $res2 = mysqli_query($db,$sql2);
             header('location: profil.php');
 

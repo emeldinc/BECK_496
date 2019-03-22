@@ -13,7 +13,7 @@ while ($a=mysqli_fetch_array($rs)){
   $ref_user_id = $a['ref_user_id'];
   $ref_apartman_id = $a['ref_apartman_id'];
 
-  $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+  $sql2 = "SELECT * FROM `user` WHERE id = '$ref_user_id'";
   $result = mysqli_query($db,$sql2);
   $row = mysqli_fetch_assoc($result);
   $date = $a['now_date'];
@@ -177,89 +177,21 @@ while($event_row = mysqli_fetch_assoc($events)) {
                      </li>
                      <!-- BEGIN INBOX DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                     <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                     <li onmouseover = "reset_count();" class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-envelope-open"></i>
-                        <span class="badge badge-danger">
-                        4 </span>
+                        <span id = "count2" class="badge badge-danger">
+                        </span>
                         </a>
                         <ul class="dropdown-menu">
                            <li class="external">
-                              <h3>You have <span class="bold">7 New</span> Messages</h3>
-                              <a href="inbox.html">view all</a>
+                              <h3><span class="bold"></span>yeni mesajlar</h3>
+                              <a href="mesajlar.php">hepsini göster</a>
                            </li>
+                           
                            <li>
-                              <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                                 <li>
-                                    <a href="inbox.html?a=view">
-                                    <span class="photo">
-                                    <img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                    <span class="from">
-                                    Lisa Wong </span>
-                                    <span class="time">Just Now </span>
-                                    </span>
-                                    <span class="message">
-                                    Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="inbox.html?a=view">
-                                    <span class="photo">
-                                    <img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                    <span class="from">
-                                    Richard Doe </span>
-                                    <span class="time">16 mins </span>
-                                    </span>
-                                    <span class="message">
-                                    Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="inbox.html?a=view">
-                                    <span class="photo">
-                                    <img src="assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                    <span class="from">
-                                    Bob Nilson </span>
-                                    <span class="time">2 hrs </span>
-                                    </span>
-                                    <span class="message">
-                                    Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="inbox.html?a=view">
-                                    <span class="photo">
-                                    <img src="assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                    <span class="from">
-                                    Lisa Wong </span>
-                                    <span class="time">40 mins </span>
-                                    </span>
-                                    <span class="message">
-                                    Vivamus sed auctor 40% nibh congue nibh... </span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="inbox.html?a=view">
-                                    <span class="photo">
-                                    <img src="assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                    <span class="from">
-                                    Richard Doe </span>
-                                    <span class="time">46 mins </span>
-                                    </span>
-                                    <span class="message">
-                                    Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                 </li>
+                              <ul id ="messages" class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                  
                               </ul>
                            </li>
                         </ul>
@@ -273,7 +205,7 @@ while($event_row = mysqli_fetch_assoc($events)) {
                            <?php echo $_SESSION['firstname']; ?> </span>
                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                            <?php   $user_id = $_SESSION['user_id'];
-                             $sql = "SELECT * FROM user ";
+                             $sql = "SELECT * FROM `user` ";
                              $res = mysqli_query($db,$sql);
                              while ($b=mysqli_fetch_array($res)){
                                if($user_id == $b['id']){
@@ -413,3 +345,47 @@ while($event_row = mysqli_fetch_assoc($events)) {
                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                <!-- BEGIN PAGE HEADER-->
                <!-- BEGIN PAGE HEAD -->
+
+<script type="text/javascript">
+  var _startCount = 0;
+  var count = 0;
+  document.getElementById("count2").innerHTML = _startCount;
+
+  function reset_count() {
+    count = 0;
+  }
+
+  setInterval(function(){
+    var date = new Date();
+    MyDateString = ('0' + date.getDate()).slice(-2) + '-'
+       + ('0' + (date.getMonth()+1)).slice(-2) + '-'
+       + date.getFullYear();
+      $.ajax({
+        url: "mesaj_getir.php?date="+date.toLocaleString(),
+        type: 'POST',
+        success: function(result) {
+          var messages = $.parseJSON(result);
+          count = count + messages.length;
+          document.getElementById("count2").innerHTML = count;
+          
+          $.each( messages, function( key, value ) {
+            var message = '';
+            message += '<li>';
+            message += '<a href="javascript:;">';
+            message += '<span class="details">';
+            message += '<span class="label label-sm label-success">'+value['username']+'</span>';
+            message += '</span>';
+            if(value['content'].length > 32) {
+              message +=  '<span>'+" "+value['content'].substring(0,32)+"..."+'</span>';
+            }
+            else { 
+              message +=  '<span>'+" "+value['content']+'</span>';
+            }
+            message += '</a>';
+            message += '</li>';
+           $("#messages").append(message);
+          }); 
+        }
+      });
+  }, 5000);
+</script>

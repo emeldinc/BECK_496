@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
             $date = $b['now_date'];
             $ref_user_id = $b['ref_user_id'];
             $title = $b['title'];
-            $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+            $sql2 = "SELECT * FROM `user` WHERE id = '$ref_user_id'";
             $result = mysqli_query($db,$sql2);
             $row = mysqli_fetch_assoc($result);
             $image_path = NULL;

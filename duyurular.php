@@ -127,7 +127,7 @@
                 $title = $b['title'];
                 $description= $b['description'];
                 $image_path = NULL;
-                $sql2 = "SELECT * FROM user WHERE id = '$ref_user_id'";
+                $sql2 = "SELECT * FROM `user` WHERE id = '$ref_user_id'";
                 $result = mysqli_query($db,$sql2);
                 $row = mysqli_fetch_assoc($result);
                 if (mysqli_affected_rows($db) >= 1) {
