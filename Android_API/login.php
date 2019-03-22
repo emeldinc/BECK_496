@@ -6,8 +6,8 @@
     header("Access-Control-Allow-Credentials: true");
     header('Content-type: application/json; charset=utf-8');
 
-include ('../dbconnection.php');
-
+    include ('../dbconnection.php');
+    include ('Utility.php');
 
     $response = array("error" => FALSE);
     $username = $_GET['username'];

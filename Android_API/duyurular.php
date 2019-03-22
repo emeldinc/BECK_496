@@ -7,9 +7,10 @@
     header('Content-type: application/json; charset=utf-8');
 
     include '../dbconnection.php';
+    include ('Utility.php');
 
     $response = array("error" => FALSE,"duyurular" => array());
-    $apartman_id = $_GET['duyuru'];
+    $apartman_id = getApartmentID($_GET['duyuru']);
     $sql = "SELECT * FROM `duyuru` WHERE `ref_apartman_id` = $apartman_id";
     $res = mysqli_query($db,$sql);
     while($row = mysqli_fetch_assoc($res))
