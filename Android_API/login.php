@@ -29,7 +29,7 @@
         $housesql = "SELECT * FROM `user_daire` WHERE `ref_user_id` = ".$row['id'];
         $houseres = mysqli_query($db,$housesql);
         while($houserow = mysqli_fetch_assoc($houseres))
-            array_push($response['house_id'],$houserow['ref_daire_id']);
+            array_push($response['house_id'],$houserow['ref_daire_id']." ".getHouseNumber($houserow['ref_daire_id']));
     }
     else
     {
