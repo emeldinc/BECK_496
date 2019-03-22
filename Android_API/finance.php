@@ -36,7 +36,7 @@ while($row = mysqli_fetch_assoc($res))
     $finance['type'] = "gelir_gider";
     $finance['amount'] = $row['amount'];
     $finance['date'] = $row['date'];
-    $finance['gelirMi'] = $row['odendiMi'];
+    $finance['gelirMi'] = $row['gelirMi'];
     array_push($response['finances'],$finance);
 }
 echo json_encode($response);
