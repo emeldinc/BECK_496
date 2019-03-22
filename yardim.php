@@ -334,32 +334,34 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
                       <div class="tab-pane" id="tab_1_4">
                         <div id="accordion3" class="panel-group">
-                          <div class="panel panel-danger">
+                          <div class="panel panel-success">
                             <div class="panel-heading">
                               <h4 class="panel-title">
                               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_1">
-                              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
+                              1. Oylama nasıl oluştururum ? </a>
                               </h4>
                             </div>
                             <div id="accordion3_1" class="panel-collapse collapse in">
                               <div class="panel-body">
                                 <p>
-                                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                   Oylamalar sekmesinden seçeneklere tıklayıp oylama oluştura tıklarsanız. Oylama oluşturma sayfasına erişmiş olursunuz.
                                 </p>
                                 <p>
-                                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                </p>
-                                <p>
-                                   Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    <strong>Başlık: </strong> Oylamanızın başlığı.
+                                    <strong>Oylama Seçenekleri: </strong> Oylanacak seçenekler. Ör: Evet,Hayır,Belki...
+                                    <strong>Açıklama: </strong> Oylamanızın açıklaması.
+                                    <strong>Başlangıç Tarihi: </strong> Oylamanızın başlayacağı tarih.
+                                    <strong>Bitiş Tarihi: </strong> Oylamanızın biteceği tarih.
+                                    <strong>Oylamanızı kimler görebilsin: </strong> Oylamanın site veya apartman içerisinde yapılacağının seçimi.
                                 </p>
                               </div>
                             </div>
                           </div>
-                          <div class="panel panel-success">
+                          <div class="panel panel-danger">
                             <div class="panel-heading">
                               <h4 class="panel-title">
                               <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_2">
-                              2. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ? </a>
+                                Yarattığım oylamayı nasıl silebilirim ? </a>
                               </h4>
                             </div>
                             <div id="accordion3_2" class="panel-collapse collapse">
