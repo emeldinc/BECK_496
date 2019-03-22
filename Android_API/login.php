@@ -27,7 +27,7 @@ include ('../dbconnection.php');
         $response['house_id'] = array();
 
         $housesql = "SELECT * FROM `user_daire` WHERE `ref_user_id` = ".$row['id'];
-        $houseres = mysqli_query($db,$housesqlsql);
+        $houseres = mysqli_query($db,$housesql);
         while($houserow = mysqli_fetch_assoc($houseres))
             array_push($response['house_id'],$houserow['ref_daire_id']);
     }
