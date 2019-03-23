@@ -138,7 +138,7 @@
                             <i class="icon-docs"></i> Oylama Oluştur </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a href="onceki_oylamalar.php">
                             <i class="icon-tag"></i> Önceki Oylamalar </a>
                     </li>
 
