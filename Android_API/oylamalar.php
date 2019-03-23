@@ -37,7 +37,8 @@
             $oysayisisql = "SELECT * FROM `oy` WHERE ref_oy_tipi_id = ".$innerrow['id'];
             $oysayisires = mysqli_query($db,$oysayisisql);
             $toplamoy = mysqli_affected_rows($db);
-            array_push($oylamalar['options'],$innerrow['description'] . " ".$toplamoy);
+            $option = array("description" => $innerrow['description'],"count" => $toplamoy);
+            array_push($oylamalar['options'],$option);
             $toplam += $toplamoy;
         }
         $oylamalar['votes'] = $toplam;
