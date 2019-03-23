@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Credentials: true");
-header('Content-type: application/json; charset=utf-8');
+header('Content-type: application/x-wwww-form-urlencoded; charset=utf-8');
 
 include '../dbconnection.php';
 include ('Utility.php');
