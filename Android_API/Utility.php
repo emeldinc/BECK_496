@@ -1,9 +1,4 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: access");
-    header("Access-Control-Allow-Methods: GET");
-    header("Access-Control-Allow-Credentials: true");
-    header('Content-type: application/json; charset=utf-8');
 
     function getApartmentID($house_id)
     {
