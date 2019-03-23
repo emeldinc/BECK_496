@@ -15,13 +15,15 @@ $site_id = getSiteID($apartman_id);
 $title = $_POST['title'];
 $description = $_POST['description'];
 
-$response = array("error" => FALSE,"duyurular" => array());
+$response = array("error" => TRUE,"duyurular" => array());
 
 $sql = "INSERT INTO duyuru (ref_user_id,ref_apartman_id,ref_site_id,now_date,title,description)
   VALUES ('$user_id','$apartman_id','$site_id',NOW(),'".$title."','$description')";
 
-if(mysqli_query($db,$sql))
-    $response['error'] = TRUE;
+if(mysqli_query($db,$sql)) {
+    $response['error'] = FALSE;
+    $response['query'] = $sql;
+}
 echo json_encode($response);
 
 ?>
