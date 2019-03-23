@@ -169,7 +169,8 @@
                         </div>
                         <div class="portlet-body">
                             <?php
-                                $sql_oylama = "SELECT * FROM `oylama`";
+                                $now = date('Y-m-d H:i:s');
+                                $sql_oylama = "SELECT * FROM `oylama` WHERE ref_apartman_id = ".$_SESSION['apartman_id']." AND `start_date` < '$now' AND `end_date` > '$now' ";
                                 $res = mysqli_query($db,$sql_oylama);
 
                                 if(mysqli_affected_rows($db) == 0)
