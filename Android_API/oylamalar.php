@@ -7,9 +7,10 @@
     header('Content-type: application/json; charset=utf-8');
 
     include ('../dbconnection.php');
+    include ('Utility.php');
 
     $response = array("error" => FALSE,"oylamalar" => array());
-    $apartman_id = $_GET['oylama'];
+    $apartman_id = getApartmentID($_GET['oylama']);
     $sql = "SELECT * FROM `oylama` WHERE `ref_apartman_id` = $apartman_id";
     $res = mysqli_query($db,$sql);
     while($row = mysqli_fetch_assoc($res))
@@ -36,7 +37,8 @@
             $oysayisisql = "SELECT * FROM `oy` WHERE ref_oy_tipi_id = ".$innerrow['id'];
             $oysayisires = mysqli_query($db,$oysayisisql);
             $toplamoy = mysqli_affected_rows($db);
-            array_push($oylamalar['options'],$innerrow['description'] . " ".$toplamoy);
+            $option = array("description" => $innerrow['description'],"count" => $toplamoy);
+            array_push($oylamalar['options'],$option);
             $toplam += $toplamoy;
         }
         $oylamalar['votes'] = $toplam;
